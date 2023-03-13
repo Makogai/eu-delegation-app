@@ -237,8 +237,6 @@ return [
             'updated_at_helper'                 => ' ',
             'deleted_at'                        => 'Deleted at',
             'deleted_at_helper'                 => ' ',
-            'show'                              => 'Show',
-            'show_helper'                       => 'show this project on client side?',
         ],
     ],
     'projectDropdown' => [

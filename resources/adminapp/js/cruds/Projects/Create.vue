@@ -428,22 +428,6 @@
                       @blur="clearFocus"
                     />
                   </div>
-                  <div class="form-group bmd-form-group form-check has-items">
-                    <label class="bmd-label-floating">{{
-                      $t('cruds.project.fields.show_helper')
-                    }}</label>
-                    <label class="form-check-label"
-                      ><input
-                        class="form-check-input"
-                        type="checkbox"
-                        :value="entry.show"
-                        :checked="entry.show"
-                        @change="updateShow"
-                      /><span class="form-check-sign"
-                        ><span class="check"></span></span
-                      >{{ $t('cruds.project.fields.show') }}</label
-                    >
-                  </div>
                 </div>
               </div>
             </div>
@@ -507,7 +491,6 @@ export default {
       'setEndBeneficiary',
       'setKeywords',
       'setLinksToProjectPage',
-      'setShow',
       'fetchCreateData'
     ]),
     updateAssistanceFramework(e) {
@@ -569,9 +552,6 @@ export default {
     },
     updateLinksToProjectPage(e) {
       this.setLinksToProjectPage(e.target.value)
-    },
-    updateShow(e) {
-      this.setShow(e.target.checked)
     },
     submitForm() {
       this.storeData()

@@ -26,7 +26,6 @@ class CreateProjectsTable extends Migration
             $table->string('end_beneficiary')->nullable();
             $table->string('keywords')->nullable();
             $table->string('links_to_project_page')->nullable();
-            $table->boolean('show')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
