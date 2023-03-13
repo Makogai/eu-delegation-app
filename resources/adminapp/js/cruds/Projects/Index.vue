@@ -1,0 +1,252 @@
+<template>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">assignment</i>
+            </div>
+            <h4 class="card-title">
+              {{ $t('global.table') }}
+              <strong>{{ $t('cruds.project.title') }}</strong>
+            </h4>
+          </div>
+          <div class="card-body">
+            <router-link
+              class="btn btn-primary"
+              v-if="$can(xprops.permission_prefix + 'create')"
+              :to="{ name: xprops.route + '.create' }"
+            >
+              <i class="material-icons">
+                add
+              </i>
+              {{ $t('global.add') }}
+            </router-link>
+            <button
+              type="button"
+              class="btn btn-default"
+              @click="fetchIndexData"
+              :disabled="loading"
+              :class="{ disabled: loading }"
+            >
+              <i class="material-icons" :class="{ 'fa-spin': loading }">
+                refresh
+              </i>
+              {{ $t('global.refresh') }}
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-overlay" v-show="loading">
+                  <div class="table-overlay-container">
+                    <material-spinner></material-spinner>
+                    <span>Loading...</span>
+                  </div>
+                </div>
+                <datatable
+                  :columns="columns"
+                  :data="data"
+                  :total="total"
+                  :query="query"
+                  :xprops="xprops"
+                  :HeaderSettings="false"
+                  :pageSizeOptions="[10, 25, 50, 100]"
+                >
+                  <global-search :query="query" class="pull-left" />
+                  <header-settings :columns="columns" class="pull-right" />
+                </datatable>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import DatatableActions from '@components/Datatables/DatatableActions'
+import TranslatedHeader from '@components/Datatables/TranslatedHeader'
+import HeaderSettings from '@components/Datatables/HeaderSettings'
+import GlobalSearch from '@components/Datatables/GlobalSearch'
+import DatatableSingle from '@components/Datatables/DatatableSingle'
+import DatatableList from '@components/Datatables/DatatableList'
+
+export default {
+  components: {
+    GlobalSearch,
+    HeaderSettings
+  },
+  data() {
+    return {
+      columns: [
+        {
+          title: 'cruds.project.fields.id',
+          field: 'id',
+          thComp: TranslatedHeader,
+          sortable: true,
+          colStyle: 'width: 100px;'
+        },
+        {
+          title: 'cruds.project.fields.assistance_framework',
+          field: 'assistance_framework',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.programme',
+          field: 'programme.name',
+          thComp: TranslatedHeader,
+          tdComp: DatatableSingle,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.sector',
+          field: 'sector.name',
+          thComp: TranslatedHeader,
+          tdComp: DatatableList
+        },
+        {
+          title: 'cruds.project.fields.contract_title',
+          field: 'contract_title',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.contract_type',
+          field: 'contract_type.name',
+          thComp: TranslatedHeader,
+          tdComp: DatatableSingle,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.commitment_year',
+          field: 'commitment_year',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.contract_year',
+          field: 'contract_year',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.start_date',
+          field: 'start_date',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.end_date',
+          field: 'end_date',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.contract_number',
+          field: 'contract_number',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.contracting_party',
+          field: 'contracting_party',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.contracted_eu_contribution',
+          field: 'contracted_eu_contribution',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.co_funding_or_loan',
+          field: 'co_funding_or_loan',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.total_euro_value',
+          field: 'total_euro_value',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.co_funding_party',
+          field: 'co_funding_party',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.municipality',
+          field: 'municipality.name',
+          thComp: TranslatedHeader,
+          tdComp: DatatableList
+        },
+        {
+          title: 'cruds.project.fields.short_description',
+          field: 'short_description',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.end_beneficiary',
+          field: 'end_beneficiary',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.keywords',
+          field: 'keywords',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.links_to_project_page',
+          field: 'links_to_project_page',
+          thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'global.actions',
+          thComp: TranslatedHeader,
+          tdComp: DatatableActions,
+          visible: true,
+          thClass: 'text-right',
+          tdClass: 'text-right td-actions',
+          colStyle: 'width: 150px;'
+        }
+      ],
+      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      xprops: {
+        module: 'ProjectsIndex',
+        route: 'projects',
+        permission_prefix: 'project_'
+      }
+    }
+  },
+  beforeDestroy() {
+    this.resetState()
+  },
+  computed: {
+    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading'])
+  },
+  watch: {
+    query: {
+      handler(query) {
+        this.setQuery(query)
+        this.fetchIndexData()
+      },
+      deep: true
+    }
+  },
+  methods: {
+    ...mapActions('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])
+  }
+}
+</script>
