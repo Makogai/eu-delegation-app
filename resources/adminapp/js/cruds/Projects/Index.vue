@@ -74,6 +74,7 @@ import HeaderSettings from '@components/Datatables/HeaderSettings'
 import GlobalSearch from '@components/Datatables/GlobalSearch'
 import DatatableSingle from '@components/Datatables/DatatableSingle'
 import DatatableList from '@components/Datatables/DatatableList'
+import DatatableCheckbox from '@components/Datatables/DatatableCheckbox'
 
 export default {
   components: {
@@ -210,6 +211,13 @@ export default {
           title: 'cruds.project.fields.links_to_project_page',
           field: 'links_to_project_page',
           thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.show',
+          field: 'show',
+          thComp: TranslatedHeader,
+          tdComp: DatatableCheckbox,
           sortable: true
         },
         {
