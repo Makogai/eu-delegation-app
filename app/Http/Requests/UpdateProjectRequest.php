@@ -113,6 +113,9 @@ class UpdateProjectRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'show' => [
+                'boolean',
+            ],
         ];
     }
 }
