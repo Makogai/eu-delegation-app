@@ -26,7 +26,6 @@
       <!-- Collapsable -->
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
-            <a href="/">Home</a>
           <top-navbar-languages />
         </ul>
       </div>

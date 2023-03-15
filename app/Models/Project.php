@@ -15,6 +15,10 @@ class Project extends Model
 
     public $table = 'projects';
 
+    protected $casts = [
+        'show' => 'boolean',
+    ];
+
     protected $dates = [
         'start_date',
         'created_at',
@@ -42,30 +46,7 @@ class Project extends Model
         'end_beneficiary',
         'keywords',
         'links_to_project_page',
-    ];
-
-    protected $fillable = [
-        'assistance_framework',
-        'programme_id',
-        'contract_title',
-        'contract_type_id',
-        'commitment_year',
-        'contract_year',
-        'start_date',
-        'end_date',
-        'contract_number',
-        'contracting_party',
-        'contracted_eu_contribution',
-        'co_funding_or_loan',
-        'total_euro_value',
-        'co_funding_party',
-        'short_description',
-        'end_beneficiary',
-        'keywords',
-        'links_to_project_page',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'show',
     ];
 
     protected $filterable = [
@@ -90,6 +71,31 @@ class Project extends Model
         'end_beneficiary',
         'keywords',
         'links_to_project_page',
+    ];
+
+    protected $fillable = [
+        'assistance_framework',
+        'programme_id',
+        'contract_title',
+        'contract_type_id',
+        'commitment_year',
+        'contract_year',
+        'start_date',
+        'end_date',
+        'contract_number',
+        'contracting_party',
+        'contracted_eu_contribution',
+        'co_funding_or_loan',
+        'total_euro_value',
+        'co_funding_party',
+        'short_description',
+        'end_beneficiary',
+        'keywords',
+        'links_to_project_page',
+        'show',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
