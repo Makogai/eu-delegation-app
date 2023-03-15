@@ -12,28 +12,23 @@ const mix = require('laravel-mix')
  */
 
 mix.webpackConfig({
-    output: {chunkFilename: 'adminapp/js/chunks/[name].js?id=[chunkhash]'},
-    resolve: {
-        extensions: ['.js', '.vue', '.json'],
-        alias: {
-            '@': __dirname + '/resources/adminapp/js',
-            '@pages': __dirname + '/resources/adminapp/js/pages',
-            '@components': __dirname + '/resources/adminapp/js/components',
-            '@cruds': __dirname + '/resources/adminapp/js/cruds',
-            '@apppages': __dirname + '/resources/app/js/pages'
-        }
+  output: { chunkFilename: 'adminapp/js/chunks/[name].js?id=[chunkhash]' },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': __dirname + '/resources/adminapp/js',
+      '@pages': __dirname + '/resources/adminapp/js/pages',
+      '@components': __dirname + '/resources/adminapp/js/components',
+      '@cruds': __dirname + '/resources/adminapp/js/cruds'
     }
+  }
 })
 
 // Admin App
-mix.js('resources/adminapp/js/app.js', 'public/adminapp/js')
-    .js('resources/app/js/app.js', 'public/mainapp/js')
-    // .sass('resources/adminapp/sass/app.scss', 'public/adminapp/css');
-
-// mix.js('resources/app/js/app.js', 'public/mainapp/js');
-
-
+mix
+  .js('resources/adminapp/js/app.js', 'public/adminapp/js')
+  .sass('resources/adminapp/sass/app.scss', 'public/adminapp/css')
 
 if (mix.inProduction()) {
-    mix.version()
+  mix.version()
 }

@@ -203,6 +203,15 @@
                           {{ entry.links_to_project_page }}
                         </td>
                       </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.project.fields.show') }}
+                        </td>
+                        <td>
+                          <datatable-checkbox :value="entry.show">
+                          </datatable-checkbox>
+                        </td>
+                      </tr>
                     </tbody>
                   </div>
                 </div>
@@ -219,11 +228,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import DatatableSingle from '@components/Datatables/DatatableSingle'
 import DatatableList from '@components/Datatables/DatatableList'
+import DatatableCheckbox from '@components/Datatables/DatatableCheckbox'
 
 export default {
   components: {
     DatatableSingle,
-    DatatableList
+    DatatableList,
+    DatatableCheckbox
   },
   data() {
     return {}

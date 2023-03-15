@@ -113,6 +113,9 @@ class StoreProjectRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'show' => [
+                'boolean',
+            ],
         ];
     }
 }

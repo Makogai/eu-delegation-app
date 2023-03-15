@@ -74,6 +74,7 @@ import HeaderSettings from '@components/Datatables/HeaderSettings'
 import GlobalSearch from '@components/Datatables/GlobalSearch'
 import DatatableSingle from '@components/Datatables/DatatableSingle'
 import DatatableList from '@components/Datatables/DatatableList'
+import DatatableCheckbox from '@components/Datatables/DatatableCheckbox'
 
 export default {
   components: {
@@ -123,30 +124,6 @@ export default {
           sortable: true
         },
         {
-          title: 'cruds.project.fields.commitment_year',
-          field: 'commitment_year',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.contract_year',
-          field: 'contract_year',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.start_date',
-          field: 'start_date',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.end_date',
-          field: 'end_date',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
           title: 'cruds.project.fields.contract_number',
           field: 'contract_number',
           thComp: TranslatedHeader,
@@ -189,12 +166,6 @@ export default {
           tdComp: DatatableList
         },
         {
-          title: 'cruds.project.fields.short_description',
-          field: 'short_description',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
           title: 'cruds.project.fields.end_beneficiary',
           field: 'end_beneficiary',
           thComp: TranslatedHeader,
@@ -210,6 +181,13 @@ export default {
           title: 'cruds.project.fields.links_to_project_page',
           field: 'links_to_project_page',
           thComp: TranslatedHeader,
+          sortable: true
+        },
+        {
+          title: 'cruds.project.fields.show',
+          field: 'show',
+          thComp: TranslatedHeader,
+          tdComp: DatatableCheckbox,
           sortable: true
         },
         {

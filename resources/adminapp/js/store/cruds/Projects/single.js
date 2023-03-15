@@ -22,6 +22,7 @@ function initialState() {
       end_beneficiary: '',
       keywords: '',
       links_to_project_page: '',
+      show: true,
       created_at: '',
       updated_at: '',
       deleted_at: ''
@@ -168,6 +169,9 @@ const actions = {
   setLinksToProjectPage({ commit }, value) {
     commit('setLinksToProjectPage', value)
   },
+  setShow({ commit }, value) {
+    commit('setShow', value)
+  },
   setCreatedAt({ commit }, value) {
     commit('setCreatedAt', value)
   },
@@ -261,6 +265,9 @@ const mutations = {
   },
   setLinksToProjectPage(state, value) {
     state.entry.links_to_project_page = value
+  },
+  setShow(state, value) {
+    state.entry.show = value
   },
   setCreatedAt(state, value) {
     state.entry.created_at = value
