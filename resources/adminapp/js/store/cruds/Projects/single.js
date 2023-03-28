@@ -23,6 +23,7 @@ function initialState() {
       keywords: '',
       links_to_project_page: '',
       show: true,
+      financial_perspective_id: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
@@ -31,7 +32,8 @@ function initialState() {
       programme: [],
       sector: [],
       contract_type: [],
-      municipality: []
+      municipality: [],
+      financial_perspective: []
     },
     loading: false
   }
@@ -172,6 +174,9 @@ const actions = {
   setShow({ commit }, value) {
     commit('setShow', value)
   },
+  setFinancialPerspective({ commit }, value) {
+    commit('setFinancialPerspective', value)
+  },
   setCreatedAt({ commit }, value) {
     commit('setCreatedAt', value)
   },
@@ -268,6 +273,9 @@ const mutations = {
   },
   setShow(state, value) {
     state.entry.show = value
+  },
+  setFinancialPerspective(state, value) {
+    state.entry.financial_perspective_id = value
   },
   setCreatedAt(state, value) {
     state.entry.created_at = value

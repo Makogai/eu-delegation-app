@@ -239,6 +239,8 @@ return [
             'deleted_at_helper'                 => ' ',
             'show'                              => 'Show',
             'show_helper'                       => 'show this project on client side?',
+            'financial_perspective'             => 'Financial Perspective',
+            'financial_perspective_helper'      => ' ',
         ],
     ],
     'projectDropdown' => [

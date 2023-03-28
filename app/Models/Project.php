@@ -32,21 +32,17 @@ class Project extends Model
         'programme.name',
         'contract_title',
         'contract_type.name',
-        'commitment_year',
-        'contract_year',
-        'start_date',
-        'end_date',
         'contract_number',
         'contracting_party',
         'contracted_eu_contribution',
         'co_funding_or_loan',
         'total_euro_value',
         'co_funding_party',
-        'short_description',
         'end_beneficiary',
         'keywords',
         'links_to_project_page',
         'show',
+        'financial_perspective.perspective',
     ];
 
     protected $filterable = [
@@ -56,10 +52,6 @@ class Project extends Model
         'sector.name',
         'contract_title',
         'contract_type.name',
-        'commitment_year',
-        'contract_year',
-        'start_date',
-        'end_date',
         'contract_number',
         'contracting_party',
         'contracted_eu_contribution',
@@ -67,10 +59,10 @@ class Project extends Model
         'total_euro_value',
         'co_funding_party',
         'municipality.name',
-        'short_description',
         'end_beneficiary',
         'keywords',
         'links_to_project_page',
+        'financial_perspective.perspective',
     ];
 
     protected $fillable = [
@@ -93,6 +85,7 @@ class Project extends Model
         'keywords',
         'links_to_project_page',
         'show',
+        'financial_perspective_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -131,5 +124,10 @@ class Project extends Model
     public function municipality()
     {
         return $this->belongsToMany(City::class);
+    }
+
+    public function financialPerspective()
+    {
+        return $this->belongsTo(FinancialPerspective::class);
     }
 }
