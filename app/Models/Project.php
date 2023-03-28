@@ -55,7 +55,7 @@ class Project extends Model
         'programme.name',
         'sector.name',
         'contract_title',
-        'contract_type.name',
+        'contractType.name',
         'commitment_year',
         'contract_year',
         'start_date',
@@ -97,6 +97,72 @@ class Project extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    // Scope projectFilters - Filter by municipality, sector, or programme
+    public function scopeProjectFilters($query, $request)
+    {
+        // Filtering by municipality, sector, or programme
+        if ($request->has('municipality')) {
+            $query->whereHas('municipality', function ($query) use ($request) {
+                $query->whereIn('id', $request->municipality);
+            });
+        }
+
+        if ($request->has('sector')) {
+            $query->whereHas('sector', function ($query) use ($request) {
+                $query->whereIn('id', $request->sector);
+            });
+        }
+
+        if ($request->has('programme')) {
+            $query->whereHas('programme', function ($query) use ($request) {
+                $query->where('id', $request->programme);
+            });
+        }
+
+        // Search using the 's' parameter
+        if ($request->has('s') && !empty($request->s)) {
+            $searchTerm = $request->s;
+            $query->where(function ($query) use ($searchTerm) {
+                foreach ($this->filterable as $filterableField) {
+                    // Split the field into parts to identify relationships
+                    $fieldParts = explode('.', $filterableField);
+
+                    // If there's a relationship
+                    if (count($fieldParts) > 1) {
+                        $relation = $fieldParts[0];
+                        $relatedField = $fieldParts[1];
+
+                        $query->orWhereHas($relation, function ($query) use ($relatedField, $searchTerm) {
+                            $query->where($relatedField, 'LIKE', '%' . $searchTerm . '%');
+                        });
+                    } else {
+                        $query->orWhere($filterableField, 'LIKE', '%' . $searchTerm . '%');
+                    }
+                }
+            });
+        }
+
+
+        // Sorting using the 'sort' and 'order' parameters
+        if ($request->has('sort') && in_array($request->sort, $this->orderable)) {
+            $order = $request->has('order') ? $request->order : 'asc';
+            $query->orderBy($request->sort, $order);
+        }
+
+        // Pagination using the 'limit', 'offset', and 'page' parameters
+        if ($request->has('limit') && $request->has('offset')) {
+            $limit = $request->limit;
+            $offset = $request->offset;
+            $query->limit($limit)->offset($offset);
+        } elseif ($request->has('limit') && $request->has('page')) {
+            $limit = $request->limit;
+            $page = $request->page;
+            $query->paginate($limit, ['*'], 'page', $page);
+        }
+
+        return $query;
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

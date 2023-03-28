@@ -26,7 +26,7 @@
           </div>
         </div>
           <div class="col-12">
-                <CountryMap></CountryMap>
+                <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
           </div>
       </div>
     </div>
@@ -60,18 +60,33 @@ export default {
     },
     mounted() {
         this.fetchIndexData()
+
+        // On emit event from child component
+        Bus.$on('back-clicked', () => {
+            alert('back clicked')
+            this.resetQuery()
+        })
     },
     watch: {
         query: {
             handler(query) {
-                // this.setQuery(query)
+                this.setQuery(query)
                 this.fetchIndexData()
             },
             deep: true
         }
     },
     methods: {
-        ...mapActions('ProjectsIndex', ['fetchIndexData', 'resetState'])
+        handleStateClicked(id, name) {
+            console.log(id, name)
+            // Handle the state-clicked event here
+            // Filter the data by municipality
+            this.query = { ...this.query, municipality: id }
+        },
+        resetQuery() {
+            this.query = { ...this.query, municipality: null }
+        },
+        ...mapActions('ProjectsIndex', ['fetchIndexData', 'resetState', 'setQuery']),
     }
 }
 </script>

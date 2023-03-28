@@ -73,67 +73,67 @@ var simplemaps_countrymap_mapdata={
         location_image_url: ""
     },
     state_specific: {
-        MNE1496: {
+        2: {
             name: "Bar"
         },
-        MNE1497: {
+        23: {
             name: "Ulcinj"
         },
-        MNE1499: {
+        5: {
             name: "Budva"
         },
-        MNE1500: {
+        6: {
             name: "Cetinje"
         },
-        MNE1501: {
+        19: {
             name: "Rožaje"
         },
-        MNE1503: {
+        15: {
             name: "Plav"
         },
-        MNE1506: {
+        9: {
             name: "Herceg Novi"
         },
-        MNE1507: {
+        11: {
             name: "Kotor"
         },
-        MNE1508: {
+        1: {
             name: "Andrijevica"
         },
-        MNE1509: {
+        3: {
             name: "Berane"
         },
-        MNE1510: {
+        4: {
             name: "Bijelo Polje"
         },
-        MNE1511: {
+        7: {
             name: "Danilovgrad"
         },
-        MNE1512: {
+        10: {
             name: "Kolašin"
         },
-        MNE1513: {
+        12: {
             name: "Mojkovac"
         },
-        MNE1514: {
+        13: {
             name: "Nikšic",
         },
-        MNE1515: {
+        17: {
             name: "Plužine"
         },
-        MNE1516: {
+        16: {
             name: "Pljevlja"
         },
-        MNE1517: {
+        18: {
             name: "Podgorica"
         },
-        MNE1518: {
+        21: {
             name: "Tivat"
         },
-        MNE1519: {
+        20: {
             name: "Šavnik"
         },
-        MNE1520: {
+        24: {
             name: "Žabljak"
         }
     },
@@ -145,127 +145,127 @@ var simplemaps_countrymap_mapdata={
         },
         "1": {
             name: "Bar",
-            parent_id: "MNE1496",
+            parent_id: "2",
             x: 358.3,
             y: 976.2
         },
         "2": {
             name: "Ulcinj",
-            parent_id: "MNE1497",
+            parent_id: "23",
             x: 437.3,
             y: 1122.6
         },
         "3": {
             name: "Budva",
-            parent_id: "MNE1499",
+            parent_id: "5",
             x: "218.7",
             y: "879.9"
         },
         "4": {
             name: "Cetinje",
-            parent_id: "MNE1500",
+            parent_id: "6",
             x: 196.2,
             y: 677.6
         },
         "5": {
             name: "Rožaje",
-            parent_id: "MNE1501",
+            parent_id: "19",
             x: 914.8,
             y: 477.5
         },
         "6": {
             name: "Plav",
-            parent_id: "MNE1503",
+            parent_id: "15",
             x: 788.1,
             y: 667.9
         },
         "7": {
             name: "Herceg Novi",
-            parent_id: "MNE1506",
+            parent_id: "9",
             x: "50.9",
             y: 739.4
         },
         "8": {
             name: "Kotor",
-            parent_id: "MNE1507",
+            parent_id: "11",
             x: 90.9,
             y: 690.1
         },
         "9": {
             name: "Andrijevica",
-            parent_id: "MNE1508",
+            parent_id: "1",
             x: "697.7",
             y: 596.8
         },
         "10": {
             name: "Berane",
-            parent_id: "MNE1509",
+            parent_id: "3",
             x: 777.3,
             y: 498.9
         },
         "11": {
             name: "Bijelo Polje",
-            parent_id: "MNE1510",
+            parent_id: "4",
             x: 689,
             y: 379.4
         },
         "12": {
             name: "Danilovgrad",
-            parent_id: "MNE1511",
+            parent_id: "7",
             x: 353.4,
             y: 668.1
         },
         "13": {
             name: "Kolašin",
-            parent_id: "MNE1512",
+            parent_id: "10",
             x: 493.6,
             y: 537
         },
         "14": {
             name: "Mojkovac",
-            parent_id: "MNE1513",
+            parent_id: "12",
             x: 543.5,
             y: 411.1
         },
         "15": {
             name: "Nikšic",
-            parent_id: "MNE1514",
+            parent_id: "13",
             x: 128.8,
             y: 487.1
         },
         "16": {
             name: "Plužine",
-            parent_id: "MNE1515",
+            parent_id: "17",
             x: 210.3,
             y: 261.4
         },
         "17": {
             name: "Pljevlja",
-            parent_id: "MNE1516",
+            parent_id: "16",
             x: 417.4,
             y: 176.4
         },
         "18": {
             name: "Podgorica",
-            parent_id: "MNE1517",
+            parent_id: "18",
             x: 497.2,
             y: 721.8
         },
         "19": {
             name: "Tivat",
-            parent_id: "MNE1518",
+            parent_id: "21",
             x: "129.6",
             y: 818.4
         },
         "20": {
             name: "Šavnik",
-            parent_id: "MNE1519",
+            parent_id: "20",
             x: 364.1,
             y: 419.2
         },
         "21": {
             name: "Žabljak",
-            parent_id: "MNE1520",
+            parent_id: "24",
             x: 363.9,
             y: 294.2
         }

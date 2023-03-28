@@ -41,4 +41,9 @@ class Country extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'country_id', 'id');
+    }
 }

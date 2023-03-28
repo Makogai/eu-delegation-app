@@ -35,6 +35,63 @@
               </i>
               {{ $t('global.refresh') }}
             </button>
+              <form action="">
+              <div class="row py-4">
+
+                  <div class="col-6">
+                          <div
+                              class="form-group bmd-form-group"
+                              :class="{
+                          'has-items': cities.length !== 0,
+                          'is-focused': activeField === 'municipality'
+                        }"
+                          >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.municipality')
+                              }}</label>
+                          <v-select
+                              name="municipality"
+                              label="name"
+                              :reduce="city => city.id"
+                              :key="'municipality-field'"
+                              :value="query.municipality"
+                              :options="cities"
+                              :closeOnSelect="false"
+                              @search.focus="focusField('municipality')"
+                              @search.blur="clearFocus"
+                              multiple
+                              v-model="query.municipality"
+                          />
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group"
+                          :class="{
+                          'has-items': cities.length !== 0,
+                          'is-focused': activeField === 'sector'
+                        }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.sector')
+                              }}</label>
+                          <v-select
+                              name="sector"
+                              label="name"
+                              :reduce="sector => sector.id"
+                              :key="'sector-field'"
+                              :value="query.sector"
+                              :options="sectors"
+                              :closeOnSelect="false"
+                              @search.focus="focusField('sector')"
+                              @search.blur="clearFocus"
+                              multiple
+                              v-model="query.sector"
+                          />
+                      </div>
+                  </div>
+              </div>
+              </form>
           </div>
           <div class="card-body">
             <div class="row">
@@ -200,31 +257,52 @@ export default {
           colStyle: 'width: 150px;'
         }
       ],
-      query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+      query: {
+          sort: 'id',
+          order: 'desc',
+          limit: 100,
+          s: '',
+          municipality: []
+      },
       xprops: {
         module: 'ProjectsIndex',
         route: 'projects',
         permission_prefix: 'project_'
-      }
+      },
+        activeField: ''
     }
   },
   beforeDestroy() {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading'])
+    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading']),
+    ...mapGetters('AllCities', ['cities']),
+    ...mapGetters('AllSectors', ['sectors'])
   },
   watch: {
     query: {
       handler(query) {
         this.setQuery(query)
         this.fetchIndexData()
+          this.fetchAllCities()
+          this.fetchAllSectors()
       },
       deep: true
     }
   },
   methods: {
-    ...mapActions('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])
+      focusField(name) {
+          alert(name)
+          this.activeField = name
+      },
+      clearFocus() {
+          this.activeField = ''
+      },
+    ...mapActions('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState']),
+    ...mapActions('AllCities', ['fetchAllCities']),
+    ...mapActions('AllSectors', ['fetchAllSectors']),
+
   }
 }
 </script>

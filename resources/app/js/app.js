@@ -4,10 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Vue from "vue";
+
 require('./bootstrap')
 
 window.Vue = require('vue')
 window.moment.updateLocale('en', { week: { dow: 1 } })
+window.Bus = new Vue();
 
 Vue.config.productionTip = false
 Vue.prototype.$jquery = $

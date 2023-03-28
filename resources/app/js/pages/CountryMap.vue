@@ -1,9 +1,6 @@
 <template>
     <div>
         <div id="map"></div>
-        <div>
-            <button v-on:click="make_red" v-if="!map_red">Make Red</button>
-        </div>
     </div>
 </template>
 
@@ -12,11 +9,13 @@ export default {
     name: "CountryMap",
     mounted: function(){
         simplemaps_countrymap.load();
-        simplemaps_countrymap.hooks.zoomable_click_state = function(id, name) {
-            // alert('Clicked on state: ' + name + ' (' + id + ')');
-            console.log('Clicked on state:', name);
-            console.log('State ID:', id);
-            // console.log('State object:', stateObj);
+        // On click back to default color
+        simplemaps_countrymap.hooks.back = () => {
+            Bus.$emit('back-clicked');
+        };
+        simplemaps_countrymap.hooks.zoomable_click_state = (id, name) => {
+            // Emit event to parent component
+            this.$emit('state-clicked', id, name);
         };
     },
     data() {

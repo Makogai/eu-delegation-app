@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"10":"1dede1a38491b821c44c","46":"62fcae1fe4e939c157fe","47":"8c26ad6eab0af049cf7f","48":"8d719428d2a4458430a4"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"11":"75f281987d09c3741b2a","12":"87e5b4f275b880a5f53f","49":"e6a679d7921766c33c18","50":"01d4bcecf179c0307b3b"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -38585,11 +38585,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue */ "./resources/app/js/App.vue");
-/* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes/routes */ "./resources/app/js/routes/routes.js");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./resources/app/js/store/store.js");
-/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./i18n */ "./resources/app/js/i18n.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/app/js/App.vue");
+/* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes/routes */ "./resources/app/js/routes/routes.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./resources/app/js/store/store.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./i18n */ "./resources/app/js/i18n.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -38602,6 +38604,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 __webpack_require__(/*! ./bootstrap */ "./resources/app/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.moment.updateLocale('en', {
@@ -38609,8 +38612,9 @@ window.moment.updateLocale('en', {
     dow: 1
   }
 });
-Vue.config.productionTip = false;
-Vue.prototype.$jquery = $;
+window.Bus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$jquery = $;
 
 
 // Core
@@ -38635,18 +38639,18 @@ Vue.prototype.$jquery = $;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   },
-  router: _routes_routes__WEBPACK_IMPORTED_MODULE_1__["default"],
-  store: _store_store__WEBPACK_IMPORTED_MODULE_2__["default"],
-  i18n: _i18n__WEBPACK_IMPORTED_MODULE_3__["default"],
+  router: _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"],
+  store: _store_store__WEBPACK_IMPORTED_MODULE_3__["default"],
+  i18n: _i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
   created: function created() {
     this.fetchLanguages();
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapActions"])('I18NStore', ['fetchLanguages']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])('I18NStore', ['fetchLanguages']))
 });
 
 /***/ }),
@@ -38742,14 +38746,14 @@ var View = {
 var routes = [{
   path: '/',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(47), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! @apppages/Layout/MainLayout.vue */ "./resources/app/js/pages/Layout/MainLayout.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(50), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! @apppages/Layout/MainLayout.vue */ "./resources/app/js/pages/Layout/MainLayout.vue"));
   },
   redirect: 'app',
   children: [{
     path: 'app',
     name: 'app',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 46).then(__webpack_require__.bind(null, /*! @apppages/Dashboard.vue */ "./resources/app/js/pages/Dashboard.vue"));
+      return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! @apppages/Dashboard.vue */ "./resources/app/js/pages/Dashboard.vue"));
     },
     meta: {
       title: 'global.dashboard'
@@ -38758,7 +38762,7 @@ var routes = [{
     path: 'test',
     name: 'test',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 48).then(__webpack_require__.bind(null, /*! @apppages/Dashboard2.vue */ "./resources/app/js/pages/Dashboard2.vue"));
+      return __webpack_require__.e(/*! import() */ 49).then(__webpack_require__.bind(null, /*! @apppages/Dashboard2.vue */ "./resources/app/js/pages/Dashboard2.vue"));
     },
     meta: {
       title: 'global.dashboard'
@@ -42144,7 +42148,7 @@ var debug = "development" !== 'production';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/makogai/Desktop/EuDelegation/app/resources/app/js/app.js */"./resources/app/js/app.js");
+module.exports = __webpack_require__(/*! /home/makogai/Desktop/EuDelegation/eu-delegation-app/resources/app/js/app.js */"./resources/app/js/app.js");
 
 
 /***/ })

@@ -27,6 +27,8 @@ import FundingTypesSingle from './cruds/FundingTypes/single'
 import ProjectsIndex from './cruds/Projects'
 import ProjectsSingle from './cruds/Projects/single'
 
+import AllCities from './common/cities'
+import AllSectors from './common/sectors'
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -56,7 +58,9 @@ export default new Vuex.Store({
     FundingTypesIndex,
     FundingTypesSingle,
     ProjectsIndex,
-    ProjectsSingle
+    ProjectsSingle,
+      AllCities,
+      AllSectors
   },
   strict: debug
 })

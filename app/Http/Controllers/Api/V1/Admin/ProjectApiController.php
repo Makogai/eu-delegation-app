@@ -17,11 +17,40 @@ use Illuminate\Http\Response;
 
 class ProjectApiController extends Controller
 {
-    public function index()
+
+    public function allCities()
+    {
+        return \response()->json(City::all());
+    }
+    public function allSectors()
+    {
+        return \response()->json(Sector::all());
+    }
+    public function allProgrammes()
+    {
+        return \response()->json(Programme::all());
+    }
+    public function allCtypes()
+    {
+        return \response()->json(FundingType::all());
+    }
+    public function index(Request $request)
     {
         abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProjectResource(Project::with(['programme', 'sector', 'contractType', 'municipality'])->advancedFilter());
+        $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->projectFilters($request)->paginate($request->limit, ['*'], 'page', $request->page);
+        // Where municipality is a many-to-many relationship, is id from query string
+        // the id of the pivot table or the id of the municipality table?
+//         $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->whereHas('municipality', function ($query) {
+//             // If theres no municipality id in the query string, return all projects
+//                if (!request('municipality')) {
+//                    return $query;
+//                }
+//             $query->where('id', request('municipality'));
+//         })->get();
+
+
+        return new ProjectResource($projects);
     }
 
     public function store(StoreProjectRequest $request)
