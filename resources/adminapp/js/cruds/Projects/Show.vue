@@ -212,6 +212,18 @@
                           </datatable-checkbox>
                         </td>
                       </tr>
+                      <tr>
+                        <td class="text-primary">
+                          {{ $t('cruds.project.fields.financial_perspective') }}
+                        </td>
+                        <td>
+                          <datatable-single
+                            :row="entry"
+                            field="financial_perspective.perspective"
+                          >
+                          </datatable-single>
+                        </td>
+                      </tr>
                     </tbody>
                   </div>
                 </div>

@@ -116,6 +116,11 @@ class UpdateProjectRequest extends FormRequest
             'show' => [
                 'boolean',
             ],
+            'financial_perspective_id' => [
+                'integer',
+                'exists:financial_perspectives,id',
+                'nullable',
+            ],
         ];
     }
 }

@@ -444,6 +444,28 @@
                       >{{ $t('cruds.project.fields.show') }}</label
                     >
                   </div>
+                  <div
+                    class="form-group bmd-form-group"
+                    :class="{
+                      'has-items': entry.financial_perspective_id !== null,
+                      'is-focused': activeField == 'financial_perspective'
+                    }"
+                  >
+                    <label class="bmd-label-floating">{{
+                      $t('cruds.project.fields.financial_perspective')
+                    }}</label>
+                    <v-select
+                      name="financial_perspective"
+                      label="perspective"
+                      :key="'financial_perspective-field'"
+                      :value="entry.financial_perspective_id"
+                      :options="lists.financial_perspective"
+                      :reduce="entry => entry.id"
+                      @input="updateFinancialPerspective"
+                      @search.focus="focusField('financial_perspective')"
+                      @search.blur="clearFocus"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -508,6 +530,7 @@ export default {
       'setKeywords',
       'setLinksToProjectPage',
       'setShow',
+      'setFinancialPerspective',
       'fetchCreateData'
     ]),
     updateAssistanceFramework(e) {
@@ -572,6 +595,9 @@ export default {
     },
     updateShow(e) {
       this.setShow(e.target.checked)
+    },
+    updateFinancialPerspective(value) {
+      this.setFinancialPerspective(value)
     },
     submitForm() {
       this.storeData()
