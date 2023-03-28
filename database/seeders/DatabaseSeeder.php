@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             CountryCitySeeder::class,
-            MainSeeder::class
+            MainSeeder::class,
+            ProjectsSeeder::class,
         ]);
     }
 }

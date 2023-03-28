@@ -23,7 +23,7 @@ class CreateProjectsTable extends Migration
             $table->decimal('total_euro_value', 15, 2)->nullable();
             $table->string('co_funding_party')->nullable();
             $table->longText('short_description');
-            $table->string('end_beneficiary')->nullable();
+            $table->text('end_beneficiary')->nullable();
             $table->string('keywords')->nullable();
             $table->string('links_to_project_page')->nullable();
             $table->boolean('show')->default(0)->nullable();

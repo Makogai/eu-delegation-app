@@ -156,6 +156,13 @@ var render = function render() {
     attrs: {
       value: _vm.entry.show
     }
+  })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("cruds.project.fields.financial_perspective")) + "\n                        ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
+    attrs: {
+      row: _vm.entry,
+      field: "financial_perspective.perspective"
+    }
   })], 1)])])])])])])])])])])]);
 };
 var staticRenderFns = [function () {

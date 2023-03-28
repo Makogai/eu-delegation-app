@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"11":"75f281987d09c3741b2a","12":"87e5b4f275b880a5f53f","49":"e6a679d7921766c33c18","50":"01d4bcecf179c0307b3b"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"11":"75f281987d09c3741b2a","12":"481c4e814d467590aade","49":"e6a679d7921766c33c18","50":"01d4bcecf179c0307b3b"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -40618,7 +40618,7 @@ function initialState() {
     loading: false
   };
 }
-var route = 'projects';
+var route = 'projects?isClient=true';
 var getters = {
   data: function data(state) {
     return state.data;

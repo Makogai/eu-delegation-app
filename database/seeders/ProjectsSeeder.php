@@ -12,12 +12,16 @@ class ProjectsSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return \Maatwebsite\Excel\Excel
      */
     public function run()
     {
 
-        Excel::import(new ProjectImport, 'cpc.xlsx');
+        $import = new ProjectImport();
+        $import->onlySheets('CBC SER-MNE');
+
+        Excel::import($import, dirname(__FILE__) . '/cpc.xlsx');
+
 
     }
 }

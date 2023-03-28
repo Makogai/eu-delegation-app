@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"ecddbc2432915ab20023","38":"df9fa7fdb74c15dc1ed3","39":"396f7a0a008a655bdba8","40":"43b3cffde712d16da6d6","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"2fa9188d333c07af7c9e","38":"bf0018fa03a8d781dd9b","39":"396f7a0a008a655bdba8","40":"73555ee8c9d52dc502d8","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -56926,6 +56926,7 @@ function initialState() {
       keywords: '',
       links_to_project_page: '',
       show: true,
+      financial_perspective_id: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
@@ -56934,7 +56935,8 @@ function initialState() {
       programme: [],
       sector: [],
       contract_type: [],
-      municipality: []
+      municipality: [],
+      financial_perspective: []
     },
     loading: false
   };
@@ -57099,41 +57101,45 @@ var actions = {
     var commit = _ref23.commit;
     commit('setShow', value);
   },
-  setCreatedAt: function setCreatedAt(_ref24, value) {
+  setFinancialPerspective: function setFinancialPerspective(_ref24, value) {
     var commit = _ref24.commit;
+    commit('setFinancialPerspective', value);
+  },
+  setCreatedAt: function setCreatedAt(_ref25, value) {
+    var commit = _ref25.commit;
     commit('setCreatedAt', value);
   },
-  setUpdatedAt: function setUpdatedAt(_ref25, value) {
-    var commit = _ref25.commit;
+  setUpdatedAt: function setUpdatedAt(_ref26, value) {
+    var commit = _ref26.commit;
     commit('setUpdatedAt', value);
   },
-  setDeletedAt: function setDeletedAt(_ref26, value) {
-    var commit = _ref26.commit;
+  setDeletedAt: function setDeletedAt(_ref27, value) {
+    var commit = _ref27.commit;
     commit('setDeletedAt', value);
   },
-  fetchCreateData: function fetchCreateData(_ref27) {
-    var commit = _ref27.commit;
+  fetchCreateData: function fetchCreateData(_ref28) {
+    var commit = _ref28.commit;
     axios.get("".concat(route, "/create")).then(function (response) {
       commit('setLists', response.data.meta);
     });
   },
-  fetchEditData: function fetchEditData(_ref28, id) {
-    var commit = _ref28.commit,
-      dispatch = _ref28.dispatch;
+  fetchEditData: function fetchEditData(_ref29, id) {
+    var commit = _ref29.commit,
+      dispatch = _ref29.dispatch;
     axios.get("".concat(route, "/").concat(id, "/edit")).then(function (response) {
       commit('setEntry', response.data.data);
       commit('setLists', response.data.meta);
     });
   },
-  fetchShowData: function fetchShowData(_ref29, id) {
-    var commit = _ref29.commit,
-      dispatch = _ref29.dispatch;
+  fetchShowData: function fetchShowData(_ref30, id) {
+    var commit = _ref30.commit,
+      dispatch = _ref30.dispatch;
     axios.get("".concat(route, "/").concat(id)).then(function (response) {
       commit('setEntry', response.data.data);
     });
   },
-  resetState: function resetState(_ref30) {
-    var commit = _ref30.commit;
+  resetState: function resetState(_ref31) {
+    var commit = _ref31.commit;
     commit('resetState');
   }
 };
@@ -57203,6 +57209,9 @@ var mutations = {
   },
   setShow: function setShow(state, value) {
     state.entry.show = value;
+  },
+  setFinancialPerspective: function setFinancialPerspective(state, value) {
+    state.entry.financial_perspective_id = value;
   },
   setCreatedAt: function setCreatedAt(state, value) {
     state.entry.created_at = value;

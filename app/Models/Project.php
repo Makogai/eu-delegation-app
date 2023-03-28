@@ -47,6 +47,7 @@ class Project extends Model
         'keywords',
         'links_to_project_page',
         'show',
+        'financial_perspective.perspective',
     ];
 
     protected $filterable = [
@@ -71,6 +72,7 @@ class Project extends Model
         'end_beneficiary',
         'keywords',
         'links_to_project_page',
+        'financial_perspective.perspective',
     ];
 
     protected $fillable = [
@@ -96,6 +98,7 @@ class Project extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'financial_perspective_id',
     ];
 
     // Scope projectFilters - Filter by municipality, sector, or programme
@@ -197,5 +200,10 @@ class Project extends Model
     public function municipality()
     {
         return $this->belongsToMany(City::class);
+    }
+
+    public function financialPerspective()
+    {
+        return $this->belongsTo(FinancialPerspective::class);
     }
 }

@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\FundingType;
 use App\Models\Programme;
 use App\Models\Project;
+use App\Models\FinancialPerspective;
 use App\Models\Sector;
 use Gate;
 use Illuminate\Http\Request;
@@ -38,16 +39,22 @@ class ProjectApiController extends Controller
     {
         abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->projectFilters($request)->paginate($request->limit, ['*'], 'page', $request->page);
+        // if request has isClient
+        if ($request->isClient) {
+            $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->whereHas('municipality', function ($query) {
+                // If theres no municipality id in the query string, return all projects
+                if (!request('municipality')) {
+                    return $query;
+                }
+                $query->where('id', request('municipality'));
+            })->get();
+        }
+
+        else
+            $projects = Project::with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])->projectFilters($request)->paginate($request->limit, ['*'], 'page', $request->page);
         // Where municipality is a many-to-many relationship, is id from query string
         // the id of the pivot table or the id of the municipality table?
-//         $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->whereHas('municipality', function ($query) {
-//             // If theres no municipality id in the query string, return all projects
-//                if (!request('municipality')) {
-//                    return $query;
-//                }
-//             $query->where('id', request('municipality'));
-//         })->get();
+
 
 
         return new ProjectResource($projects);
@@ -74,6 +81,7 @@ class ProjectApiController extends Controller
                 'sector'        => Sector::get(['id', 'name']),
                 'contract_type' => FundingType::get(['id', 'name']),
                 'municipality'  => City::get(['id', 'name']),
+                'financial_perspective' => FinancialPerspective::get(['id', 'perspective']),
             ],
         ]);
     }
@@ -82,7 +90,7 @@ class ProjectApiController extends Controller
     {
         abort_if(Gate::denies('project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality']));
+        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective']));
     }
 
     public function update(UpdateProjectRequest $request, Project $project)
@@ -101,12 +109,13 @@ class ProjectApiController extends Controller
         abort_if(Gate::denies('project_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
-            'data' => new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality'])),
+            'data' => new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])),
             'meta' => [
                 'programme'     => Programme::get(['id', 'name']),
                 'sector'        => Sector::get(['id', 'name']),
                 'contract_type' => FundingType::get(['id', 'name']),
                 'municipality'  => City::get(['id', 'name']),
+                'financial_perspective' => FinancialPerspective::get(['id', 'perspective']),
             ],
         ]);
     }

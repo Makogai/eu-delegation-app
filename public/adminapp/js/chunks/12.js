@@ -73,7 +73,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         sort: 'id',
         order: 'desc',
         limit: 100,
-        s: ''
+        s: '',
+        isClient: true
       },
       xprops: {
         module: 'ProjectsIndex',

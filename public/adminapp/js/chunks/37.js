@@ -31,7 +31,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['storeData', 'resetState', 'setAssistanceFramework', 'setProgramme', 'setSector', 'setContractTitle', 'setContractType', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractedEuContribution', 'setCoFundingOrLoan', 'setTotalEuroValue', 'setCoFundingParty', 'setMunicipality', 'setShortDescription', 'setEndBeneficiary', 'setKeywords', 'setLinksToProjectPage', 'setShow', 'fetchCreateData'])), {}, {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['storeData', 'resetState', 'setAssistanceFramework', 'setProgramme', 'setSector', 'setContractTitle', 'setContractType', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractedEuContribution', 'setCoFundingOrLoan', 'setTotalEuroValue', 'setCoFundingParty', 'setMunicipality', 'setShortDescription', 'setEndBeneficiary', 'setKeywords', 'setLinksToProjectPage', 'setShow', 'setFinancialPerspective', 'fetchCreateData'])), {}, {
     updateAssistanceFramework: function updateAssistanceFramework(e) {
       this.setAssistanceFramework(e.target.value);
     },
@@ -94,6 +94,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateShow: function updateShow(e) {
       this.setShow(e.target.checked);
+    },
+    updateFinancialPerspective: function updateFinancialPerspective(value) {
+      this.setFinancialPerspective(value);
     },
     submitForm: function submitForm() {
       var _this = this;
@@ -671,7 +674,36 @@ var render = function render() {
     on: {
       change: _vm.updateShow
     }
-  }), _vm._m(1), _vm._v(_vm._s(_vm.$t("cruds.project.fields.show")))])])])])], 1), _vm._v(" "), _c("div", {
+  }), _vm._m(1), _vm._v(_vm._s(_vm.$t("cruds.project.fields.show")))])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.financial_perspective_id !== null,
+      "is-focused": _vm.activeField == "financial_perspective"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.financial_perspective")))]), _vm._v(" "), _c("v-select", {
+    key: "financial_perspective-field",
+    attrs: {
+      name: "financial_perspective",
+      label: "perspective",
+      value: _vm.entry.financial_perspective_id,
+      options: _vm.lists.financial_perspective,
+      reduce: function reduce(entry) {
+        return entry.id;
+      }
+    },
+    on: {
+      input: _vm.updateFinancialPerspective,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("financial_perspective");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    }
+  })], 1)])])], 1), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   }, [_c("vue-button-spinner", {
     staticClass: "btn-primary",

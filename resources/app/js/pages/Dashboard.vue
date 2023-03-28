@@ -44,7 +44,7 @@ export default {
     data() {
         return {
 
-            query: { sort: 'id', order: 'desc', limit: 100, s: '' },
+            query: { sort: 'id', order: 'desc', limit: 100, s: '', isClient: true },
             xprops: {
                 module: 'ProjectsIndex',
                 route: 'projects',
