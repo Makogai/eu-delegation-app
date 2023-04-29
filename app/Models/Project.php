@@ -76,29 +76,27 @@ class Project extends Model
     ];
 
     protected $fillable = [
-        'assistance_framework',
+        'financial_perspective_id',
         'programme_id',
         'contract_title',
-        'contract_type_id',
         'commitment_year',
         'contract_year',
         'start_date',
         'end_date',
         'contract_number',
         'contracting_party',
-        'contracted_eu_contribution',
-        'co_funding_or_loan',
-        'total_euro_value',
-        'co_funding_party',
-        'short_description',
         'end_beneficiary',
+        'contracted_eu_contribution',
+        'co_funding',
+        'loan',
+        'total_euro_value',
+        'short_description',
         'keywords',
         'links_to_project_page',
         'show',
         'created_at',
         'updated_at',
         'deleted_at',
-        'financial_perspective_id',
     ];
 
     // Scope projectFilters - Filter by municipality, sector, or programme
@@ -119,8 +117,9 @@ class Project extends Model
 
         if ($request->has('programme')) {
             $query->whereHas('programme', function ($query) use ($request) {
-                $query->where('id', $request->programme);
+                $query->whereIn('id', $request->programme);
             });
+//            dd($request->programme);
         }
 
         // Search using the 's' parameter
@@ -184,7 +183,7 @@ class Project extends Model
 
     public function contractType()
     {
-        return $this->belongsTo(FundingType::class);
+        return $this->belongsToMany(FundingType::class);
     }
 
     public function getStartDateAttribute($value)

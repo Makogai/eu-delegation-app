@@ -90,6 +90,34 @@
                           />
                       </div>
                   </div>
+
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group"
+                          :class="{
+                          'has-items': cities.length !== 0,
+                          'is-focused': activeField === 'programme'
+                        }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.programme')
+                              }}</label>
+                          <v-select
+                              name="programme"
+                              label="name"
+                              :reduce="programme => programme.id"
+                              :key="'programme-field'"
+                              :value="query.programme"
+                              :options="programmes"
+                              :closeOnSelect="false"
+                              @search.focus="focusField('porgramme')"
+                              @search.blur="clearFocus"
+                              multiple
+                              v-model="query.programme"
+                          />
+                      </div>
+                  </div>
+
               </div>
               </form>
           </div>
@@ -140,123 +168,123 @@ export default {
   },
   data() {
     return {
-      columns: [
-        {
-          title: 'cruds.project.fields.id',
-          field: 'id',
-          thComp: TranslatedHeader,
-          sortable: true,
-          colStyle: 'width: 100px;'
-        },
-        {
-          title: 'cruds.project.fields.assistance_framework',
-          field: 'assistance_framework',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.programme',
-          field: 'programme.name',
-          thComp: TranslatedHeader,
-          tdComp: DatatableSingle,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.sector',
-          field: 'sector.name',
-          thComp: TranslatedHeader,
-          tdComp: DatatableList
-        },
-        {
-          title: 'cruds.project.fields.contract_title',
-          field: 'contract_title',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.contract_type',
-          field: 'contract_type.name',
-          thComp: TranslatedHeader,
-          tdComp: DatatableSingle,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.contract_number',
-          field: 'contract_number',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.contracting_party',
-          field: 'contracting_party',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.contracted_eu_contribution',
-          field: 'contracted_eu_contribution',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.co_funding_or_loan',
-          field: 'co_funding_or_loan',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.total_euro_value',
-          field: 'total_euro_value',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.co_funding_party',
-          field: 'co_funding_party',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.municipality',
-          field: 'municipality.name',
-          thComp: TranslatedHeader,
-          tdComp: DatatableList
-        },
-        {
-          title: 'cruds.project.fields.end_beneficiary',
-          field: 'end_beneficiary',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.keywords',
-          field: 'keywords',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.links_to_project_page',
-          field: 'links_to_project_page',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.project.fields.show',
-          field: 'show',
-          thComp: TranslatedHeader,
-          tdComp: DatatableCheckbox,
-          sortable: true
-        },
-        {
-          title: 'global.actions',
-          thComp: TranslatedHeader,
-          tdComp: DatatableActions,
-          visible: true,
-          thClass: 'text-right',
-          tdClass: 'text-right td-actions',
-          colStyle: 'width: 150px;'
-        }
-      ],
+        columns: [
+            {
+                title: 'cruds.project.fields.id',
+                field: 'id',
+                thComp: TranslatedHeader,
+                sortable: true,
+                colStyle: 'width: 100px;'
+            },
+            {
+                title: 'cruds.project.fields.financial_perspective',
+                field: 'financial_perspective.perspective',
+                thComp: TranslatedHeader,
+                tdComp: DatatableSingle,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.programme',
+                field: 'programme.name',
+                thComp: TranslatedHeader,
+                tdComp: DatatableSingle,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.sector',
+                field: 'sector.name',
+                thComp: TranslatedHeader,
+                tdComp: DatatableList
+            },
+            {
+                title: 'cruds.project.fields.contract_title',
+                field: 'contract_title',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.contract_number',
+                field: 'contract_number',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.contracting_party',
+                field: 'contracting_party',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.contract_type',
+                field: 'contract_type.name',
+                thComp: TranslatedHeader,
+                tdComp: DatatableList
+            },
+            {
+                title: 'cruds.project.fields.end_beneficiary',
+                field: 'end_beneficiary',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.contracted_eu_contribution',
+                field: 'contracted_eu_contribution',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.co_funding',
+                field: 'co_funding',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.loan',
+                field: 'loan',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.total_euro_value',
+                field: 'total_euro_value',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.municipality',
+                field: 'municipality.name',
+                thComp: TranslatedHeader,
+                tdComp: DatatableList
+            },
+            {
+                title: 'cruds.project.fields.keywords',
+                field: 'keywords',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.links_to_project_page',
+                field: 'links_to_project_page',
+                thComp: TranslatedHeader,
+                sortable: true
+            },
+            {
+                title: 'cruds.project.fields.show',
+                field: 'show',
+                thComp: TranslatedHeader,
+                tdComp: DatatableCheckbox,
+                sortable: true
+            },
+            {
+                title: 'global.actions',
+                thComp: TranslatedHeader,
+                tdComp: DatatableActions,
+                visible: true,
+                thClass: 'text-right',
+                tdClass: 'text-right td-actions',
+                colStyle: 'width: 150px;'
+            }
+        ],
       query: {
           sort: 'id',
           order: 'desc',
@@ -278,7 +306,7 @@ export default {
   computed: {
     ...mapGetters('ProjectsIndex', ['data', 'total', 'loading']),
     ...mapGetters('AllCities', ['cities']),
-    ...mapGetters('AllSectors', ['sectors'])
+    ...mapGetters('AllProgrammes', ['programmes'])
   },
   watch: {
     query: {
@@ -287,6 +315,7 @@ export default {
         this.fetchIndexData()
           this.fetchAllCities()
           this.fetchAllSectors()
+          this.fetchAllProgrammes()
       },
       deep: true
     }
@@ -302,6 +331,7 @@ export default {
     ...mapActions('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState']),
     ...mapActions('AllCities', ['fetchAllCities']),
     ...mapActions('AllSectors', ['fetchAllSectors']),
+    ...mapActions('AllProgrammes', ['fetchAllProgrammes']),
 
   }
 }

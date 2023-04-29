@@ -116,7 +116,35 @@ class CountryCitySeeder extends Seeder
             [
                 "name" => "Žabljak",
                 "region" => "north"
-            ]
+            ],
+            [
+                "name" => "National park Skadar Lake",
+                "region" => "south"
+            ],
+            [
+                "name" => "National park Lovćen",
+                "region" => "central"
+            ],
+            [
+                "name" => "National park Durmitor",
+                "region" => "north"
+            ],
+            [
+                "name" => "National park Biogradska Gora",
+                "region" => "north"
+            ],
+            [
+                "name" => "National park Prokletije",
+                "region" => "north"
+            ],
+            [
+                "name" => "Northern region",
+                "region" => "north"
+            ],
+            [
+                "name" => "Coastal region",
+                "region" => "south"
+            ],
         ];
 
         foreach ($cities as $city) {

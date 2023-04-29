@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"2fa9188d333c07af7c9e","38":"bf0018fa03a8d781dd9b","39":"396f7a0a008a655bdba8","40":"73555ee8c9d52dc502d8","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"9556e1a5bf1d25944f8a","38":"5ed01dd0167261b2e609","39":"0b83224b3ac1e16d1fe2","40":"3a1c8409435ee8485330","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -3648,7 +3648,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     backgroundImage: {
       type: String,
-      "default": '/md/img/sidebar-1.jpg'
+      "default": '/md/img/mne-1.jpeg'
     },
     imgLogo: {
       type: String,
@@ -4465,7 +4465,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".material-spinner[data-v-3297263a] {\n  animation: rotator-3297263a 1.4s linear infinite;\n}\n@keyframes rotator-3297263a {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(270deg);\n}\n}\n.path[data-v-3297263a] {\n  stroke-dasharray: 187;\n  stroke-dashoffset: 0;\n  transform-origin: center;\n  animation: dash-3297263a 1.4s ease-in-out infinite,colors-3297263a 5.6s ease-in-out infinite;\n}\n@keyframes colors-3297263a {\n0% {\n    stroke: #9c27b0;\n}\n25% {\n    stroke: #9c27b0;\n}\n50% {\n    stroke: #9c27b0;\n}\n75% {\n    stroke: #9c27b0;\n}\n100% {\n    stroke: #9c27b0;\n}\n}\n@keyframes dash-3297263a {\n0% {\n    stroke-dashoffset: 187;\n}\n50% {\n    stroke-dashoffset: 46.75;\n    transform: rotate(135deg);\n}\n100% {\n    stroke-dashoffset: 187;\n    transform: rotate(450deg);\n}\n}", ""]);
+exports.push([module.i, ".material-spinner[data-v-3297263a] {\n  animation: rotator-3297263a 1.4s linear infinite;\n}\n@keyframes rotator-3297263a {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(270deg);\n}\n}\n.path[data-v-3297263a] {\n  stroke-dasharray: 187;\n  stroke-dashoffset: 0;\n  transform-origin: center;\n  animation: dash-3297263a 1.4s ease-in-out infinite,colors-3297263a 5.6s ease-in-out infinite;\n}\n@keyframes colors-3297263a {\n0% {\n    stroke: #19388E;\n}\n25% {\n    stroke: #19388E;\n}\n50% {\n    stroke: #19388E;\n}\n75% {\n    stroke: #19388E;\n}\n100% {\n    stroke: #19388E;\n}\n}\n@keyframes dash-3297263a {\n0% {\n    stroke-dashoffset: 187;\n}\n50% {\n    stroke-dashoffset: 46.75;\n    transform: rotate(135deg);\n}\n100% {\n    stroke-dashoffset: 187;\n    transform: rotate(450deg);\n}\n}", ""]);
 
 // exports
 
@@ -54904,6 +54904,82 @@ var mutations = {
 
 /***/ }),
 
+/***/ "./resources/adminapp/js/store/common/programmes.js":
+/*!**********************************************************!*\
+  !*** ./resources/adminapp/js/store/common/programmes.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var set = function set(key) {
+  return function (state, val) {
+    state[key] = val;
+  };
+};
+function initialState() {
+  return {
+    data: [],
+    query: {},
+    loading: false
+  };
+}
+var route = '../all-programmes';
+var getters = {
+  programmes: function programmes(state) {
+    return state.data;
+  },
+  loading: function loading(state) {
+    return state.loading;
+  }
+};
+var actions = {
+  fetchAllProgrammes: function fetchAllProgrammes(_ref) {
+    var commit = _ref.commit,
+      state = _ref.state;
+    commit('setLoading', true);
+    axios.get(route, {
+      params: state.query
+    }).then(function (response) {
+      commit('setData', response.data);
+    })["catch"](function (error) {
+      message = error.response.data.message || error.message;
+      // TODO error handling
+    })["finally"](function () {
+      commit('setLoading', false);
+    });
+  },
+  setQuery: function setQuery(_ref2, value) {
+    var commit = _ref2.commit;
+    commit('setQuery', _.cloneDeep(value));
+  },
+  resetState: function resetState(_ref3) {
+    var commit = _ref3.commit;
+    commit('resetState');
+  }
+};
+var mutations = {
+  setData: set('data'),
+  setQuery: function setQuery(state, query) {
+    query.page = (query.offset + query.limit) / query.limit;
+    state.query = query;
+  },
+  setLoading: set('loading'),
+  resetState: function resetState(state) {
+    Object.assign(state, initialState());
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: initialState,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
 /***/ "./resources/adminapp/js/store/common/sectors.js":
 /*!*******************************************************!*\
   !*** ./resources/adminapp/js/store/common/sectors.js ***!
@@ -58303,6 +58379,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cruds_Projects_single__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./cruds/Projects/single */ "./resources/adminapp/js/store/cruds/Projects/single.js");
 /* harmony import */ var _common_cities__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./common/cities */ "./resources/adminapp/js/store/common/cities.js");
 /* harmony import */ var _common_sectors__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./common/sectors */ "./resources/adminapp/js/store/common/sectors.js");
+/* harmony import */ var _common_programmes__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./common/programmes */ "./resources/adminapp/js/store/common/programmes.js");
+
 
 
 
@@ -58360,7 +58438,8 @@ var debug = "development" !== 'production';
     ProjectsIndex: _cruds_Projects__WEBPACK_IMPORTED_MODULE_24__["default"],
     ProjectsSingle: _cruds_Projects_single__WEBPACK_IMPORTED_MODULE_25__["default"],
     AllCities: _common_cities__WEBPACK_IMPORTED_MODULE_26__["default"],
-    AllSectors: _common_sectors__WEBPACK_IMPORTED_MODULE_27__["default"]
+    AllSectors: _common_sectors__WEBPACK_IMPORTED_MODULE_27__["default"],
+    AllProgrammes: _common_programmes__WEBPACK_IMPORTED_MODULE_28__["default"]
   },
   strict: debug
 }));

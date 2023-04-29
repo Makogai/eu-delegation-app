@@ -76,7 +76,7 @@ var render = function render() {
     staticClass: "card-header card-header-primary card-header-icon"
   }, [_vm._m(0), _vm._v(" "), _c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("\n            " + _vm._s(_vm.$t("global.view")) + "\n            "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title_singular")))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                        " + _vm._s(_vm.$t("global.view")) + "\n                        "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title_singular")))])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("back-button")], 1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
@@ -90,78 +90,76 @@ var render = function render() {
     staticClass: "table"
   }, [_c("tbody", [_c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.id")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.id) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.id")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.id) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.assistance_framework")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.assistance_framework) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.financial_perspective")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
+    attrs: {
+      row: _vm.entry,
+      field: "financial_perspective.perspective"
+    }
+  })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.programme")) + "\n                      ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.programme")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
     attrs: {
       row: _vm.entry,
       field: "programme.name"
     }
   })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.sector")) + "\n                      ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.sector")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
     attrs: {
       row: _vm.entry,
       field: "sector.name"
     }
   })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contract_title")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.contract_title) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contract_title")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contract_title) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contract_type")) + "\n                      ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.commitment_year")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.commitment_year) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contract_year")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contract_year) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.start_date")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.start_date) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.end_date")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.end_date) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contract_number")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contract_number) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contracting_party")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contracting_party) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contract_type")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
     attrs: {
       row: _vm.entry,
       field: "contract_type.name"
     }
   })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.commitment_year")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.commitment_year) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.end_beneficiary")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.end_beneficiary) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contract_year")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.contract_year) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contracted_eu_contribution")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contracted_eu_contribution) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.start_date")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.start_date) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.co_funding")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.co_funding) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.end_date")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.end_date) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.loan")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.loan) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contract_number")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.contract_number) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.total_euro_value")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.total_euro_value) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contracting_party")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.contracting_party) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.contracted_eu_contribution")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.contracted_eu_contribution) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.co_funding_or_loan")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.co_funding_or_loan) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.total_euro_value")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.total_euro_value) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.co_funding_party")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.co_funding_party) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.municipality")) + "\n                      ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.municipality")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
     attrs: {
       row: _vm.entry,
       field: "municipality.name"
     }
   })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.short_description")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.short_description) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.short_description")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.short_description) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.end_beneficiary")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.end_beneficiary) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.keywords")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.keywords) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.keywords")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.keywords) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.links_to_project_page")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.links_to_project_page) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.links_to_project_page")) + "\n                      ")]), _vm._v(" "), _c("td", [_vm._v("\n                        " + _vm._s(_vm.entry.links_to_project_page) + "\n                      ")])]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("cruds.project.fields.show")) + "\n                      ")]), _vm._v(" "), _c("td", [_c("datatable-checkbox", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.show")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-checkbox", {
     attrs: {
       value: _vm.entry.show
-    }
-  })], 1)]), _vm._v(" "), _c("tr", [_c("td", {
-    staticClass: "text-primary"
-  }, [_vm._v("\n                            " + _vm._s(_vm.$t("cruds.project.fields.financial_perspective")) + "\n                        ")]), _vm._v(" "), _c("td", [_c("datatable-single", {
-    attrs: {
-      row: _vm.entry,
-      field: "financial_perspective.perspective"
     }
   })], 1)])])])])])])])])])])]);
 };

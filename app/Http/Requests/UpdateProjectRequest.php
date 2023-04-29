@@ -17,11 +17,10 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'assistance_framework' => [
-                'string',
-                'min:1',
-                'max:40',
-                'required',
+            'financial_perspective_id' => [
+                'integer',
+                'exists:financial_perspectives,id',
+                'nullable',
             ],
             'programme_id' => [
                 'integer',
@@ -38,11 +37,6 @@ class UpdateProjectRequest extends FormRequest
             ],
             'contract_title' => [
                 'string',
-                'required',
-            ],
-            'contract_type_id' => [
-                'integer',
-                'exists:funding_types,id',
                 'required',
             ],
             'commitment_year' => [
@@ -67,9 +61,20 @@ class UpdateProjectRequest extends FormRequest
             ],
             'contract_number' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'contracting_party' => [
+                'string',
+                'nullable',
+            ],
+            'contract_type' => [
+                'array',
+            ],
+            'contract_type.*.id' => [
+                'integer',
+                'exists:funding_types,id',
+            ],
+            'end_beneficiary' => [
                 'string',
                 'nullable',
             ],
@@ -77,16 +82,16 @@ class UpdateProjectRequest extends FormRequest
                 'numeric',
                 'nullable',
             ],
-            'co_funding_or_loan' => [
+            'co_funding' => [
+                'numeric',
+                'nullable',
+            ],
+            'loan' => [
                 'numeric',
                 'nullable',
             ],
             'total_euro_value' => [
                 'numeric',
-                'nullable',
-            ],
-            'co_funding_party' => [
-                'string',
                 'nullable',
             ],
             'municipality' => [
@@ -101,10 +106,6 @@ class UpdateProjectRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'end_beneficiary' => [
-                'string',
-                'nullable',
-            ],
             'keywords' => [
                 'string',
                 'nullable',
@@ -115,11 +116,6 @@ class UpdateProjectRequest extends FormRequest
             ],
             'show' => [
                 'boolean',
-            ],
-            'financial_perspective_id' => [
-                'integer',
-                'exists:financial_perspectives,id',
-                'nullable',
             ],
         ];
     }

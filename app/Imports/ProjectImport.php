@@ -16,12 +16,13 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
 
-    use WithConditionalSheets;
+//    use WithConditionalSheets;
 
-    public function conditionalSheets(): array
+    public function sheets(): array
     {
         return [
-            'CBC SER-MNE' => new ProjectImport(),
+            'CBC SER-MNE' => $this,
+            ' IPA II' => $this,
         ];
     }
     /**
@@ -32,10 +33,9 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     public function model(array $row)
     {
         $project = Project::create([
-            'assistance_framework' => $row['assistance_framework'] ?? "null",
-            'programme_id' => $this->getProgrammeId($row['assistance_framework']),
+//            'assistance_framework' => $row['assistance_framework'] ?? "null",
+            'programme_id' => $this->getProgrammeId($row['programme']),
             'contract_title' => $row['contract_title'] ?? "null",
-            'contract_type_id' => $this->getContractTypeId($row['contract_type']),
             'commitment_year' => $row['commitment_year'] ?? null,
             'contract_year' => $this->get4NumberFromString($row['contract_year']),
             'start_date' => $this->parseDateString($row['start_date'] ?? null),
@@ -44,9 +44,9 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'contracting_party' => $row['contracting_party'] ?? null,
             'contracted_eu_contribution' => $this->getNumberFromString($row['contracted_eu_contribution'] ?? null),
 
-            'co_funding_or_loan' => $row['co_funding_or_loan'] ?? null,
+            'co_funding' => $row['co_funding_or_loan'] ?? null,
+            'loan' => $row['co_funding_or_loan'] ?? null,
             'total_euro_value' => $this->getNumberFromString($row['total_euro_value'] ?? null),
-            'co_funding_party' => $row['co_funding_party'] ?? null,
             'short_description' => $row['short_description'] ?? "null",
             'end_beneficiary' => $row['end_beneficiary'] ?? null,
             'keywords' => $row['keywords'] ?? null,
@@ -74,6 +74,17 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
                 $municipalityModel = City::where('name', 'Podgorica')->first();
             }
             $project->municipality()->syncWithoutDetaching($municipalityModel->id);
+        }
+
+        $contractTypes = preg_split('/, | and |, /', $row['contract_type']);
+
+
+        foreach ($contractTypes as $contractType) {
+            $contractTypeModel = FundingType::where('name', $contractType)->first();
+            if (!$contractTypeModel) {
+                $contractTypeModel = FundingType::first();
+            }
+            $project->contractType()->syncWithoutDetaching($contractTypeModel->id);
         }
 
         return $project;
@@ -144,12 +155,14 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     // Get programme_id from programme name, if name contains 'IPA' then programme_id = 1, if name contains 'UNION' then programme_id = 2, else programme_id = 3
     public function getProgrammeId($programmeName)
     {
-        if (str_contains($programmeName, 'IPA')) {
-            return 1;
+//        dd($programmeName);
+        if (str_contains($programmeName, 'IPA-CBC SER-MNE')) {
+//            dd($programmeName);
+            return 7;
         } elseif (str_contains($programmeName, 'UNION')) {
             return 2;
         } else {
-            return 3;
+            return 30;
         }
     }
 

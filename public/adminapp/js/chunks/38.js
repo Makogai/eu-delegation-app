@@ -37,9 +37,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
     }
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['fetchEditData', 'updateData', 'resetState', 'setAssistanceFramework', 'setProgramme', 'setSector', 'setContractTitle', 'setContractType', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractedEuContribution', 'setCoFundingOrLoan', 'setTotalEuroValue', 'setCoFundingParty', 'setMunicipality', 'setShortDescription', 'setEndBeneficiary', 'setKeywords', 'setLinksToProjectPage', 'setShow', 'setFinancialPerspective'])), {}, {
-    updateAssistanceFramework: function updateAssistanceFramework(e) {
-      this.setAssistanceFramework(e.target.value);
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['fetchEditData', 'updateData', 'resetState', 'setFinancialPerspective', 'setProgramme', 'setSector', 'setContractTitle', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractType', 'setEndBeneficiary', 'setContractedEuContribution', 'setCoFunding', 'setLoan', 'setTotalEuroValue', 'setMunicipality', 'setShortDescription', 'setKeywords', 'setLinksToProjectPage', 'setShow'])), {}, {
+    updateFinancialPerspective: function updateFinancialPerspective(value) {
+      this.setFinancialPerspective(value);
     },
     updateProgramme: function updateProgramme(value) {
       this.setProgramme(value);
@@ -49,9 +49,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateContractTitle: function updateContractTitle(e) {
       this.setContractTitle(e.target.value);
-    },
-    updateContractType: function updateContractType(value) {
-      this.setContractType(value);
     },
     updateCommitmentYear: function updateCommitmentYear(e) {
       this.setCommitmentYear(e.target.value);
@@ -71,26 +68,29 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     updateContractingParty: function updateContractingParty(e) {
       this.setContractingParty(e.target.value);
     },
+    updateContractType: function updateContractType(value) {
+      this.setContractType(value);
+    },
+    updateEndBeneficiary: function updateEndBeneficiary(e) {
+      this.setEndBeneficiary(e.target.value);
+    },
     updateContractedEuContribution: function updateContractedEuContribution(e) {
       this.setContractedEuContribution(e.target.value);
     },
-    updateCoFundingOrLoan: function updateCoFundingOrLoan(e) {
-      this.setCoFundingOrLoan(e.target.value);
+    updateCoFunding: function updateCoFunding(e) {
+      this.setCoFunding(e.target.value);
+    },
+    updateLoan: function updateLoan(e) {
+      this.setLoan(e.target.value);
     },
     updateTotalEuroValue: function updateTotalEuroValue(e) {
       this.setTotalEuroValue(e.target.value);
-    },
-    updateCoFundingParty: function updateCoFundingParty(e) {
-      this.setCoFundingParty(e.target.value);
     },
     updateMunicipality: function updateMunicipality(value) {
       this.setMunicipality(value);
     },
     updateShortDescription: function updateShortDescription(e) {
       this.setShortDescription(e.target.value);
-    },
-    updateEndBeneficiary: function updateEndBeneficiary(e) {
-      this.setEndBeneficiary(e.target.value);
     },
     updateKeywords: function updateKeywords(e) {
       this.setKeywords(e.target.value);
@@ -100,9 +100,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateShow: function updateShow(e) {
       this.setShow(e.target.checked);
-    },
-    updateFinancialPerspective: function updateFinancialPerspective(value) {
-      this.setFinancialPerspective(value);
     },
     submitForm: function submitForm() {
       var _this = this;
@@ -162,7 +159,7 @@ var render = function render() {
     staticClass: "card-header card-header-primary card-header-icon"
   }, [_vm._m(0), _vm._v(" "), _c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("\n              " + _vm._s(_vm.$t("global.edit")) + "\n              "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title_singular")))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("global.edit")) + "\n                            "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title_singular")))])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("back-button")], 1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
@@ -173,28 +170,33 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
-      "has-items": _vm.entry.assistance_framework,
-      "is-focused": _vm.activeField == "assistance_framework"
+      "has-items": _vm.entry.financial_perspective_id !== null,
+      "is-focused": _vm.activeField == "financial_perspective"
     }
   }, [_c("label", {
-    staticClass: "bmd-label-floating required"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.assistance_framework")))]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.financial_perspective")))]), _vm._v(" "), _c("v-select", {
+    key: "financial_perspective-field",
     attrs: {
-      type: "text",
-      required: ""
-    },
-    domProps: {
-      value: _vm.entry.assistance_framework
+      name: "financial_perspective",
+      label: "perspective",
+      value: _vm.entry.financial_perspective_id,
+      options: _vm.lists.financial_perspective,
+      reduce: function reduce(entry) {
+        return entry.id;
+      }
     },
     on: {
-      input: _vm.updateAssistanceFramework,
-      focus: function focus($event) {
-        return _vm.focusField("assistance_framework");
-      },
-      blur: _vm.clearFocus
+      input: _vm.updateFinancialPerspective,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("financial_perspective");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
     }
-  })]), _vm._v(" "), _c("div", {
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
       "has-items": _vm.entry.programme_id !== null,
@@ -276,35 +278,6 @@ var render = function render() {
       blur: _vm.clearFocus
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.entry.contract_type_id !== null,
-      "is-focused": _vm.activeField == "contract_type"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating required"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_type")))]), _vm._v(" "), _c("v-select", {
-    key: "contract_type-field",
-    attrs: {
-      name: "contract_type",
-      label: "name",
-      value: _vm.entry.contract_type_id,
-      options: _vm.lists.contract_type,
-      reduce: function reduce(entry) {
-        return entry.id;
-      }
-    },
-    on: {
-      input: _vm.updateContractType,
-      search: [function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("contract_type");
-      }, function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
-        return _vm.clearFocus.apply(null, arguments);
-      }]
-    }
-  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
       "has-items": _vm.entry.commitment_year,
@@ -406,12 +379,11 @@ var render = function render() {
       "is-focused": _vm.activeField == "contract_number"
     }
   }, [_c("label", {
-    staticClass: "bmd-label-floating required"
+    staticClass: "bmd-label-floating"
   }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_number")))]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      required: ""
+      type: "text"
     },
     domProps: {
       value: _vm.entry.contract_number
@@ -449,6 +421,57 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
+      "has-items": _vm.entry.contract_type.length !== 0,
+      "is-focused": _vm.activeField == "contract_type"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_type")))]), _vm._v(" "), _c("v-select", {
+    key: "contract_type-field",
+    attrs: {
+      name: "contract_type",
+      label: "name",
+      value: _vm.entry.contract_type,
+      options: _vm.lists.contract_type,
+      closeOnSelect: false,
+      multiple: ""
+    },
+    on: {
+      input: _vm.updateContractType,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("contract_type");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.end_beneficiary,
+      "is-focused": _vm.activeField == "end_beneficiary"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_beneficiary")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.end_beneficiary
+    },
+    on: {
+      input: _vm.updateEndBeneficiary,
+      focus: function focus($event) {
+        return _vm.focusField("end_beneficiary");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
       "has-items": _vm.entry.contracted_eu_contribution,
       "is-focused": _vm.activeField == "contracted_eu_contribution"
     }
@@ -473,24 +496,48 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
-      "has-items": _vm.entry.co_funding_or_loan,
-      "is-focused": _vm.activeField == "co_funding_or_loan"
+      "has-items": _vm.entry.co_funding,
+      "is-focused": _vm.activeField == "co_funding"
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.co_funding_or_loan")))]), _vm._v(" "), _c("input", {
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.co_funding")))]), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
       type: "number",
       step: "0.01"
     },
     domProps: {
-      value: _vm.entry.co_funding_or_loan
+      value: _vm.entry.co_funding
     },
     on: {
-      input: _vm.updateCoFundingOrLoan,
+      input: _vm.updateCoFunding,
       focus: function focus($event) {
-        return _vm.focusField("co_funding_or_loan");
+        return _vm.focusField("co_funding");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.loan,
+      "is-focused": _vm.activeField == "loan"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.loan")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.loan
+    },
+    on: {
+      input: _vm.updateLoan,
+      focus: function focus($event) {
+        return _vm.focusField("loan");
       },
       blur: _vm.clearFocus
     }
@@ -515,29 +562,6 @@ var render = function render() {
       input: _vm.updateTotalEuroValue,
       focus: function focus($event) {
         return _vm.focusField("total_euro_value");
-      },
-      blur: _vm.clearFocus
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.entry.co_funding_party,
-      "is-focused": _vm.activeField == "co_funding_party"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.co_funding_party")))]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    },
-    domProps: {
-      value: _vm.entry.co_funding_party
-    },
-    on: {
-      input: _vm.updateCoFundingParty,
-      focus: function focus($event) {
-        return _vm.focusField("co_funding_party");
       },
       blur: _vm.clearFocus
     }
@@ -590,29 +614,6 @@ var render = function render() {
       input: _vm.updateShortDescription,
       focus: function focus($event) {
         return _vm.focusField("short_description");
-      },
-      blur: _vm.clearFocus
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.entry.end_beneficiary,
-      "is-focused": _vm.activeField == "end_beneficiary"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_beneficiary")))]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    },
-    domProps: {
-      value: _vm.entry.end_beneficiary
-    },
-    on: {
-      input: _vm.updateEndBeneficiary,
-      focus: function focus($event) {
-        return _vm.focusField("end_beneficiary");
       },
       blur: _vm.clearFocus
     }
@@ -680,36 +681,7 @@ var render = function render() {
     on: {
       change: _vm.updateShow
     }
-  }), _vm._m(1), _vm._v(_vm._s(_vm.$t("cruds.project.fields.show")))])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.entry.financial_perspective_id !== null,
-      "is-focused": _vm.activeField == "financial_perspective"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.financial_perspective")))]), _vm._v(" "), _c("v-select", {
-    key: "financial_perspective-field",
-    attrs: {
-      name: "financial_perspective",
-      label: "perspective",
-      value: _vm.entry.financial_perspective_id,
-      options: _vm.lists.financial_perspective,
-      reduce: function reduce(entry) {
-        return entry.id;
-      }
-    },
-    on: {
-      input: _vm.updateFinancialPerspective,
-      search: [function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("financial_perspective");
-      }, function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
-        return _vm.clearFocus.apply(null, arguments);
-      }]
-    }
-  })], 1)])])], 1), _vm._v(" "), _c("div", {
+  }), _vm._m(1), _vm._v(_vm._s(_vm.$t("cruds.project.fields.show")))])])])])], 1), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   }, [_c("vue-button-spinner", {
     staticClass: "btn-primary",
@@ -718,7 +690,7 @@ var render = function render() {
       isLoading: _vm.loading,
       disabled: _vm.loading
     }
-  }, [_vm._v("\n              " + _vm._s(_vm.$t("global.save")) + "\n            ")])], 1)])])])])]);
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("global.save")) + "\n                        ")])], 1)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

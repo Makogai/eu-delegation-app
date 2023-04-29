@@ -45,9 +45,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         sortable: true,
         colStyle: 'width: 100px;'
       }, {
-        title: 'cruds.project.fields.assistance_framework',
-        field: 'assistance_framework',
+        title: 'cruds.project.fields.financial_perspective',
+        field: 'financial_perspective.perspective',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
         sortable: true
       }, {
         title: 'cruds.project.fields.programme',
@@ -66,12 +67,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: true
       }, {
-        title: 'cruds.project.fields.contract_type',
-        field: 'contract_type.name',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
-        sortable: true
-      }, {
         title: 'cruds.project.fields.contract_number',
         field: 'contract_number',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -82,13 +77,28 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: true
       }, {
+        title: 'cruds.project.fields.contract_type',
+        field: 'contract_type.name',
+        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }, {
+        title: 'cruds.project.fields.end_beneficiary',
+        field: 'end_beneficiary',
+        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        sortable: true
+      }, {
         title: 'cruds.project.fields.contracted_eu_contribution',
         field: 'contracted_eu_contribution',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: true
       }, {
-        title: 'cruds.project.fields.co_funding_or_loan',
-        field: 'co_funding_or_loan',
+        title: 'cruds.project.fields.co_funding',
+        field: 'co_funding',
+        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        sortable: true
+      }, {
+        title: 'cruds.project.fields.loan',
+        field: 'loan',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: true
       }, {
@@ -97,20 +107,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: true
       }, {
-        title: 'cruds.project.fields.co_funding_party',
-        field: 'co_funding_party',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
-      }, {
         title: 'cruds.project.fields.municipality',
         field: 'municipality.name',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }, {
-        title: 'cruds.project.fields.end_beneficiary',
-        field: 'end_beneficiary',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
       }, {
         title: 'cruds.project.fields.keywords',
         field: 'keywords',
@@ -154,7 +154,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllSectors', ['sectors'])),
+  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
   watch: {
     query: {
       handler: function handler(query) {
@@ -162,11 +162,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         this.fetchIndexData();
         this.fetchAllCities();
         this.fetchAllSectors();
+        this.fetchAllProgrammes();
       },
       deep: true
     }
   },
-  methods: _objectSpread(_objectSpread(_objectSpread({
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({
     focusField: function focusField(name) {
       alert(name);
       this.activeField = name;
@@ -174,7 +175,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     clearFocus: function clearFocus() {
       this.activeField = '';
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCities', ['fetchAllCities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllSectors', ['fetchAllSectors']))
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCities', ['fetchAllCities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllSectors', ['fetchAllSectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllProgrammes', ['fetchAllProgrammes']))
 });
 
 /***/ }),
@@ -316,6 +317,45 @@ var render = function render() {
         _vm.$set(_vm.query, "sector", $$v);
       },
       expression: "query.sector"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.cities.length !== 0,
+      "is-focused": _vm.activeField === "programme"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
+    key: "programme-field",
+    attrs: {
+      name: "programme",
+      label: "name",
+      reduce: function reduce(programme) {
+        return programme.id;
+      },
+      value: _vm.query.programme,
+      options: _vm.programmes,
+      closeOnSelect: false,
+      multiple: ""
+    },
+    on: {
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("porgramme");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    },
+    model: {
+      value: _vm.query.programme,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "programme", $$v);
+      },
+      expression: "query.programme"
     }
   })], 1)])])])], 1), _vm._v(" "), _c("div", {
     staticClass: "card-body"

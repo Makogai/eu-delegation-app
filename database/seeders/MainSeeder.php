@@ -21,9 +21,10 @@ class MainSeeder extends Seeder
         //########################### FUNDING TYPES ###########################
 
         $fundingTypes = [
+            'Service',
             'Grant',
-            'Loan',
-            'Equity',
+            'Works',
+            'Framework contract'
         ];
 
         foreach ($fundingTypes as $fundingType) {
@@ -78,9 +79,36 @@ class MainSeeder extends Seeder
         //########################### PROGRAMMES ###########################
 
         $programmes = [
-            'National IPA',
-            'Union',
-            'Works'
+            'Interreg Adrion',
+            'Interreg Mediterranean',
+            'Interreg CBC CRO-BIH-MNE',
+            'Interreg IPA ITA-ALB-MNE',
+            'Interreg IPA SOUTH ADRIATIC',
+            'CBC MNE-ALB',
+            'CBC SER-MNE',
+            'CBC MNE-KOS',
+            'CBC CRO-MNE',
+            'CBC BIH-MNE',
+            'Erasumus+',
+            'Horizon 2020',
+            'Horizon Europe',
+            'COSME',
+            'Creative Europe',
+            'Europe for Citizens',
+            'WBIF',
+            'ISA',
+            'EaSI',
+            'Fiscalis',
+            'Customs',
+            'Digital Europe',
+            'EU For health',
+            'CERV',
+            'Single market',
+            'TAIEX',
+            'RCC',
+            'RESPA',
+            'Twinning',
+            'IPA'
         ];
 
         foreach ($programmes as $programme) {

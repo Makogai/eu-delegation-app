@@ -58,19 +58,19 @@ $duration: 1.4s;
 
 @keyframes colors {
   0% {
-    stroke: #9c27b0;
+    stroke: #19388E;
   }
   25% {
-    stroke: #9c27b0;
+    stroke: #19388E;
   }
   50% {
-    stroke: #9c27b0;
+    stroke: #19388E;
   }
   75% {
-    stroke: #9c27b0;
+    stroke: #19388E;
   }
   100% {
-    stroke: #9c27b0;
+    stroke: #19388E;
   }
 }
 
