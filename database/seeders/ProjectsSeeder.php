@@ -20,7 +20,7 @@ class ProjectsSeeder extends Seeder
         $import = new ProjectImport();
 //        $import->onlySheets('CBC SER-MNE');
 
-        Excel::import($import, dirname(__FILE__) . '/cpc.xlsx');
+        Excel::import($import, dirname(__FILE__) . '/baza.xlsx');
 
 
     }

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"9556e1a5bf1d25944f8a","38":"5ed01dd0167261b2e609","39":"0b83224b3ac1e16d1fe2","40":"3a1c8409435ee8485330","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"70ad02e264c6dbe8801b","38":"5ed01dd0167261b2e609","39":"0b83224b3ac1e16d1fe2","40":"3a1c8409435ee8485330","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -56981,38 +56981,37 @@ function initialState() {
   return {
     entry: {
       id: null,
-      assistance_framework: '',
+      financial_perspective_id: null,
       programme_id: null,
       sector: [],
       contract_title: '',
-      contract_type_id: null,
       commitment_year: '',
       contract_year: '',
       start_date: '',
       end_date: '',
       contract_number: '',
       contracting_party: '',
+      contract_type: [],
+      end_beneficiary: '',
       contracted_eu_contribution: '',
-      co_funding_or_loan: '',
+      co_funding: '',
+      loan: '',
       total_euro_value: '',
-      co_funding_party: '',
       municipality: [],
       short_description: '',
-      end_beneficiary: '',
       keywords: '',
       links_to_project_page: '',
       show: true,
-      financial_perspective_id: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
     },
     lists: {
+      financial_perspective: [],
       programme: [],
       sector: [],
       contract_type: [],
-      municipality: [],
-      financial_perspective: []
+      municipality: []
     },
     loading: false
   };
@@ -57093,9 +57092,9 @@ var actions = {
       });
     });
   },
-  setAssistanceFramework: function setAssistanceFramework(_ref3, value) {
+  setFinancialPerspective: function setFinancialPerspective(_ref3, value) {
     var commit = _ref3.commit;
-    commit('setAssistanceFramework', value);
+    commit('setFinancialPerspective', value);
   },
   setProgramme: function setProgramme(_ref4, value) {
     var commit = _ref4.commit;
@@ -57109,61 +57108,61 @@ var actions = {
     var commit = _ref6.commit;
     commit('setContractTitle', value);
   },
-  setContractType: function setContractType(_ref7, value) {
+  setCommitmentYear: function setCommitmentYear(_ref7, value) {
     var commit = _ref7.commit;
-    commit('setContractType', value);
-  },
-  setCommitmentYear: function setCommitmentYear(_ref8, value) {
-    var commit = _ref8.commit;
     commit('setCommitmentYear', value);
   },
-  setContractYear: function setContractYear(_ref9, value) {
-    var commit = _ref9.commit;
+  setContractYear: function setContractYear(_ref8, value) {
+    var commit = _ref8.commit;
     commit('setContractYear', value);
   },
-  setStartDate: function setStartDate(_ref10, value) {
-    var commit = _ref10.commit;
+  setStartDate: function setStartDate(_ref9, value) {
+    var commit = _ref9.commit;
     commit('setStartDate', value);
   },
-  setEndDate: function setEndDate(_ref11, value) {
-    var commit = _ref11.commit;
+  setEndDate: function setEndDate(_ref10, value) {
+    var commit = _ref10.commit;
     commit('setEndDate', value);
   },
-  setContractNumber: function setContractNumber(_ref12, value) {
-    var commit = _ref12.commit;
+  setContractNumber: function setContractNumber(_ref11, value) {
+    var commit = _ref11.commit;
     commit('setContractNumber', value);
   },
-  setContractingParty: function setContractingParty(_ref13, value) {
-    var commit = _ref13.commit;
+  setContractingParty: function setContractingParty(_ref12, value) {
+    var commit = _ref12.commit;
     commit('setContractingParty', value);
   },
-  setContractedEuContribution: function setContractedEuContribution(_ref14, value) {
+  setContractType: function setContractType(_ref13, value) {
+    var commit = _ref13.commit;
+    commit('setContractType', value);
+  },
+  setEndBeneficiary: function setEndBeneficiary(_ref14, value) {
     var commit = _ref14.commit;
+    commit('setEndBeneficiary', value);
+  },
+  setContractedEuContribution: function setContractedEuContribution(_ref15, value) {
+    var commit = _ref15.commit;
     commit('setContractedEuContribution', value);
   },
-  setCoFundingOrLoan: function setCoFundingOrLoan(_ref15, value) {
-    var commit = _ref15.commit;
-    commit('setCoFundingOrLoan', value);
-  },
-  setTotalEuroValue: function setTotalEuroValue(_ref16, value) {
+  setCoFunding: function setCoFunding(_ref16, value) {
     var commit = _ref16.commit;
+    commit('setCoFunding', value);
+  },
+  setLoan: function setLoan(_ref17, value) {
+    var commit = _ref17.commit;
+    commit('setLoan', value);
+  },
+  setTotalEuroValue: function setTotalEuroValue(_ref18, value) {
+    var commit = _ref18.commit;
     commit('setTotalEuroValue', value);
   },
-  setCoFundingParty: function setCoFundingParty(_ref17, value) {
-    var commit = _ref17.commit;
-    commit('setCoFundingParty', value);
-  },
-  setMunicipality: function setMunicipality(_ref18, value) {
-    var commit = _ref18.commit;
+  setMunicipality: function setMunicipality(_ref19, value) {
+    var commit = _ref19.commit;
     commit('setMunicipality', value);
   },
-  setShortDescription: function setShortDescription(_ref19, value) {
-    var commit = _ref19.commit;
-    commit('setShortDescription', value);
-  },
-  setEndBeneficiary: function setEndBeneficiary(_ref20, value) {
+  setShortDescription: function setShortDescription(_ref20, value) {
     var commit = _ref20.commit;
-    commit('setEndBeneficiary', value);
+    commit('setShortDescription', value);
   },
   setKeywords: function setKeywords(_ref21, value) {
     var commit = _ref21.commit;
@@ -57177,45 +57176,41 @@ var actions = {
     var commit = _ref23.commit;
     commit('setShow', value);
   },
-  setFinancialPerspective: function setFinancialPerspective(_ref24, value) {
+  setCreatedAt: function setCreatedAt(_ref24, value) {
     var commit = _ref24.commit;
-    commit('setFinancialPerspective', value);
-  },
-  setCreatedAt: function setCreatedAt(_ref25, value) {
-    var commit = _ref25.commit;
     commit('setCreatedAt', value);
   },
-  setUpdatedAt: function setUpdatedAt(_ref26, value) {
-    var commit = _ref26.commit;
+  setUpdatedAt: function setUpdatedAt(_ref25, value) {
+    var commit = _ref25.commit;
     commit('setUpdatedAt', value);
   },
-  setDeletedAt: function setDeletedAt(_ref27, value) {
-    var commit = _ref27.commit;
+  setDeletedAt: function setDeletedAt(_ref26, value) {
+    var commit = _ref26.commit;
     commit('setDeletedAt', value);
   },
-  fetchCreateData: function fetchCreateData(_ref28) {
-    var commit = _ref28.commit;
+  fetchCreateData: function fetchCreateData(_ref27) {
+    var commit = _ref27.commit;
     axios.get("".concat(route, "/create")).then(function (response) {
       commit('setLists', response.data.meta);
     });
   },
-  fetchEditData: function fetchEditData(_ref29, id) {
-    var commit = _ref29.commit,
-      dispatch = _ref29.dispatch;
+  fetchEditData: function fetchEditData(_ref28, id) {
+    var commit = _ref28.commit,
+      dispatch = _ref28.dispatch;
     axios.get("".concat(route, "/").concat(id, "/edit")).then(function (response) {
       commit('setEntry', response.data.data);
       commit('setLists', response.data.meta);
     });
   },
-  fetchShowData: function fetchShowData(_ref30, id) {
-    var commit = _ref30.commit,
-      dispatch = _ref30.dispatch;
+  fetchShowData: function fetchShowData(_ref29, id) {
+    var commit = _ref29.commit,
+      dispatch = _ref29.dispatch;
     axios.get("".concat(route, "/").concat(id)).then(function (response) {
       commit('setEntry', response.data.data);
     });
   },
-  resetState: function resetState(_ref31) {
-    var commit = _ref31.commit;
+  resetState: function resetState(_ref30) {
+    var commit = _ref30.commit;
     commit('resetState');
   }
 };
@@ -57223,8 +57218,8 @@ var mutations = {
   setEntry: function setEntry(state, entry) {
     state.entry = entry;
   },
-  setAssistanceFramework: function setAssistanceFramework(state, value) {
-    state.entry.assistance_framework = value;
+  setFinancialPerspective: function setFinancialPerspective(state, value) {
+    state.entry.financial_perspective_id = value;
   },
   setProgramme: function setProgramme(state, value) {
     state.entry.programme_id = value;
@@ -57234,9 +57229,6 @@ var mutations = {
   },
   setContractTitle: function setContractTitle(state, value) {
     state.entry.contract_title = value;
-  },
-  setContractType: function setContractType(state, value) {
-    state.entry.contract_type_id = value;
   },
   setCommitmentYear: function setCommitmentYear(state, value) {
     state.entry.commitment_year = value;
@@ -57256,26 +57248,29 @@ var mutations = {
   setContractingParty: function setContractingParty(state, value) {
     state.entry.contracting_party = value;
   },
+  setContractType: function setContractType(state, value) {
+    state.entry.contract_type = value;
+  },
+  setEndBeneficiary: function setEndBeneficiary(state, value) {
+    state.entry.end_beneficiary = value;
+  },
   setContractedEuContribution: function setContractedEuContribution(state, value) {
     state.entry.contracted_eu_contribution = value;
   },
-  setCoFundingOrLoan: function setCoFundingOrLoan(state, value) {
-    state.entry.co_funding_or_loan = value;
+  setCoFunding: function setCoFunding(state, value) {
+    state.entry.co_funding = value;
+  },
+  setLoan: function setLoan(state, value) {
+    state.entry.loan = value;
   },
   setTotalEuroValue: function setTotalEuroValue(state, value) {
     state.entry.total_euro_value = value;
-  },
-  setCoFundingParty: function setCoFundingParty(state, value) {
-    state.entry.co_funding_party = value;
   },
   setMunicipality: function setMunicipality(state, value) {
     state.entry.municipality = value;
   },
   setShortDescription: function setShortDescription(state, value) {
     state.entry.short_description = value;
-  },
-  setEndBeneficiary: function setEndBeneficiary(state, value) {
-    state.entry.end_beneficiary = value;
   },
   setKeywords: function setKeywords(state, value) {
     state.entry.keywords = value;
@@ -57285,9 +57280,6 @@ var mutations = {
   },
   setShow: function setShow(state, value) {
     state.entry.show = value;
-  },
-  setFinancialPerspective: function setFinancialPerspective(state, value) {
-    state.entry.financial_perspective_id = value;
   },
   setCreatedAt: function setCreatedAt(state, value) {
     state.entry.created_at = value;

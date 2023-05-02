@@ -2,38 +2,37 @@ function initialState() {
   return {
     entry: {
       id: null,
-      assistance_framework: '',
+      financial_perspective_id: null,
       programme_id: null,
       sector: [],
       contract_title: '',
-      contract_type_id: null,
       commitment_year: '',
       contract_year: '',
       start_date: '',
       end_date: '',
       contract_number: '',
       contracting_party: '',
+      contract_type: [],
+      end_beneficiary: '',
       contracted_eu_contribution: '',
-      co_funding_or_loan: '',
+      co_funding: '',
+      loan: '',
       total_euro_value: '',
-      co_funding_party: '',
       municipality: [],
       short_description: '',
-      end_beneficiary: '',
       keywords: '',
       links_to_project_page: '',
       show: true,
-        financial_perspective_id: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
     },
     lists: {
+      financial_perspective: [],
       programme: [],
       sector: [],
       contract_type: [],
-      municipality: [],
-        financial_perspective: []
+      municipality: []
     },
     loading: false
   }
@@ -111,8 +110,8 @@ const actions = {
         })
     })
   },
-  setAssistanceFramework({ commit }, value) {
-    commit('setAssistanceFramework', value)
+  setFinancialPerspective({ commit }, value) {
+    commit('setFinancialPerspective', value)
   },
   setProgramme({ commit }, value) {
     commit('setProgramme', value)
@@ -122,9 +121,6 @@ const actions = {
   },
   setContractTitle({ commit }, value) {
     commit('setContractTitle', value)
-  },
-  setContractType({ commit }, value) {
-    commit('setContractType', value)
   },
   setCommitmentYear({ commit }, value) {
     commit('setCommitmentYear', value)
@@ -144,26 +140,29 @@ const actions = {
   setContractingParty({ commit }, value) {
     commit('setContractingParty', value)
   },
+  setContractType({ commit }, value) {
+    commit('setContractType', value)
+  },
+  setEndBeneficiary({ commit }, value) {
+    commit('setEndBeneficiary', value)
+  },
   setContractedEuContribution({ commit }, value) {
     commit('setContractedEuContribution', value)
   },
-  setCoFundingOrLoan({ commit }, value) {
-    commit('setCoFundingOrLoan', value)
+  setCoFunding({ commit }, value) {
+    commit('setCoFunding', value)
+  },
+  setLoan({ commit }, value) {
+    commit('setLoan', value)
   },
   setTotalEuroValue({ commit }, value) {
     commit('setTotalEuroValue', value)
-  },
-  setCoFundingParty({ commit }, value) {
-    commit('setCoFundingParty', value)
   },
   setMunicipality({ commit }, value) {
     commit('setMunicipality', value)
   },
   setShortDescription({ commit }, value) {
     commit('setShortDescription', value)
-  },
-  setEndBeneficiary({ commit }, value) {
-    commit('setEndBeneficiary', value)
   },
   setKeywords({ commit }, value) {
     commit('setKeywords', value)
@@ -174,9 +173,6 @@ const actions = {
   setShow({ commit }, value) {
     commit('setShow', value)
   },
-    setFinancialPerspective({ commit }, value) {
-        commit('setFinancialPerspective', value)
-    },
   setCreatedAt({ commit }, value) {
     commit('setCreatedAt', value)
   },
@@ -211,8 +207,8 @@ const mutations = {
   setEntry(state, entry) {
     state.entry = entry
   },
-  setAssistanceFramework(state, value) {
-    state.entry.assistance_framework = value
+  setFinancialPerspective(state, value) {
+    state.entry.financial_perspective_id = value
   },
   setProgramme(state, value) {
     state.entry.programme_id = value
@@ -222,9 +218,6 @@ const mutations = {
   },
   setContractTitle(state, value) {
     state.entry.contract_title = value
-  },
-  setContractType(state, value) {
-    state.entry.contract_type_id = value
   },
   setCommitmentYear(state, value) {
     state.entry.commitment_year = value
@@ -244,26 +237,29 @@ const mutations = {
   setContractingParty(state, value) {
     state.entry.contracting_party = value
   },
+  setContractType(state, value) {
+    state.entry.contract_type = value
+  },
+  setEndBeneficiary(state, value) {
+    state.entry.end_beneficiary = value
+  },
   setContractedEuContribution(state, value) {
     state.entry.contracted_eu_contribution = value
   },
-  setCoFundingOrLoan(state, value) {
-    state.entry.co_funding_or_loan = value
+  setCoFunding(state, value) {
+    state.entry.co_funding = value
+  },
+  setLoan(state, value) {
+    state.entry.loan = value
   },
   setTotalEuroValue(state, value) {
     state.entry.total_euro_value = value
-  },
-  setCoFundingParty(state, value) {
-    state.entry.co_funding_party = value
   },
   setMunicipality(state, value) {
     state.entry.municipality = value
   },
   setShortDescription(state, value) {
     state.entry.short_description = value
-  },
-  setEndBeneficiary(state, value) {
-    state.entry.end_beneficiary = value
   },
   setKeywords(state, value) {
     state.entry.keywords = value
@@ -274,9 +270,6 @@ const mutations = {
   setShow(state, value) {
     state.entry.show = value
   },
-    setFinancialPerspective(state, value) {
-        state.entry.financial_perspective_id = value
-    },
   setCreatedAt(state, value) {
     state.entry.created_at = value
   },

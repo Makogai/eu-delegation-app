@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\City;
 use App\Models\FinancialPerspective;
 use App\Models\FundingType;
+use App\Models\Programme;
 use App\Models\Project;
 use App\Models\Sector;
 use DateTime;
@@ -16,13 +17,23 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
 
+    public $programme;
+
+    public function __construct($programme = 'IPA')
+    {
+        $this->programme = $programme;
+    }
+
 //    use WithConditionalSheets;
 
     public function sheets(): array
     {
         return [
-            'CBC SER-MNE' => $this,
-            ' IPA II' => $this,
+            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
+            ' IPA II' => new ProjectImport('IPA'),
+            'IPA I' => new ProjectImport('IPA'),
+            'Erasmus+ new' => new ProjectImport('Erasumus+'),
+            'WBIF new' => new ProjectImport('WBIF'),
         ];
     }
     /**
@@ -32,9 +43,13 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     */
     public function model(array $row)
     {
+
+        if(!array_filter($row)) {
+            return null;
+        }
         $project = Project::create([
 //            'assistance_framework' => $row['assistance_framework'] ?? "null",
-            'programme_id' => $this->getProgrammeId($row['programme']),
+            'programme_id' => $this->getProgrammeId($this->programme),
             'contract_title' => $row['contract_title'] ?? "null",
             'commitment_year' => $row['commitment_year'] ?? null,
             'contract_year' => $this->get4NumberFromString($row['contract_year']),
@@ -48,7 +63,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'loan' => $row['co_funding_or_loan'] ?? null,
             'total_euro_value' => $this->getNumberFromString($row['total_euro_value'] ?? null),
             'short_description' => $row['short_description'] ?? "null",
-            'end_beneficiary' => $row['end_beneficiary'] ?? null,
+            'end_beneficiary' => $row['partners'] ?? null,
             'keywords' => $row['keywords'] ?? null,
             'links_to_project_page' => $row['links_to_project_page'] ?? null,
         ]);
@@ -155,15 +170,20 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     // Get programme_id from programme name, if name contains 'IPA' then programme_id = 1, if name contains 'UNION' then programme_id = 2, else programme_id = 3
     public function getProgrammeId($programmeName)
     {
-//        dd($programmeName);
-        if (str_contains($programmeName, 'IPA-CBC SER-MNE')) {
-//            dd($programmeName);
-            return 7;
-        } elseif (str_contains($programmeName, 'UNION')) {
-            return 2;
-        } else {
-            return 30;
+        $programme = Programme::query()->where('name', $programmeName)->first();
+        if (!$programme) {
+            return null;
         }
+        return $programme->id;
+////        dd($programmeName);
+//        if (str_contains($programmeName, 'IPA-CBC SER-MNE')) {
+////            dd($programmeName);
+//            return 7;
+//        } elseif (str_contains($programmeName, 'UNION')) {
+//            return 2;
+//        } else {
+//            return 30;
+//        }
     }
 
     // Get contract type id from contract type name from the contract_types table

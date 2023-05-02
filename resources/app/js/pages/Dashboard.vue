@@ -1,37 +1,41 @@
 <template>
   <div class="container-fluid">
-    <div class="container-fluid">
+    <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-md-12">
+          <div class="col-md-12 col-lg-6">
+              <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
+          </div>
+        <div class="col-md-6 projects-holder">
           <div class="card">
             <div class="card-header card-header-success card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">language</i>
-              </div>
               <h4 class="card-title">
-                {{ $t('global.dashboard') }}
+                Projects
               </h4>
             </div>
             <div class="card-body">
-              {{ $t('global.youAreLoggedIn') }}
-            </div>
 
-              <h1>Total projects: {{ total }}</h1>
+              <h1>Total projects: {{ data.length }}</h1>
 
               <div v-for="project in data">
-                  project: {{ project.contract_title }}
+                  {{ project.contract_title }}
               </div>
 
               <RouterLink to="/test">Go to test</RouterLink>
+            </div>
           </div>
         </div>
-          <div class="col-12">
-                <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
-          </div>
+
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.projects-holder {
+    height: 90vh;
+    overflow: auto;
+}
+</style>
 
 
 <script>
@@ -63,7 +67,7 @@ export default {
 
         // On emit event from child component
         Bus.$on('back-clicked', () => {
-            alert('back clicked')
+            // alert('back clicked')
             this.resetQuery()
         })
     },

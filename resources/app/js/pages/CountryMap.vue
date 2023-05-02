@@ -36,6 +36,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+#map_access > select:nth-child(3) {
+    display: none;
+}
 </style>

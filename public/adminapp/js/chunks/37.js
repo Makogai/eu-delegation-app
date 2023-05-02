@@ -31,9 +31,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['storeData', 'resetState', 'setFinancialPerspective', 'setProgramme', 'setSector', 'setContractTitle', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractType', 'setEndBeneficiary', 'setContractedEuContribution', 'setCoFunding', 'setLoan', 'setTotalEuroValue', 'setMunicipality', 'setShortDescription', 'setKeywords', 'setLinksToProjectPage', 'setShow', 'fetchCreateData'])), {}, {
-    updateFinancialPerspective: function updateFinancialPerspective(value) {
-      this.setFinancialPerspective(value);
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['storeData', 'resetState', 'setAssistanceFramework', 'setProgramme', 'setSector', 'setContractTitle', 'setContractType', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractedEuContribution', 'setCoFundingOrLoan', 'setTotalEuroValue', 'setCoFundingParty', 'setMunicipality', 'setShortDescription', 'setEndBeneficiary', 'setKeywords', 'setLinksToProjectPage', 'setShow', 'setFinancialPerspective', 'fetchCreateData'])), {}, {
+    updateAssistanceFramework: function updateAssistanceFramework(e) {
+      this.setAssistanceFramework(e.target.value);
     },
     updateProgramme: function updateProgramme(value) {
       this.setProgramme(value);
@@ -43,6 +43,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateContractTitle: function updateContractTitle(e) {
       this.setContractTitle(e.target.value);
+    },
+    updateContractType: function updateContractType(value) {
+      this.setContractType(value);
     },
     updateCommitmentYear: function updateCommitmentYear(e) {
       this.setCommitmentYear(e.target.value);
@@ -62,29 +65,26 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     updateContractingParty: function updateContractingParty(e) {
       this.setContractingParty(e.target.value);
     },
-    updateContractType: function updateContractType(value) {
-      this.setContractType(value);
-    },
-    updateEndBeneficiary: function updateEndBeneficiary(e) {
-      this.setEndBeneficiary(e.target.value);
-    },
     updateContractedEuContribution: function updateContractedEuContribution(e) {
       this.setContractedEuContribution(e.target.value);
     },
-    updateCoFunding: function updateCoFunding(e) {
-      this.setCoFunding(e.target.value);
-    },
-    updateLoan: function updateLoan(e) {
-      this.setLoan(e.target.value);
+    updateCoFundingOrLoan: function updateCoFundingOrLoan(e) {
+      this.setCoFundingOrLoan(e.target.value);
     },
     updateTotalEuroValue: function updateTotalEuroValue(e) {
       this.setTotalEuroValue(e.target.value);
+    },
+    updateCoFundingParty: function updateCoFundingParty(e) {
+      this.setCoFundingParty(e.target.value);
     },
     updateMunicipality: function updateMunicipality(value) {
       this.setMunicipality(value);
     },
     updateShortDescription: function updateShortDescription(e) {
       this.setShortDescription(e.target.value);
+    },
+    updateEndBeneficiary: function updateEndBeneficiary(e) {
+      this.setEndBeneficiary(e.target.value);
     },
     updateKeywords: function updateKeywords(e) {
       this.setKeywords(e.target.value);
@@ -94,6 +94,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateShow: function updateShow(e) {
       this.setShow(e.target.checked);
+    },
+    updateFinancialPerspective: function updateFinancialPerspective(value) {
+      this.setFinancialPerspective(value);
     },
     submitForm: function submitForm() {
       var _this = this;

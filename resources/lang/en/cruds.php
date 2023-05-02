@@ -189,6 +189,10 @@ return [
         'title'          => 'Project',
         'title_singular' => 'Project',
         'fields'         => [
+            'loan' => 'Loan',
+            'loan_helper' => ' ',
+            'co_funding' => 'Co Funding',
+            'co_funding_helper' => ' ',
             'id'                                => 'ID',
             'id_helper'                         => ' ',
             'assistance_framework'              => 'Assistance Framework',

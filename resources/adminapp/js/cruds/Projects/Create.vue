@@ -468,7 +468,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
     data() {
@@ -490,31 +490,32 @@ export default {
         ...mapActions('ProjectsSingle', [
             'storeData',
             'resetState',
-            'setFinancialPerspective',
+            'setAssistanceFramework',
             'setProgramme',
             'setSector',
             'setContractTitle',
+            'setContractType',
             'setCommitmentYear',
             'setContractYear',
             'setStartDate',
             'setEndDate',
             'setContractNumber',
             'setContractingParty',
-            'setContractType',
-            'setEndBeneficiary',
             'setContractedEuContribution',
-            'setCoFunding',
-            'setLoan',
+            'setCoFundingOrLoan',
             'setTotalEuroValue',
+            'setCoFundingParty',
             'setMunicipality',
             'setShortDescription',
+            'setEndBeneficiary',
             'setKeywords',
             'setLinksToProjectPage',
             'setShow',
+            'setFinancialPerspective',
             'fetchCreateData'
         ]),
-        updateFinancialPerspective(value) {
-            this.setFinancialPerspective(value)
+        updateAssistanceFramework(e) {
+            this.setAssistanceFramework(e.target.value)
         },
         updateProgramme(value) {
             this.setProgramme(value)
@@ -524,6 +525,9 @@ export default {
         },
         updateContractTitle(e) {
             this.setContractTitle(e.target.value)
+        },
+        updateContractType(value) {
+            this.setContractType(value)
         },
         updateCommitmentYear(e) {
             this.setCommitmentYear(e.target.value)
@@ -543,29 +547,26 @@ export default {
         updateContractingParty(e) {
             this.setContractingParty(e.target.value)
         },
-        updateContractType(value) {
-            this.setContractType(value)
-        },
-        updateEndBeneficiary(e) {
-            this.setEndBeneficiary(e.target.value)
-        },
         updateContractedEuContribution(e) {
             this.setContractedEuContribution(e.target.value)
         },
-        updateCoFunding(e) {
-            this.setCoFunding(e.target.value)
-        },
-        updateLoan(e) {
-            this.setLoan(e.target.value)
+        updateCoFundingOrLoan(e) {
+            this.setCoFundingOrLoan(e.target.value)
         },
         updateTotalEuroValue(e) {
             this.setTotalEuroValue(e.target.value)
+        },
+        updateCoFundingParty(e) {
+            this.setCoFundingParty(e.target.value)
         },
         updateMunicipality(value) {
             this.setMunicipality(value)
         },
         updateShortDescription(e) {
             this.setShortDescription(e.target.value)
+        },
+        updateEndBeneficiary(e) {
+            this.setEndBeneficiary(e.target.value)
         },
         updateKeywords(e) {
             this.setKeywords(e.target.value)
@@ -576,10 +577,13 @@ export default {
         updateShow(e) {
             this.setShow(e.target.checked)
         },
+        updateFinancialPerspective(value) {
+            this.setFinancialPerspective(value)
+        },
         submitForm() {
             this.storeData()
                 .then(() => {
-                    this.$router.push({ name: 'projects.index' })
+                    this.$router.push({name: 'projects.index'})
                     this.$eventHub.$emit('create-success')
                 })
                 .catch(error => {
