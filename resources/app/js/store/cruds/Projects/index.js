@@ -25,7 +25,7 @@ const actions = {
     axios
       .get(route, { params: state.query })
       .then(response => {
-        commit('setData', response.data.data)
+        commit('setData', response.data)
         commit('setTotal', response.data.total)
       })
       .catch(error => {

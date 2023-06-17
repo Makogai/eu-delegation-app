@@ -18,10 +18,12 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
 
     public $programme;
+    public $financialPerspective;
 
-    public function __construct($programme = 'IPA')
+    public function __construct($programme = 'IPA', $financialPerspective = null)
     {
         $this->programme = $programme;
+        $this->financialPerspective = $financialPerspective;
     }
 
 //    use WithConditionalSheets;
@@ -29,11 +31,21 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     public function sheets(): array
     {
         return [
-            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
-            ' IPA II' => new ProjectImport('IPA'),
-            'IPA I' => new ProjectImport('IPA'),
+            'Horizon 2020' => new ProjectImport('Horizon 2020'),
+            'COSME' => new ProjectImport('COSME'),
             'Erasmus+ new' => new ProjectImport('Erasumus+'),
             'WBIF new' => new ProjectImport('WBIF'),
+            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
+            'CBC MNE-ALB' => new ProjectImport('CBC MNE-ALB'),
+            'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
+            'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
+            'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
+            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
+            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean'),
+            'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
+            'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
+            ' IPA II' => new ProjectImport('IPA', '2014-2020'),
+            'IPA I' => new ProjectImport('IPA', '2007-2013'),
         ];
     }
     /**
@@ -52,7 +64,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'programme_id' => $this->getProgrammeId($this->programme),
             'contract_title' => $row['contract_title'] ?? "null",
             'commitment_year' => $row['commitment_year'] ?? null,
-            'contract_year' => $this->get4NumberFromString($row['contract_year']),
+            'contract_year' => array_key_exists('contract_year', $row) ? $this->get4NumberFromString($row['contract_year']) : null,
             'start_date' => $this->parseDateString($row['start_date'] ?? null),
             'end_date' => $row['end_date'] ?? null,
             'contract_number' => $row['contract_number'] ?? "null",
@@ -80,6 +92,8 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             $project->sector()->attach($this->getSectorId($row['sector_3']));
         }
 
+        if ( array_key_exists('municipality', $row) ){
+
         $municipalities = preg_split('/, | and |, /', $row['municipality']);
 
 
@@ -90,16 +104,28 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             }
             $project->municipality()->syncWithoutDetaching($municipalityModel->id);
         }
+        }
 
-        $contractTypes = preg_split('/, | and |, /', $row['contract_type']);
+
+        if ( array_key_exists('contract_type', $row) ) {
+
+            $contractTypes = preg_split('/, | and |, /', $row['contract_type']);
 
 
-        foreach ($contractTypes as $contractType) {
-            $contractTypeModel = FundingType::where('name', $contractType)->first();
-            if (!$contractTypeModel) {
-                $contractTypeModel = FundingType::first();
+            foreach ($contractTypes as $contractType) {
+                $contractTypeModel = FundingType::where('name', $contractType)->first();
+                if (!$contractTypeModel) {
+                    $contractTypeModel = FundingType::first();
+                }
+                $project->contractType()->syncWithoutDetaching($contractTypeModel->id);
             }
-            $project->contractType()->syncWithoutDetaching($contractTypeModel->id);
+
+        }
+
+
+        if ( $this->financialPerspective){
+            $fp = FinancialPerspective::where('perspective', $this->financialPerspective)->first();
+            $project->financial_perspective_id = $fp->id;
         }
 
         return $project;

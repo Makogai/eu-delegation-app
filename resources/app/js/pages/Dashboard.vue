@@ -1,33 +1,162 @@
 <template>
-  <div class="container-fluid">
-    <div class="container-fluid py-4">
-      <div class="row">
-          <div class="col-md-12 col-lg-6">
-              <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
-          </div>
-        <div class="col-md-6 projects-holder">
-          <div class="card">
-            <div class="card-header card-header-success card-header-icon">
-              <h4 class="card-title">
-                Projects
-              </h4>
+    <div class="container-fluid">
+        <div class="container-fluid py-4">
+            <img src="/md/img/logo-large-new.png" alt="">
+            <div class="row">
+                <div class="col-md-3 d-sm-none d-xl-block">
+                    <div class="row py-4 mt-5 pr-5">
+                        <h4 class="py-2 d-block bg-primaryeu text-white">FILTER</h4>
+
+                        <div class="col-12 mt-4">
+                            <div
+                                class="form-group bmd-form-group cs municipality"
+                                :class="{
+                          'has-items': cities.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">{{
+                                        $t('cruds.project.fields.municipality')
+                                    }}</label>
+                                <v-select
+                                    name="municipality"
+                                    label="name"
+                                    :reduce="city => city.id"
+                                    :key="'municipality-field'"
+                                    :value="query.municipality"
+                                    :options="cities"
+                                    :closeOnSelect="false"
+                                    multiple
+                                    v-model="query.municipality"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <div
+                                class="form-group bmd-form-group cs"
+                                :class="{
+                          'has-items': sectors.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">{{
+                                        $t('cruds.project.fields.sector')
+                                    }}</label>
+                                <v-select
+                                    name="sector"
+                                    label="name"
+                                    :reduce="sector => sector.id"
+                                    :key="'sector-field'"
+                                    :value="query.sector"
+                                    :options="sectors"
+                                    :closeOnSelect="false"
+                                    multiple
+                                    v-model="query.sector"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <div
+                                class="form-group bmd-form-group cs programme"
+                                :class="{
+                          'has-items': cities.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">{{
+                                        $t('cruds.project.fields.programme')
+                                    }}</label>
+                                <v-select
+                                    name="programme"
+                                    label="name"
+                                    :reduce="programme => programme.id"
+                                    :key="'programme-field'"
+                                    :value="query.programme"
+                                    :options="programmes"
+                                    :closeOnSelect="false"
+                                    multiple
+                                    v-model="query.programme"
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                    <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
+                </div>
+                <div class="col-md-12 col-lg-9 col-xl-6 projects-holderaa px-4">
+                    <div class="card border-0">
+                        <div class="card-header bg-transparent border-bottom-0">
+                            <h4 class="card-title text-primary">Projects from Monenegro</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="map__data-container">
+                                        <div class="map-info-box">
+                                            <div class="map-info-box__item">
+                                                <div class="map-info-box__text">Projekata</div>
+                                                <div class="map-info-box__value">{{ data.total }}</div>
+                                            </div>
+                                            <div class="map-info-box__item">
+                                                <div class="map-info-box__text">Sektora</div>
+                                                <div class="map-info-box__value">{{ data.totalSectors }}</div>
+                                            </div>
+
+                                            <div class="map-info-box__separator"></div>
+
+                                            <div class="map-info-box__item">
+                                                <div class="map-info-box__small-text">Više od</div>
+                                                <div class="map-info-box__value">{{ data.totalProjectsValue }}</div>
+                                                <div class="map-info-box__text">{{ data.totalProjectsWord }} evra</div>
+                                                <div class="map-info-box__small-text">U vrijednostima projekata</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card shadow-lg">
+                                        <div class="card-header bg-primary text-white">
+                                            <ul class="nav nav-tabs card-header-tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="projects-tab" data-toggle="tab"
+                                                       href="#projects" role="tab" aria-controls="projects"
+                                                       aria-selected="true">Projects</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="sectors-tab" data-toggle="tab"
+                                                       href="#sectors" role="tab" aria-controls="sectors"
+                                                       aria-selected="false">Sectors</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body projects-holder">
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="projects" role="tabpanel"
+                                                     aria-labelledby="projects-tab">
+                                                    <h1>Total projects: {{ data.total }}</h1>
+                                                    <div v-for="project in data.projects">
+                                                        {{ project.contract_title }}
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="sectors" role="tabpanel"
+                                                     aria-labelledby="sectors-tab">
+                                                    <div v-for="sector in sectors">
+                                                        {{ sector.name }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <RouterLink to="/test">Go to test</RouterLink>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="card-body">
-
-              <h1>Total projects: {{ data.length }}</h1>
-
-              <div v-for="project in data">
-                  {{ project.contract_title }}
-              </div>
-
-              <RouterLink to="/test">Go to test</RouterLink>
-            </div>
-          </div>
         </div>
-
-      </div>
     </div>
-  </div>
 </template>
 
 <style>
@@ -35,12 +164,153 @@
     height: 90vh;
     overflow: auto;
 }
+
+.cs .v-select:before {
+    content: "\E90E";
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    font-family: icomoon;
+    font-size: 24px;
+    color: #ffc000;
+}
+
+.municipality .v-select:before {
+    content: "home" !important;
+}
+
+.programme .v-select:before {
+    content: "folder" !important;
+}
+
+.cs .v-select .vs__dropdown-toggle {
+    padding-left: 32px;
+}
+
+.cs .vs__actions svg {
+    fill: #ffc000;
+}
+
+.cs .vs__dropdown-toggle {
+    border-bottom: 2px solid #ffc000;
+}
+
+.cs label {
+    font-size: 1rem !important;
+    color: #3c3c3c !important;
+    padding-bottom: 4px;
+    top: -1.4rem !important;
+
+}
+
+.map-info-box__separator {
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+
+.bg-primaryeu {
+    background-color: #d2d3d5 !important;
+    color: #041020 !important;
+}
+
+
+.projects-holderaa {
+    margin-top: -137px;
+}
+
+
+.card-title {
+    color: #0C4DA2;
+}
+
+.nav-tabs .nav-link {
+    color: #0C4DA2;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ffc000;
+    background-color: #0C4DA2;
+}
+
+.card.bg-warning {
+    border-color: #ffc000;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+}
+
+.card-header.bg-primary {
+    background-color: #0C4DA2 !important;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #ffc000 !important;
+    color: #0C4DA2 !important;
+}
+
+.shadow-lg {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+@media screen and (max-width: 1700px)
+
+.map-info-box {
+    max-width: 300px;
+    padding: 15px 0 0;
+}
+
+.map-info-box {
+    max-width: 360px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    padding: 20px 0 0;
+    background-color: #ffc000;
+    font-family: Barlow, Arial, Helvetica, sans-serif;
+}
+
+.map-info-box__item {
+    text-align: center;
+    flex-basis: 50%;
+    flex-shrink: 1;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 20px;
+}
+
+.map-info-box__text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.map-info-box__value {
+    font-size: 58px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.map-info-box {
+    width: 100%;
+}
 </style>
 
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import CountryMap from './CountryMap'
+
 export default {
     components: {
         CountryMap
@@ -48,7 +318,7 @@ export default {
     data() {
         return {
 
-            query: { sort: 'id', order: 'desc', limit: 100, s: '', isClient: true },
+            query: {sort: 'id', order: 'desc', limit: 100, s: '', isClient: true},
             xprops: {
                 module: 'ProjectsIndex',
                 route: 'projects',
@@ -60,10 +330,16 @@ export default {
         this.resetState()
     },
     computed: {
-        ...mapGetters('ProjectsIndex', ['data', 'total', 'loading'])
+        ...mapGetters('ProjectsIndex', ['data', 'total', 'loading']),
+        ...mapGetters('AllCities', ['cities']),
+        ...mapGetters('AllSectors', ['sectors']),
+        ...mapGetters('AllProgrammes', ['programmes'])
     },
     mounted() {
         this.fetchIndexData()
+        this.fetchAllCities()
+        this.fetchAllSectors()
+        this.fetchAllProgrammes()
 
         // On emit event from child component
         Bus.$on('back-clicked', () => {
@@ -76,21 +352,28 @@ export default {
             handler(query) {
                 this.setQuery(query)
                 this.fetchIndexData()
+
             },
             deep: true
         }
     },
     methods: {
         handleStateClicked(id, name) {
-            console.log(id, name)
-            // Handle the state-clicked event here
-            // Filter the data by municipality
-            this.query = { ...this.query, municipality: id }
+            // alert(id)
+            // Find the municipality object in the `cities` array
+            const municipality = this.cities.find(city => city.id == id);
+
+            // Set the municipality to the found municipality object
+            this.query = {...this.query, municipality: [municipality.id]}
         },
+
         resetQuery() {
-            this.query = { ...this.query, municipality: null }
+            this.query = {...this.query, municipality: null}
         },
-        ...mapActions('ProjectsIndex', ['fetchIndexData', 'resetState', 'setQuery']),
+        ...mapActions('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState']),
+        ...mapActions('AllCities', ['fetchAllCities']),
+        ...mapActions('AllSectors', ['fetchAllSectors']),
+        ...mapActions('AllProgrammes', ['fetchAllProgrammes']),
     }
 }
 </script>

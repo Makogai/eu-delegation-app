@@ -108,7 +108,8 @@ class MainSeeder extends Seeder
             'RCC',
             'RESPA',
             'Twinning',
-            'IPA'
+            'IPA',
+            'IPA NATIONAL',
         ];
 
         foreach ($programmes as $programme) {

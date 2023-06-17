@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","7":"9ba539b80b61544888af","8":"0b597f9ba7f69eb00db3","9":"e9d7e0794267ba52e9dd","10":"e1263ec7ef51ad8989f7","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"70ad02e264c6dbe8801b","38":"5ed01dd0167261b2e609","39":"0b83224b3ac1e16d1fe2","40":"3a1c8409435ee8485330","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","8":"976aff9bba4be6a42e2e","9":"acfaec164b6390f3250c","10":"3ff9a59b58789272195b","11":"7c0f67901edafd232abe","13":"55c8e01c26eaddb2b6ff","14":"185c33c6f4e952a37229","15":"287970ad7b8024e837cb","16":"36b36d3821f07189c3b7","17":"4857298c3053bf7b5815","18":"db6464f737ccdd17e4bd","19":"267f181b2def3c336bb4","20":"7462dc93a730763f08e9","21":"c1651daf09a7ced1ced4","22":"e527df8ec31daf92031f","23":"487789bb3c9eb6afb4ed","24":"ca47fadbd667982e2b12","25":"695ac21f66f51ad9d4fd","26":"ae9833805a7151e03a98","27":"dd0e99d8f815de7e1e65","28":"ccada7200203a469d3a8","29":"73a647905474d749e49f","30":"59b2afe8bc7f70246cd8","31":"6ad24ee2f7e00ae5a93b","32":"3da751c70667220724e9","33":"6c804a92603772b5af7a","34":"9d482f82af43a1e4e7f4","35":"084d3d9596e4c8820939","36":"f9633af334a7a562f718","37":"70ad02e264c6dbe8801b","38":"5ed01dd0167261b2e609","39":"26e030afc728af90269f","40":"3a1c8409435ee8485330","41":"4d1d6a3002472b33db2d","42":"bb000eb04be58de83353","43":"4b591feed74d72e8291d","44":"41e6b603895e4d1fe56c","45":"d5ac9f0bfc29a0ab7573","46":"4b8528bc8fd813316165","47":"635da262e4512900c110","48":"3f927a8741b65c0bc840"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -54447,7 +54447,7 @@ var routes = [{
       path: 'roles',
       name: 'roles.index',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! @cruds/Roles/Index.vue */ "./resources/adminapp/js/cruds/Roles/Index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! @cruds/Roles/Index.vue */ "./resources/adminapp/js/cruds/Roles/Index.vue"));
       },
       meta: {
         title: 'cruds.role.title'
@@ -54465,7 +54465,7 @@ var routes = [{
       path: 'roles/:id',
       name: 'roles.show',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! @cruds/Roles/Show.vue */ "./resources/adminapp/js/cruds/Roles/Show.vue"));
+        return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! @cruds/Roles/Show.vue */ "./resources/adminapp/js/cruds/Roles/Show.vue"));
       },
       meta: {
         title: 'cruds.role.title'
@@ -54483,7 +54483,7 @@ var routes = [{
       path: 'users',
       name: 'users.index',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! @cruds/Users/Index.vue */ "./resources/adminapp/js/cruds/Users/Index.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! @cruds/Users/Index.vue */ "./resources/adminapp/js/cruds/Users/Index.vue"));
       },
       meta: {
         title: 'cruds.user.title'
@@ -54501,7 +54501,7 @@ var routes = [{
       path: 'users/:id',
       name: 'users.show',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! @cruds/Users/Show.vue */ "./resources/adminapp/js/cruds/Users/Show.vue"));
+        return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! @cruds/Users/Show.vue */ "./resources/adminapp/js/cruds/Users/Show.vue"));
       },
       meta: {
         title: 'cruds.user.title'
@@ -56913,11 +56913,13 @@ var actions = {
   fetchIndexData: function fetchIndexData(_ref) {
     var commit = _ref.commit,
       state = _ref.state;
+    console.log("FETCH INDEX DATA");
     commit('setLoading', true);
     axios.get(route, {
       params: state.query
     }).then(function (response) {
-      commit('setData', response.data.data);
+      console.log("EVO PODATAKA: " + response.data);
+      commit('setData', response.data);
       commit('setTotal', response.data.total);
     })["catch"](function (error) {
       message = error.response.data.message || error.message;

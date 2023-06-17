@@ -28,7 +28,38 @@
     <script>simplemaps_countrymap_mapdata.main_settings.auto_load = 'no';</script>
     <script  type="text/javascript" src="{{ asset("map/countrymap.js") }}"></script>
 
-{{--    <link rel="stylesheet" href="{{ mix('/adminapp/css/app.css') }}">--}}
+    <link rel="stylesheet" href="{{ mix('/adminapp/css/app.css') }}">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url("css/IcoMoon-Free.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            font-display: block; }
+
+        [class^="icon-"], [class*=" icon-"] {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; }
+    </style>
+    <style>
+        .main-panel{
+            width: 100%!important;
+        }
+        .main-panel > .content {
+            margin-top: 2px!important;
+            padding: 3px 1px!important;
+            min-height: calc(100vh - 123px);
+        }
+    </style>
 </head>
 
 <body>

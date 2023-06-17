@@ -223,6 +223,7 @@ return [
             'co_funding_or_loan_helper'         => ' ',
             'total_euro_value'                  => 'Total Euro Value',
             'total_euro_value_helper'           => ' ',
+            'total' => 'Total value',
             'co_funding_party'                  => 'Co Funding Party',
             'co_funding_party_helper'           => ' ',
             'municipality'                      => 'Municipality',

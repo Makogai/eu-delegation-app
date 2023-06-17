@@ -49,13 +49,13 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         field: 'financial_perspective.perspective',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.programme',
         field: 'programme.name',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.sector',
         field: 'sector.name',
@@ -65,17 +65,17 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         title: 'cruds.project.fields.contract_title',
         field: 'contract_title',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.contract_number',
         field: 'contract_number',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.contracting_party',
         field: 'contracting_party',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.contract_type',
         field: 'contract_type.name',
@@ -85,22 +85,22 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         title: 'cruds.project.fields.end_beneficiary',
         field: 'end_beneficiary',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.contracted_eu_contribution',
         field: 'contracted_eu_contribution',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.co_funding',
         field: 'co_funding',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.loan',
         field: 'loan',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.total_euro_value',
         field: 'total_euro_value',
@@ -115,18 +115,18 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         title: 'cruds.project.fields.keywords',
         field: 'keywords',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.links_to_project_page',
         field: 'links_to_project_page',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'cruds.project.fields.show',
         field: 'show',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         tdComp: _components_Datatables_DatatableCheckbox__WEBPACK_IMPORTED_MODULE_7__["default"],
-        sortable: true
+        sortable: false
       }, {
         title: 'global.actions',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],

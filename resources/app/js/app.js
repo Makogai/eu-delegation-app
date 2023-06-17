@@ -24,7 +24,7 @@ import i18n from './i18n'
 
 // Plugins
 
-// import GlobalComponents from './globalComponents'
+import GlobalComponents from './globalComponents'
 // import GlobalDirectives from './globalDirectives'
 // import GlobalMixins from './mixins/global'
 import { mapGetters, mapActions } from 'vuex'
@@ -38,7 +38,7 @@ import { mapGetters, mapActions } from 'vuex'
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+Vue.use(GlobalComponents)
 const app = new Vue({
   el: '#app',
   render: h => h(App),

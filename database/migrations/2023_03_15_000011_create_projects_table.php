@@ -15,7 +15,7 @@ class CreateProjectsTable extends Migration
             $table->integer('contract_year')->nullable();
             $table->date('start_date')->nullable();
             $table->string('end_date')->nullable();
-            $table->string('contract_number')->nullable();
+            $table->text('contract_number')->nullable();
             $table->string('contracting_party')->nullable();
             $table->text('end_beneficiary')->nullable();
             $table->decimal('contracted_eu_contribution', 15, 2)->nullable();
@@ -24,7 +24,7 @@ class CreateProjectsTable extends Migration
             $table->decimal('total_euro_value', 15, 2)->nullable();
             $table->longText('short_description');
             $table->string('keywords')->nullable();
-            $table->string('links_to_project_page')->nullable();
+            $table->text('links_to_project_page')->nullable();
             $table->boolean('show')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();

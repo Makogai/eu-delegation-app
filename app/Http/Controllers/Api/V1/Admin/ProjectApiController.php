@@ -41,24 +41,80 @@ class ProjectApiController extends Controller
 
         // if request has isClient
         if ($request->isClient) {
-            $projects = Project::with(['programme', 'sector', 'contractType', 'municipality'])->whereHas('municipality', function ($query) {
-                // If theres no municipality id in the query string, return all projects
-                if (!request('municipality')) {
-                    return $query;
+            $projects = Project::with(['programme', 'contractType', 'municipality'])
+                ->whereHas('municipality', function ($query) {
+                    // If there's no municipality id in the query string, return all projects
+                    if (!request('municipality')) {
+                        return $query;
+                    }
+                    $query->whereIn('id', request('municipality'));
+                })
+                ->whereHas('programme', function ($query) {
+                    if (!request('programme')) {
+                        return $query;
+                    }
+                    $query->whereIn('id', request('programme'));
+                })
+                ->get();
+
+            $sectors = [];
+            foreach ($projects as $project) {
+                foreach ($project->sector as $sector) {
+                    if (!array_key_exists($sector->id, $sectors)) {
+                        $sectors[$sector->id] = ['sector' => $sector, 'count' => 1];
+                    } else {
+                        $sectors[$sector->id]['count']++;
+                    }
                 }
-                $query->where('id', request('municipality'));
-            })->get();
+            }
         }
 
-        else
+        else{
             $projects = Project::with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])->projectFilters($request)->paginate($request->limit, ['*'], 'page', $request->page);
+            return new ProjectResource($projects);
+        }
         // Where municipality is a many-to-many relationship, is id from query string
         // the id of the pivot table or the id of the municipality table?
 
+//        dd($projects->sum('total_euro_value'));
 
 
-        return new ProjectResource($projects);
+        return response()->json([
+            'projects' => ProjectResource::collection($projects),
+            'sectors' => $sectors,
+            'total' => $projects->count(),
+            'totalSectors' => count($sectors),
+            'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
+            'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
+        ]);
     }
+
+    function format_number($number) {
+        if ($number >= 1000000000) {
+            return array(
+                'value' => number_format($number / 1000000000, 2) . 'B',
+                'word' => 'MILIJARDI'
+            );
+        }
+        else if ($number >= 1000000) {
+            return array(
+                'value' => number_format($number / 1000000, 2) . 'M',
+                'word' => 'MILIONA'
+            );
+        }
+        else if ($number >= 1000) {
+            return array(
+                'value' => number_format($number / 1000, 2) . 'K',
+                'word' => 'HILJADA'
+            );
+        }
+        return array(
+            'value' => $number,
+            'word' => ''
+        );
+    }
+
+
 
     public function store(StoreProjectRequest $request)
     {
