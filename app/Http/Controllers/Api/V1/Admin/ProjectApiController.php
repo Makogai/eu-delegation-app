@@ -39,29 +39,32 @@ class ProjectApiController extends Controller
     {
         abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        // Start the query
+        $projectsQuery = Project::query();
+
         // if request has isClient
         if ($request->isClient) {
-            $projects = Project::with(['programme','sector', 'contractType', 'municipality'])
-                ->whereHas('municipality', function ($query) {
-                    // If there's no municipality id in the query string, return all projects
-                    if (!request('municipality')) {
-                        return $query;
-                    }
-                    $query->whereIn('id', request('municipality'));
-                })
-                ->whereHas('programme', function ($query) {
-                    if (!request('programme')) {
-                        return $query;
-                    }
-                    $query->whereIn('id', request('programme'));
-                })
-                ->whereHas('sector', function($query){
-                    if (!request('sector')) {
-                        return $query;
-                    }
-                    $query->whereIn('id', request('sector'));
-                })
-                ->get();
+            $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
+
+            if ($request->has('municipality') && $request->municipality) {
+                $projectsQuery->whereHas('municipality', function ($query) use ($request) {
+                    $query->whereIn('id', $request->municipality);
+                });
+            }
+
+            if ($request->has('programme') && $request->programme) {
+                $projectsQuery->whereHas('programme', function ($query) use ($request) {
+                    $query->whereIn('id', $request->programme);
+                });
+            }
+
+            if ($request->has('sector') && $request->sector) {
+                $projectsQuery->whereHas('sector', function($query) use ($request){
+                    $query->whereIn('id', $request->sector);
+                });
+            }
+
+            $projects = $projectsQuery->get();
 
             $sectors = [];
             foreach ($projects as $project) {
@@ -76,14 +79,12 @@ class ProjectApiController extends Controller
         }
 
         else{
-            $projects = Project::with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])->projectFilters($request)->paginate($request->limit, ['*'], 'page', $request->page);
+            $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
+                ->projectFilters($request)
+                ->paginate($request->limit, ['*'], 'page', $request->page);
+
             return new ProjectResource($projects);
         }
-        // Where municipality is a many-to-many relationship, is id from query string
-        // the id of the pivot table or the id of the municipality table?
-
-//        dd($projects->sum('total_euro_value'));
-
 
         return response()->json([
             'projects' => ProjectResource::collection($projects),

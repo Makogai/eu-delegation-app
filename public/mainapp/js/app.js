@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"5673d5cdceced9252b90","12":"c96069d7873d1def870f","49":"e6a679d7921766c33c18"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"b729e6d3beea41121ae9","12":"c96069d7873d1def870f","49":"9d15dd3d444b1581beca"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -4459,7 +4459,7 @@ var render = function render() {
     staticClass: "bg"
   }, [_vm.loading ? _c("div", {
     staticClass: "loader-container"
-  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("router-view")], 1);
+  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("router-view"), _vm._v(" "), _vm._m(1)], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -4489,6 +4489,26 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "loader-line"
   })])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("footer", {
+    attrs: {
+      id: "footer"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }), _vm._v(" "), _c("p", {
+    staticClass: "text-center footer-copyright"
+  }, [_vm._v("Ova web prezentacija nastala je uz finansijsku podršku Evropske unije, a tehnički je održava EUINFO Net projekat. Sadržaj objavljen na sajtu predstavlja odgovornost EU projekata i nužno ne odražava stavove Evropske unije.")]), _vm._v(" "), _c("p", {
+    staticClass: "text-center footer-copyright"
+  }, [_vm._v("Stranica je u fazi izrade. Za trenutnu proveru tačnosti podataka pišite na "), _c("a", {
+    attrs: {
+      href: "mailto:visibility@euinfo.rs"
+    }
+  }, [_vm._v("visibility@euinfo.rs")]), _vm._v(".")])]);
 }];
 render._withStripped = true;
 
@@ -4746,7 +4766,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.bg {\n    position: relative;\n    height: 100vh;\n    width: 100%;\n    overflow: hidden;\n}\n.bg::before {\n    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-image: url('/bg.svg');\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-position: center;\n    opacity: 0.1;\n}\n.loader-container {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.82);\n    z-index: 999999;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n.loader {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 50px;\n    height: 50px;\n    text-align: center;\n    font-size: 10px;\n}\n.loader > div {\n    background-color: #fff;\n    height: 100%;\n    width: 6px;\n    display: inline-block;\n    margin-left: 1px;\n    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;\n    animation: stretchdelay 1.2s infinite ease-in-out;\n}\n.loader .loader-line-wrap {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    overflow: hidden;\n}\n.loader .loader-line {\n    display: block;\n    position: absolute;\n    top: 0;\n    left: -200%;\n    width: 200%;\n    height: 100%;\n    background-color: #fff;\n    -webkit-animation: move 2s infinite ease-in-out;\n    animation: move 2s infinite ease-in-out;\n}\n.loader .loader-line:nth-child(1) {\n    background-color: #ff0000;\n    -webkit-animation-delay: -1.1s;\n    animation-delay: -1.1s;\n}\n.loader .loader-line:nth-child(2) {\n    background-color: #00ff00;\n    -webkit-animation-delay: -1s;\n    animation-delay: -1s;\n}\n.loader .loader-line:nth-child(3) {\n    background-color: #0000ff;\n    -webkit-animation-delay: -0.9s;\n    animation-delay: -0.9s;\n}\n.loader .loader-line:nth-child(4) {\n    background-color: #ffff00;\n    -webkit-animation-delay: -0.8s;\n    animation-delay: -0.8s;\n}\n.loader .loader-line:nth-child(5) {\n    background-color: #00ffff;\n    -webkit-animation-delay: -0.7s;\n    animation-delay: -0.7s;\n}\n@-webkit-keyframes move {\n0% {\n        left: -200%;\n}\n100% {\n        left: 200%;\n}\n}\n@keyframes move {\n0% {\n        left: -200%;\n}\n100% {\n        left: 200%;\n}\n}\n@-webkit-keyframes stretchdelay {\n0%,\n    40%,\n    100% {\n        -webkit-transform: scaleY(0.4);\n}\n20% {\n        -webkit-transform: scaleY(1);\n}\n}\n@keyframes stretchdelay {\n0%,\n    40%,\n    100% {\n        transform: scaleY(0.4);\n        -webkit-transform: scaleY(0.4);\n}\n20% {\n        transform: scaleY(1);\n        -webkit-transform: scaleY(1);\n}\n}\n", ""]);
+exports.push([module.i, "\n#footer {\n    padding-top: 25px;\n    padding-bottom: 48px;\n    background-color: #232323;\n}\n#footer .footer-copyright {\n    margin-bottom: 0;\n    color: white;\n    font-family: Barlow, Arial, Helvetica, sans-serif;\n    font-size: 14px;\n    font-weight: 400;\n    margin-top: 20px;\n}\n.loader-container {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.82);\n    z-index: 999999;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n.loader {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 50px;\n    height: 50px;\n    text-align: center;\n    font-size: 10px;\n}\n.loader > div {\n    background-color: #fff;\n    height: 100%;\n    width: 6px;\n    display: inline-block;\n    margin-left: 1px;\n    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;\n    animation: stretchdelay 1.2s infinite ease-in-out;\n}\n.loader .loader-line-wrap {\n    position: absolute;\n    top: 0;\n    height: 100%;\n    width: 100%;\n    overflow: hidden;\n}\n.loader .loader-line {\n    display: block;\n    position: absolute;\n    top: 0;\n    left: -200%;\n    width: 200%;\n    height: 100%;\n    background-color: #fff;\n    -webkit-animation: move 2s infinite ease-in-out;\n    animation: move 2s infinite ease-in-out;\n}\n.loader .loader-line:nth-child(1) {\n    background-color: #ff0000;\n    -webkit-animation-delay: -1.1s;\n    animation-delay: -1.1s;\n}\n.loader .loader-line:nth-child(2) {\n    background-color: #00ff00;\n    -webkit-animation-delay: -1s;\n    animation-delay: -1s;\n}\n.loader .loader-line:nth-child(3) {\n    background-color: #0000ff;\n    -webkit-animation-delay: -0.9s;\n    animation-delay: -0.9s;\n}\n.loader .loader-line:nth-child(4) {\n    background-color: #ffff00;\n    -webkit-animation-delay: -0.8s;\n    animation-delay: -0.8s;\n}\n.loader .loader-line:nth-child(5) {\n    background-color: #00ffff;\n    -webkit-animation-delay: -0.7s;\n    animation-delay: -0.7s;\n}\n@-webkit-keyframes move {\n0% {\n        left: -200%;\n}\n100% {\n        left: 200%;\n}\n}\n@keyframes move {\n0% {\n        left: -200%;\n}\n100% {\n        left: 200%;\n}\n}\n@-webkit-keyframes stretchdelay {\n0%,\n    40%,\n    100% {\n        -webkit-transform: scaleY(0.4);\n}\n20% {\n        -webkit-transform: scaleY(1);\n}\n}\n@keyframes stretchdelay {\n0%,\n    40%,\n    100% {\n        transform: scaleY(0.4);\n        -webkit-transform: scaleY(0.4);\n}\n20% {\n        transform: scaleY(1);\n        -webkit-transform: scaleY(1);\n}\n}\n", ""]);
 
 // exports
 
@@ -54406,13 +54426,13 @@ var routes = [{
       title: 'global.dashboard'
     }
   }, {
-    path: 'test',
-    name: 'test',
+    path: 'project/:id',
+    name: 'project',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 49).then(__webpack_require__.bind(null, /*! @apppages/Dashboard2.vue */ "./resources/app/js/pages/Dashboard2.vue"));
+      return __webpack_require__.e(/*! import() */ 49).then(__webpack_require__.bind(null, /*! @apppages/SingleProject.vue */ "./resources/app/js/pages/SingleProject.vue"));
     },
     meta: {
-      title: 'global.dashboard'
+      title: 'global.project'
     }
   }]
 }];

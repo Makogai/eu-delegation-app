@@ -51,6 +51,9 @@
             -moz-osx-font-smoothing: grayscale; }
     </style>
     <style>
+        .wrapper {
+            /*height: 95vh!important;*/
+        }
         .main-panel{
             width: 100%!important;
         }
@@ -59,6 +62,41 @@
             padding: 3px 1px!important;
             min-height: calc(100vh - 123px);
         }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        body::before {
+            content: "";
+            position: fixed; /* This makes the image fixed while scrolling */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keeps the background behind your content */
+            background-image: url('/bg2.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            /* Apply your opacity here. */
+            opacity: 0.5;
+        }
+
+
+        .content {
+            margin: 20px;
+        }
+
+
+        .content {
+            margin: 20px; /* Add margin to create space between content and background image */
+        }
+
+
     </style>
 </head>
 

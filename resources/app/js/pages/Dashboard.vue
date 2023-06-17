@@ -128,12 +128,12 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="projects-tab" data-toggle="tab"
                                                        href="#projects" role="tab" aria-controls="projects"
-                                                       aria-selected="true">Projects</a>
+                                                       aria-selected="true">Projects ({{ data.total }})</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="sectors-tab" data-toggle="tab"
                                                        href="#sectors" role="tab" aria-controls="sectors"
-                                                       aria-selected="false">Sectors</a>
+                                                       aria-selected="false">Sectors ({{ data.totalSectors }})</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -141,7 +141,7 @@
                                             <div class="tab-content" id="myTabContent">
                                                 <div class="tab-pane fade show active" id="projects" role="tabpanel"
                                                      aria-labelledby="projects-tab">
-                                                    <h1>Total projects: {{ data.total }}</h1>
+<!--                                                    <h1>Total projects: {{ data.total }}</h1>-->
                                                     <div v-for="project in data.projects" class="single-project">
                                                         <RouterLink :to="`/project/${project.id}`">
 <!--                                                            {{ project.contract_title }}-->
@@ -149,15 +149,15 @@
                                                         <div class="map-project__brief">
                                                             <div class="map-project__date">{{ project.duration}}
                                                             </div>
-                                                            <h2 class="map-project__title">#EUzaTebe kampanje u
-                                                                Srbiji</h2></div>
+                                                            <h2 class="map-project__title">{{ project.contract_title }}</h2>
+                                                        </div>
                                                         </RouterLink>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="sectors" role="tabpanel"
                                                      aria-labelledby="sectors-tab">
-                                                    <div v-for="sector in sectors">
-                                                        {{ sector.name }}
+                                                    <div v-for="sector in data.sectors">
+                                                        <h2 class="map-sector__title mb-3">{{ sector.sector.name }} ({{ sector.count }})</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,6 +185,11 @@
     margin-bottom: 0;
     font-size: 18px;
     font-weight: 600;
+}
+.map-sector__title {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 500;
 }
 .card {
     border-radius: 0px !important;
@@ -270,8 +275,9 @@
     color: #041020 !important;
     border-radius: 0 !important;
     transition: 0.2s all ease-in-out;
-    box-shadow: none !important
+    box-shadow: none !important;
 }
+
 
 .bg-primaryeu2:hover {
     background-color: #ffc000 !important;
@@ -290,7 +296,46 @@
 
 .projects-holderaa {
     margin-top: -137px;
+    height: 20vh!important;
+    background: transparent!important;
+
 }
+
+.projects-holderaa .card {
+    background: transparent!important;
+}
+
+.projects-holderaa .card-header{
+    border-radius: 0!important;
+    padding: 0!important;
+}
+
+.projects-holder {
+    height: 70vh!important;
+}
+
+.card-header-tabs{
+    margin: 0!important;
+    padding: 0!important;
+    border-radius: 0!important;
+}
+
+.card-header-tabs .nav-item{
+    margin: 0!important;
+    border-radius: 0!important;
+}
+
+.card-header-tabs .nav-item a{
+    margin: 0!important;
+    border-radius: 0!important;
+}
+
+#projects-tab{
+    border-radius: 0!important;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+
 
 
 .card-title {
@@ -429,7 +474,7 @@ export default {
     },
     methods: {
         handleStateClicked(id, name) {
-            // alert(id)
+            alert(id)
             // Find the municipality object in the `cities` array
             const municipality = this.cities.find(city => city.id == id);
 

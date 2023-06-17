@@ -18,10 +18,10 @@ const routes = [
         meta: { title: 'global.dashboard' }
       },
         {
-            path: 'test',
-            name: 'test',
-            component: () => import('@apppages/Dashboard2.vue'),
-            meta: { title: 'global.dashboard' }
+            path: 'project/:id',
+            name: 'project',
+            component: () => import('@apppages/SingleProject.vue'),
+            meta: { title: 'global.project' }
         },
 
 
