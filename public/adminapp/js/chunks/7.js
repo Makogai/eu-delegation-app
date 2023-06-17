@@ -182,7 +182,7 @@ var render = function render() {
     staticClass: "container-fluid py-4"
   }, [_c("img", {
     attrs: {
-      src: "/md/img/logo-large-new.png",
+      src: "/md/img/logo-large-new2.png",
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -280,7 +280,7 @@ var render = function render() {
       },
       expression: "query.programme"
     }
-  })], 1)])])]), _vm._v(" "), _c("div", {
+  })], 1)]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-12 col-lg-3"
   }, [_c("CountryMap", {
     on: {
@@ -291,12 +291,12 @@ var render = function render() {
     staticClass: "col-md-12 col-lg-9 col-xl-6 projects-holderaa px-4"
   }, [_c("div", {
     staticClass: "card border-0"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-4"
+    staticClass: "col-md-4 mt-4 pt-2"
   }, [_c("div", {
     staticClass: "map__data-container"
   }, [_c("div", {
@@ -329,7 +329,7 @@ var render = function render() {
     staticClass: "col-md-8"
   }, [_c("div", {
     staticClass: "card shadow-lg"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "card-body projects-holder"
   }, [_c("div", {
     staticClass: "tab-content",
@@ -344,7 +344,19 @@ var render = function render() {
       "aria-labelledby": "projects-tab"
     }
   }, [_c("h1", [_vm._v("Total projects: " + _vm._s(_vm.data.total))]), _vm._v(" "), _vm._l(_vm.data.projects, function (project) {
-    return _c("div", [_vm._v("\n                                                    " + _vm._s(project.contract_title) + "\n                                                ")]);
+    return _c("div", {
+      staticClass: "single-project"
+    }, [_c("RouterLink", {
+      attrs: {
+        to: "/project/".concat(project.id)
+      }
+    }, [_c("div", {
+      staticClass: "map-project__brief"
+    }, [_c("div", {
+      staticClass: "map-project__date"
+    }, [_vm._v(_vm._s(project.duration) + "\n                                                            ")]), _vm._v(" "), _c("h2", {
+      staticClass: "map-project__title"
+    }, [_vm._v("#EUzaTebe kampanje u\n                                                                Srbiji")])])])], 1);
   })], 2), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
@@ -353,21 +365,34 @@ var render = function render() {
       "aria-labelledby": "sectors-tab"
     }
   }, _vm._l(_vm.sectors, function (sector) {
-    return _c("div", [_vm._v("\n                                                    " + _vm._s(sector.name) + "\n                                                ")]);
-  }), 0)])])])])]), _vm._v(" "), _c("RouterLink", {
-    attrs: {
-      to: "/test"
-    }
-  }, [_vm._v("Go to test")])], 1)])])])])]);
+    return _c("div", [_vm._v("\n                                                        " + _vm._s(sector.name) + "\n                                                    ")]);
+  }), 0)])])])])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "col-12 mt-3"
+  }, [_c("button", {
+    staticClass: "btn bg-primaryeu2 rounded-o px-3"
+  }, [_c("img", {
+    staticStyle: {
+      fill: "white",
+      "margin-right": "5px"
+    },
+    attrs: {
+      src: "303-loop2.svg",
+      alt: "reset"
+    }
+  }), _vm._v(" Reset\n                            ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "card-header bg-transparent border-bottom-0"
-  }, [_c("h4", {
-    staticClass: "card-title text-primary"
-  }, [_vm._v("Projects from Monenegro")])]);
+  }, [_c("h1", {
+    staticClass: "card-title text-primary text-right pt-3 projects-title"
+  }, [_vm._v("EU PROJEKTI U CRNOJ\n                                GORI")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -437,7 +462,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.projects-holder {\n    height: 90vh;\n    overflow: auto;\n}\n.cs .v-select:before {\n    content: \"\\E90E\";\n    position: absolute;\n    top: -2px;\n    left: 0px;\n    font-family: icomoon;\n    font-size: 24px;\n    color: #ffc000;\n}\n.municipality .v-select:before {\n    content: \"home\" !important;\n}\n.programme .v-select:before {\n    content: \"folder\" !important;\n}\n.cs .v-select .vs__dropdown-toggle {\n    padding-left: 32px;\n}\n.cs .vs__actions svg {\n    fill: #ffc000;\n}\n.cs .vs__dropdown-toggle {\n    border-bottom: 2px solid #ffc000;\n}\n.cs label {\n    font-size: 1rem !important;\n    color: #3c3c3c !important;\n    padding-bottom: 4px;\n    top: -1.4rem !important;\n}\n.map-info-box__separator {\n    display: block;\n    width: 100%;\n    height: 4px;\n    margin-bottom: 20px;\n    background-color: #fff;\n}\n.bg-primaryeu {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n}\n.projects-holderaa {\n    margin-top: -137px;\n}\n.card-title {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link.active {\n    color: #ffc000;\n    background-color: #0C4DA2;\n}\n.card.bg-warning {\n    border-color: #ffc000;\n}\n.display-4 {\n    font-size: 2.5rem;\n}\n.card-header.bg-primary {\n    background-color: #0C4DA2 !important;\n}\n.nav-tabs .nav-link.active {\n    background-color: #ffc000 !important;\n    color: #0C4DA2 !important;\n}\n.shadow-lg {\n    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;\n}\n@media screen and (max-width: 1700px)\n\n.map-info-box {\n    max-width: 300px;\n    padding: 15px 0 0;\n}\n.map-info-box {\n    max-width: 360px;\n    display: inline-flex;\n    flex-wrap: wrap;\n    flex-flow: column;\n    padding: 20px 0 0;\n    background-color: #ffc000;\n    font-family: Barlow, Arial, Helvetica, sans-serif;\n}\n.map-info-box__item {\n    text-align: center;\n    flex-basis: 50%;\n    flex-shrink: 1;\n    padding-left: 25px;\n    padding-right: 25px;\n    margin-bottom: 20px;\n}\n.map-info-box__text {\n    font-size: 18px;\n    font-weight: 600;\n    color: #000;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 1;\n}\n.map-info-box__value {\n    font-size: 58px;\n    font-weight: bold;\n    color: #fff;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 0.9;\n}\n.map-info-box {\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.map-project__date {\n    font-size: 14px;\n    font-weight: 600;\n    color: #ffc000;\n}\n.map-project__title {\n    margin-bottom: 0;\n    font-size: 18px;\n    font-weight: 600;\n}\n.card {\n    border-radius: 0px !important;\n    border: none !important;\n    box-shadow: none !important;\n}\n.single-project {\n\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n}\n.single-project:hover {\n    background: #f5f5f5;\n}\n.single-project a {\n    //color: #000;\n    text-decoration: none;\n}\n.projects-holder {\n    height: 90vh;\n    overflow: auto;\n}\n.cs .v-select:before {\n    content: \"\\E90E\";\n    position: absolute;\n    top: -2px;\n    left: 0px;\n    font-family: icomoon;\n    font-size: 24px;\n    color: #ffc000;\n}\n.municipality .v-select:before {\n    content: \"home\" !important;\n}\n.programme .v-select:before {\n    content: \"folder\" !important;\n}\n.cs .v-select .vs__dropdown-toggle {\n    padding-left: 32px;\n}\n.cs .vs__actions svg {\n    fill: #ffc000;\n}\n.cs .vs__dropdown-toggle {\n    border-bottom: 2px solid #ffc000;\n}\n.cs label {\n    font-size: 1rem !important;\n    color: #3c3c3c !important;\n    padding-bottom: 4px;\n    top: -1.4rem !important;\n}\n.map-info-box__separator {\n    display: block;\n    width: 100%;\n    height: 4px;\n    margin-bottom: 20px;\n    background-color: #fff;\n}\n.bg-primaryeu {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n}\n.bg-primaryeu2 {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    transition: 0.2s all ease-in-out;\n    box-shadow: none !important\n}\n.bg-primaryeu2:hover {\n    background-color: #ffc000 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    box-shadow: none !important;\n}\n.projects-title {\n    color: #0C4DA2 !important;\n    font-size: 2.8rem;\n    font-weight: 700;\n    margin-bottom: 20px;\n}\n.projects-holderaa {\n    margin-top: -137px;\n}\n.card-title {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link.active {\n    color: #ffc000;\n    background-color: #0C4DA2;\n}\n.card.bg-warning {\n    border-color: #ffc000;\n}\n.display-4 {\n    font-size: 2.5rem;\n}\n.card-header.bg-primary {\n    background-color: #0C4DA2 !important;\n}\n.nav-tabs .nav-link.active {\n    background-color: #ffc000 !important;\n    color: #0C4DA2 !important;\n}\n.shadow-lg {\n    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;\n}\n@media screen and (max-width: 1700px)\n\n.map-info-box {\n    max-width: 300px;\n    padding: 15px 0 0;\n}\n.map-info-box {\n    max-width: 360px;\n    display: inline-flex;\n    flex-wrap: wrap;\n    flex-flow: column;\n    padding: 20px 0 0;\n    background-color: #ffc000;\n    font-family: Barlow, Arial, Helvetica, sans-serif;\n}\n.map-info-box__item {\n    text-align: center;\n    flex-basis: 50%;\n    flex-shrink: 1;\n    padding-left: 25px;\n    padding-right: 25px;\n    margin-bottom: 20px;\n}\n.map-info-box__text {\n    font-size: 18px;\n    font-weight: 600;\n    color: #000;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 1;\n}\n.map-info-box__value {\n    font-size: 58px;\n    font-weight: bold;\n    color: #fff;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 0.9;\n}\n.map-info-box {\n    width: 100%;\n}\n", ""]);
 
 // exports
 

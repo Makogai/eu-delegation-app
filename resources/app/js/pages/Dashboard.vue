@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container-fluid py-4">
-            <img src="/md/img/logo-large-new.png" alt="">
+            <img src="/md/img/logo-large-new2.png" alt="">
             <div class="row">
                 <div class="col-md-3 d-sm-none d-xl-block">
                     <div class="row py-4 mt-5 pr-5">
@@ -77,6 +77,13 @@
                                 />
                             </div>
                         </div>
+                        <div class="col-12 mt-3">
+
+                            <button class="btn bg-primaryeu2 rounded-o px-3"><img src="303-loop2.svg"
+                                                                                  style="fill: white; margin-right: 5px;"
+                                                                                  alt="reset"> Reset
+                            </button>
+                        </div>
 
                     </div>
                 </div>
@@ -86,11 +93,12 @@
                 <div class="col-md-12 col-lg-9 col-xl-6 projects-holderaa px-4">
                     <div class="card border-0">
                         <div class="card-header bg-transparent border-bottom-0">
-                            <h4 class="card-title text-primary">Projects from Monenegro</h4>
+                            <h1 class="card-title text-primary text-right pt-3 projects-title">EU PROJEKTI U CRNOJ
+                                GORI</h1>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mt-4 pt-2">
                                     <div class="map__data-container">
                                         <div class="map-info-box">
                                             <div class="map-info-box__item">
@@ -134,8 +142,16 @@
                                                 <div class="tab-pane fade show active" id="projects" role="tabpanel"
                                                      aria-labelledby="projects-tab">
                                                     <h1>Total projects: {{ data.total }}</h1>
-                                                    <div v-for="project in data.projects">
-                                                        {{ project.contract_title }}
+                                                    <div v-for="project in data.projects" class="single-project">
+                                                        <RouterLink :to="`/project/${project.id}`">
+<!--                                                            {{ project.contract_title }}-->
+
+                                                        <div class="map-project__brief">
+                                                            <div class="map-project__date">{{ project.duration}}
+                                                            </div>
+                                                            <h2 class="map-project__title">#EUzaTebe kampanje u
+                                                                Srbiji</h2></div>
+                                                        </RouterLink>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="sectors" role="tabpanel"
@@ -149,7 +165,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <RouterLink to="/test">Go to test</RouterLink>
+
                         </div>
                     </div>
                 </div>
@@ -160,6 +176,38 @@
 </template>
 
 <style>
+.map-project__date {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffc000;
+}
+.map-project__title {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.card {
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.single-project {
+
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.single-project:hover {
+    background: #f5f5f5;
+}
+
+.single-project a {
+    //color: #000;
+    text-decoration: none;
+}
+
 .projects-holder {
     height: 90vh;
     overflow: auto;
@@ -217,6 +265,28 @@
     color: #041020 !important;
 }
 
+.bg-primaryeu2 {
+    background-color: #d2d3d5 !important;
+    color: #041020 !important;
+    border-radius: 0 !important;
+    transition: 0.2s all ease-in-out;
+    box-shadow: none !important
+}
+
+.bg-primaryeu2:hover {
+    background-color: #ffc000 !important;
+    color: #041020 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+
+.projects-title {
+    color: #0C4DA2 !important;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
 
 .projects-holderaa {
     margin-top: -137px;

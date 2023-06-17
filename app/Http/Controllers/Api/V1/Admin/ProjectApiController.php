@@ -41,7 +41,7 @@ class ProjectApiController extends Controller
 
         // if request has isClient
         if ($request->isClient) {
-            $projects = Project::with(['programme', 'contractType', 'municipality'])
+            $projects = Project::with(['programme','sector', 'contractType', 'municipality'])
                 ->whereHas('municipality', function ($query) {
                     // If there's no municipality id in the query string, return all projects
                     if (!request('municipality')) {
@@ -54,6 +54,12 @@ class ProjectApiController extends Controller
                         return $query;
                     }
                     $query->whereIn('id', request('programme'));
+                })
+                ->whereHas('sector', function($query){
+                    if (!request('sector')) {
+                        return $query;
+                    }
+                    $query->whereIn('id', request('sector'));
                 })
                 ->get();
 

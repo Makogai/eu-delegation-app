@@ -1,35 +1,57 @@
 <template>
-    <div>
+    <div class="bg">
 
         <div class="loader-container" v-if="loading">
 
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
+            <div class="loader">
+                <div class="loader-inner">
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-        </div>
-  <router-view></router-view>
+        <router-view></router-view>
     </div>
 </template>
 
 <style>
 
-.loader-container{
+.bg {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+
+.loader-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -157,9 +179,9 @@
 </style>
 
 
-
 <script>
 import {mapGetters, mapActions} from 'vuex'
+
 export default {
     computed: {
         ...mapGetters('ProjectsIndex', ['data', 'total', 'loading']),

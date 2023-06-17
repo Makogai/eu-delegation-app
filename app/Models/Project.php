@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Support\HasAdvancedFilter;
 use Carbon\Carbon;
+use DateTime;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class Project extends Model
 {
@@ -99,6 +101,49 @@ class Project extends Model
         'deleted_at',
     ];
 
+    protected $appends =[ 'duration'];
+
+
+    public static function bootSoftDeletes()
+    {
+        static::addGlobalScope(new SoftDeletingScope());
+
+        // When a Project model is being deleted...
+        static::deleting(function($project) {
+            // ...also delete (or soft delete) all related models
+            $project->programme()->delete();
+            $project->sector()->delete();
+            $project->contractType()->delete();
+            $project->municipality()->delete();
+            $project->financialPerspective()->delete();
+        });
+
+        // When a Project model is being restored...
+        static::restoring(function($project) {
+            // ...also restore all related models
+            $project->programme()->restore();
+            $project->sector()->restore();
+            $project->contractType()->restore();
+            $project->municipality()->restore();
+            $project->financialPerspective()->restore();
+        });
+    }
+
+    // Make the duration attribute format: start_date - end_date
+    public function getDurationAttribute()
+    {
+        $startDate = $this->start_date ? $this->start_date : 'N/A';
+
+//        $startDate = "N/A";
+        // If end_date is not null and is a valid date, format it. Otherwise, set it to 'N/A'
+
+        $endDate = $this->end_date;
+
+        return $startDate . ' - ' . $endDate;
+    }
+
+
+
     // Scope projectFilters - Filter by municipality, sector, or programme
     public function scopeProjectFilters($query, $request)
     {
@@ -188,13 +233,15 @@ class Project extends Model
 
     public function getStartDateAttribute($value)
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('project.date_format')) : null;
+        return $value ? Carbon::parse($value)->format(config('project.date_format')) : null;
     }
+
 
     public function setStartDateAttribute($value)
     {
         $this->attributes['start_date'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
     }
+
 
     public function municipality()
     {

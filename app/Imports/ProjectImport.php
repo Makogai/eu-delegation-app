@@ -9,6 +9,7 @@ use App\Models\Programme;
 use App\Models\Project;
 use App\Models\Sector;
 use DateTime;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -66,7 +67,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'commitment_year' => $row['commitment_year'] ?? null,
             'contract_year' => array_key_exists('contract_year', $row) ? $this->get4NumberFromString($row['contract_year']) : null,
             'start_date' => $this->parseDateString($row['start_date'] ?? null),
-            'end_date' => $row['end_date'] ?? null,
+            'end_date' => $this->parseDateString($row['start_date'] ?? null),
             'contract_number' => $row['contract_number'] ?? "null",
             'contracting_party' => $row['contracting_party'] ?? null,
             'contracted_eu_contribution' => $this->getNumberFromString($row['contracted_eu_contribution'] ?? null),
@@ -153,20 +154,31 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
         }
     }
     // get date from date string which is not in consistent format, if the date is not in the correct format, return current date
+
     function parseDateString($dateString)
     {
-        $dateFormats = ['d-M-Y', 'j-M-Y', 'd/m/Y', 'd.m.Y'];
-        $date = false;
+        // Check if dateString is an integer
+        if (is_numeric($dateString)) {
+            // It's an Excel date, calculate real date
+            // Carbon's createFromFormat function allows us to create a date from 'Y-d-m'
+            return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($dateString))->format('Y-m-d');
+        } else {
+            // Original parsing code
+            $dateFormats = ['d-M-Y', 'j-M-Y', 'd/m/Y', 'd.m.Y', 'm/d/Y', 'm.d.Y', 'Y-m-d', 'Y/m/d', 'Y.m.d', 'Y-d-m', 'Y/d/m', 'Y.d.m'];
 
-        foreach ($dateFormats as $format) {
-            $date = DateTime::createFromFormat($format, $dateString);
-            if ($date !== false) {
-                break;
+            $date = false;
+
+            foreach ($dateFormats as $format) {
+                $date = DateTime::createFromFormat($format, $dateString);
+                if ($date !== false) {
+                    break;
+                }
             }
-        }
 
-        return $date ? $date->format('Y-m-d') : null;
+            return $date ? $date->format('Y-m-d') : null;
+        }
     }
+
 
     // get sector_id from sector name
     public function getSectorId($sectorName)

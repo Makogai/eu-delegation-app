@@ -56913,13 +56913,11 @@ var actions = {
   fetchIndexData: function fetchIndexData(_ref) {
     var commit = _ref.commit,
       state = _ref.state;
-    console.log("FETCH INDEX DATA");
     commit('setLoading', true);
     axios.get(route, {
       params: state.query
     }).then(function (response) {
-      console.log("EVO PODATAKA: " + response.data);
-      commit('setData', response.data);
+      commit('setData', response.data.data);
       commit('setTotal', response.data.total);
     })["catch"](function (error) {
       message = error.response.data.message || error.message;
