@@ -55,6 +55,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _CountryMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CountryMap */ "./resources/app/js/pages/CountryMap.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -63,12 +65,16 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     CountryMap: _CountryMap__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
+      debouncedFetch: Object(lodash__WEBPACK_IMPORTED_MODULE_2__["debounce"])(function () {
+        this.fetchIndexData();
+      }, 300),
       query: {
         sort: 'id',
         order: 'desc',
@@ -104,14 +110,21 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     query: {
       handler: function handler(query) {
         this.setQuery(query);
-        this.fetchIndexData();
+
+        // If the query change is about the keywords, use debounced fetch
+        if ('keywords' in query) {
+          this.debouncedFetch();
+        } else {
+          // Otherwise, fetch data right away
+          this.fetchIndexData();
+        }
       },
       deep: true
     }
   },
   methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({
     handleStateClicked: function handleStateClicked(id, name) {
-      alert(id);
+      // alert(id)
       // Find the municipality object in the `cities` array
       var municipality = this.cities.find(function (city) {
         return city.id == id;
@@ -194,6 +207,32 @@ var render = function render() {
   }, [_c("h4", {
     staticClass: "py-2 d-block bg-primaryeu text-white"
   }, [_vm._v("FILTER")]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mt-5"
+  }, [_c("div", {
+    staticClass: "form-group ci keywords"
+  }, [_c("label", {}, [_vm._v("Keywords")]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group icon-input-wrapper"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.query.keywords,
+      expression: "query.keywords"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.query.keywords
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.query, "keywords", $event.target.value);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "form-group bmd-form-group cs municipality",
@@ -225,7 +264,7 @@ var render = function render() {
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-5"
   }, [_c("div", {
-    staticClass: "form-group bmd-form-group cs",
+    staticClass: "form-group bmd-form-group cs sector",
     "class": {
       "has-items": _vm.sectors.length !== 0
     }
@@ -460,7 +499,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.map-project__date {\n    font-size: 14px;\n    font-weight: 600;\n    color: #ffc000;\n}\n.map-project__title {\n    margin-bottom: 0;\n    font-size: 18px;\n    font-weight: 600;\n}\n.map-sector__title {\n    margin-bottom: 0;\n    font-size: 15px;\n    font-weight: 500;\n}\n.card {\n    border-radius: 0px !important;\n    border: none !important;\n    box-shadow: none !important;\n}\n.single-project {\n\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n}\n.single-project:hover {\n    background: #f5f5f5;\n}\n.single-project a {\n    //color: #000;\n    text-decoration: none;\n}\n.projects-holder {\n    height: 90vh;\n    overflow: auto;\n}\n.cs .v-select:before {\n    content: \"\\E90E\";\n    position: absolute;\n    top: -2px;\n    left: 0px;\n    font-family: icomoon;\n    font-size: 24px;\n    color: #ffc000;\n}\n.municipality .v-select:before {\n    content: \"home\" !important;\n}\n.programme .v-select:before {\n    content: \"folder\" !important;\n}\n.cs .v-select .vs__dropdown-toggle {\n    padding-left: 32px;\n}\n.cs .vs__actions svg {\n    fill: #ffc000;\n}\n.cs .vs__dropdown-toggle {\n    border-bottom: 2px solid #ffc000;\n}\n.cs label {\n    font-size: 1rem !important;\n    color: #3c3c3c !important;\n    padding-bottom: 4px;\n    top: -1.4rem !important;\n}\n.map-info-box__separator {\n    display: block;\n    width: 100%;\n    height: 4px;\n    margin-bottom: 20px;\n    background-color: #fff;\n}\n.bg-primaryeu {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n}\n.bg-primaryeu2 {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    transition: 0.2s all ease-in-out;\n    box-shadow: none !important;\n}\n.bg-primaryeu2:hover {\n    background-color: #ffc000 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    box-shadow: none !important;\n}\n.projects-title {\n    color: #0C4DA2 !important;\n    font-size: 2.8rem;\n    font-weight: 700;\n    margin-bottom: 20px;\n}\n.projects-holderaa {\n    margin-top: -137px;\n    height: 20vh!important;\n    background: transparent!important;\n}\n.projects-holderaa .card {\n    background: transparent!important;\n}\n.projects-holderaa .card-header{\n    border-radius: 0!important;\n    padding: 0!important;\n}\n.projects-holder {\n    height: 70vh!important;\n}\n.card-header-tabs{\n    margin: 0!important;\n    padding: 0!important;\n    border-radius: 0!important;\n}\n.card-header-tabs .nav-item{\n    margin: 0!important;\n    border-radius: 0!important;\n}\n.card-header-tabs .nav-item a{\n    margin: 0!important;\n    border-radius: 0!important;\n}\n#projects-tab{\n    border-radius: 0!important;\n}\n/* ===== Scrollbar CSS ===== */\n/* Firefox */\n.card-title {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link.active {\n    color: #ffc000;\n    background-color: #0C4DA2;\n}\n.card.bg-warning {\n    border-color: #ffc000;\n}\n.display-4 {\n    font-size: 2.5rem;\n}\n.card-header.bg-primary {\n    background-color: #0C4DA2 !important;\n}\n.nav-tabs .nav-link.active {\n    background-color: #ffc000 !important;\n    color: #0C4DA2 !important;\n}\n.shadow-lg {\n    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;\n}\n@media screen and (max-width: 1700px)\n\n.map-info-box {\n    max-width: 300px;\n    padding: 15px 0 0;\n}\n.map-info-box {\n    max-width: 360px;\n    display: inline-flex;\n    flex-wrap: wrap;\n    flex-flow: column;\n    padding: 20px 0 0;\n    background-color: #ffc000;\n    font-family: Barlow, Arial, Helvetica, sans-serif;\n}\n.map-info-box__item {\n    text-align: center;\n    flex-basis: 50%;\n    flex-shrink: 1;\n    padding-left: 25px;\n    padding-right: 25px;\n    margin-bottom: 20px;\n}\n.map-info-box__text {\n    font-size: 18px;\n    font-weight: 600;\n    color: #000;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 1;\n}\n.map-info-box__value {\n    font-size: 58px;\n    font-weight: bold;\n    color: #fff;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 0.9;\n}\n.map-info-box {\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.map-project__date {\n    font-size: 14px;\n    font-weight: 600;\n    color: #ffc000;\n}\n.map-project__title {\n    margin-bottom: 0;\n    font-size: 18px;\n    font-weight: 600;\n}\n.map-sector__title {\n    margin-bottom: 0;\n    font-size: 15px;\n    font-weight: 500;\n}\n.card {\n    border-radius: 0px !important;\n    border: none !important;\n    box-shadow: none !important;\n}\n.single-project {\n\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n}\n.single-project:hover {\n    background: #f5f5f5;\n}\n.single-project a {\n    //color: #000;\n    text-decoration: none;\n}\n.projects-holder {\n    height: 90vh;\n    overflow: auto;\n}\n.cs .v-select:before {\n    content: \"\\E90E\";\n    position: absolute;\n    top: -2px;\n    left: 0px;\n    font-family: icomoon;\n    font-size: 24px;\n    color: #ffc000;\n}\n.icon-input-wrapper:before {\n    content: \"search\";\n    position: absolute;\n    top: 6px;\n    left: 0px;\n    font-family: 'icomoon';\n    font-size: 24px;\n    color: #ffc000;\n}\n.ci input:invalid{\n    background: none!important;\n}\n.ci input {\n    background: transparent;\n    border: 0;\n    border-bottom: 2px solid #ffc000;\n    border-radius: 0!important;\n    padding-left: 32px;\n}\n.municipality .v-select:before {\n    content: \"home\" !important;\n}\n.programme .v-select:before {\n    content: \"folder\" !important;\n}\n.sector .v-select:before {\n    content: \"drive\" !important;\n}\n.cs .v-select .vs__dropdown-toggle {\n    padding-left: 32px;\n}\n.cs .vs__actions svg {\n    fill: #ffc000;\n}\n.cs .vs__dropdown-toggle {\n    border-bottom: 2px solid #ffc000;\n}\n.cs label, .ci label {\n    font-size: 1rem !important;\n    color: #3c3c3c !important;\n    padding-bottom: 4px;\n    top: -1.4rem !important;\n}\n.map-info-box__separator {\n    display: block;\n    width: 100%;\n    height: 4px;\n    margin-bottom: 20px;\n    background-color: #fff;\n}\n.bg-primaryeu {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n}\n.bg-primaryeu2 {\n    background-color: #d2d3d5 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    transition: 0.2s all ease-in-out;\n    box-shadow: none !important;\n}\n.bg-primaryeu2:hover {\n    background-color: #ffc000 !important;\n    color: #041020 !important;\n    border-radius: 0 !important;\n    box-shadow: none !important;\n}\n.projects-title {\n    color: #0C4DA2 !important;\n    font-size: 2.8rem;\n    font-weight: 700;\n    margin-bottom: 20px;\n}\n.projects-holderaa {\n    margin-top: -137px;\n    //height: 20vh!important;\n    background: transparent!important;\n}\n.projects-holderaa .card {\n    background: transparent!important;\n}\n.projects-holderaa .card-header{\n    border-radius: 0!important;\n    padding: 0!important;\n}\n.projects-holder {\n    height: 70vh!important;\n}\n.card-header-tabs{\n    margin: 0!important;\n    padding: 0!important;\n    border-radius: 0!important;\n}\n.card-header-tabs .nav-item{\n    margin: 0!important;\n    border-radius: 0!important;\n}\n.card-header-tabs .nav-item a{\n    margin: 0!important;\n    border-radius: 0!important;\n}\n#projects-tab{\n    border-radius: 0!important;\n}\n/* ===== Scrollbar CSS ===== */\n/* Firefox */\n.card-title {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link {\n    color: #0C4DA2;\n}\n.nav-tabs .nav-link.active {\n    color: #ffc000;\n    background-color: #0C4DA2;\n}\n.card.bg-warning {\n    border-color: #ffc000;\n}\n.display-4 {\n    font-size: 2.5rem;\n}\n.card-header.bg-primary {\n    background-color: #0C4DA2 !important;\n}\n.nav-tabs .nav-link.active {\n    background-color: #ffc000 !important;\n    color: #0C4DA2 !important;\n}\n.shadow-lg {\n    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;\n}\n@media screen and (max-width: 1700px)\n\n.map-info-box {\n    max-width: 300px;\n    padding: 15px 0 0;\n}\n.map-info-box {\n    max-width: 360px;\n    display: inline-flex;\n    flex-wrap: wrap;\n    flex-flow: column;\n    padding: 20px 0 0;\n    background-color: #ffc000;\n    font-family: Barlow, Arial, Helvetica, sans-serif;\n}\n.map-info-box__item {\n    text-align: center;\n    flex-basis: 50%;\n    flex-shrink: 1;\n    padding-left: 25px;\n    padding-right: 25px;\n    margin-bottom: 20px;\n}\n.map-info-box__text {\n    font-size: 18px;\n    font-weight: 600;\n    color: #000;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 1;\n}\n.map-info-box__value {\n    font-size: 58px;\n    font-weight: bold;\n    color: #fff;\n    text-align: center;\n    text-transform: uppercase;\n    line-height: 0.9;\n}\n.map-info-box {\n    width: 100%;\n}\n", ""]);
 
 // exports
 

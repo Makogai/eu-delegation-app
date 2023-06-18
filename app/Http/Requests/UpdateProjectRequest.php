@@ -28,7 +28,7 @@ class UpdateProjectRequest extends FormRequest
                 'required',
             ],
             'sector' => [
-                'required',
+                'nullable',
                 'array',
             ],
             'sector.*.id' => [

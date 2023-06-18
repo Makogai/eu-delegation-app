@@ -556,6 +556,12 @@ export default {
         updateTotalEuroValue(e) {
             this.setTotalEuroValue(e.target.value)
         },
+        updateCoFunding(e){
+            this.setCoFunding(e.target.value)
+        },
+        updateLoan(e){
+            this.setLoan(e.target.value)
+        },
         updateCoFundingParty(e) {
             this.setCoFundingParty(e.target.value)
         },

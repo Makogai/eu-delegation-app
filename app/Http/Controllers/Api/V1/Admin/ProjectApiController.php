@@ -52,6 +52,17 @@ class ProjectApiController extends Controller
                 });
             }
 
+            if ($request->has('keywords') && $request->keywords) {
+                $keywords = $request->keywords;
+
+                $projectsQuery->where(function($query) use ($keywords){
+                    $query->where('contract_title', 'like', '%' . $keywords . '%')
+                        ->orWhere('keywords', 'like', '%' . $keywords . '%')
+                        ->orWhere('short_description', 'like', '%' . $keywords . '%');
+                });
+            }
+
+
             if ($request->has('programme') && $request->programme) {
                 $projectsQuery->whereHas('programme', function ($query) use ($request) {
                     $query->whereIn('id', $request->programme);

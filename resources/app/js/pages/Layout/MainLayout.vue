@@ -1,12 +1,5 @@
 <template>
-  <div class="wrapper">
-    <div class="main-panel">
-      <div class="content">
-<!--          <h1>MARE</h1>-->
-        <dashboard-content></dashboard-content>
-      </div>
-    </div>
-  </div>
+    <dashboard-content></dashboard-content>
 </template>
 
 <script>

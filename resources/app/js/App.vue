@@ -23,7 +23,10 @@
                 </div>
             </div>
         </div>
+        <div>
         <router-view></router-view>
+
+        </div>
 
         <footer id="footer">
             <div class="container">
@@ -32,8 +35,11 @@
             <div class="container">
             </div>
 
-            <p class="text-center footer-copyright">Ova web prezentacija nastala je uz finansijsku podršku Evropske unije, a tehnički je održava EUINFO Net projekat. Sadržaj objavljen na sajtu predstavlja odgovornost EU projekata i nužno ne odražava stavove Evropske unije.</p>
-            <p class="text-center footer-copyright">Stranica je u fazi izrade. Za trenutnu proveru tačnosti podataka pišite na <a href="mailto:visibility@euinfo.rs">visibility@euinfo.rs</a>.</p>
+            <div class="text-center">
+                <img src="/md/img/logo-large-new2.png" alt="logo" class="img-fluid text-center text-small">
+            </div>
+
+            <p class="text-center footer-copyright">Website in development</p>
 
         </footer>
     </div>
@@ -45,6 +51,7 @@
     padding-bottom: 48px;
     background-color: #232323;
 }
+
 #footer .footer-copyright {
     margin-bottom: 0;
     color: white;

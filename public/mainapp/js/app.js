@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"b729e6d3beea41121ae9","12":"c96069d7873d1def870f","49":"9d15dd3d444b1581beca"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"19dafa0f1a4ea5cafff9","12":"340d22efb48ae6dcfa0c","13":"b2a820cafafe940727cb"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -4459,7 +4459,7 @@ var render = function render() {
     staticClass: "bg"
   }, [_vm.loading ? _c("div", {
     staticClass: "loader-container"
-  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("router-view"), _vm._v(" "), _vm._m(1)], 1);
+  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("div", [_c("router-view")], 1), _vm._v(" "), _vm._m(1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -4500,15 +4500,17 @@ var staticRenderFns = [function () {
     staticClass: "container"
   }), _vm._v(" "), _c("div", {
     staticClass: "container"
-  }), _vm._v(" "), _c("p", {
-    staticClass: "text-center footer-copyright"
-  }, [_vm._v("Ova web prezentacija nastala je uz finansijsku podršku Evropske unije, a tehnički je održava EUINFO Net projekat. Sadržaj objavljen na sajtu predstavlja odgovornost EU projekata i nužno ne odražava stavove Evropske unije.")]), _vm._v(" "), _c("p", {
-    staticClass: "text-center footer-copyright"
-  }, [_vm._v("Stranica je u fazi izrade. Za trenutnu proveru tačnosti podataka pišite na "), _c("a", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "text-center"
+  }, [_c("img", {
+    staticClass: "img-fluid text-center text-small",
     attrs: {
-      href: "mailto:visibility@euinfo.rs"
+      src: "/md/img/logo-large-new2.png",
+      alt: "logo"
     }
-  }, [_vm._v("visibility@euinfo.rs")]), _vm._v(".")])]);
+  })]), _vm._v(" "), _c("p", {
+    staticClass: "text-center footer-copyright"
+  }, [_vm._v("Website in development")])]);
 }];
 render._withStripped = true;
 
@@ -54429,7 +54431,7 @@ var routes = [{
     path: 'project/:id',
     name: 'project',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 49).then(__webpack_require__.bind(null, /*! @apppages/SingleProject.vue */ "./resources/app/js/pages/SingleProject.vue"));
+      return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! @apppages/SingleProject.vue */ "./resources/app/js/pages/SingleProject.vue"));
     },
     meta: {
       title: 'global.project'

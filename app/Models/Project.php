@@ -104,30 +104,30 @@ class Project extends Model
     protected $appends =[ 'duration'];
 
 
-    public static function bootSoftDeletes()
-    {
-        static::addGlobalScope(new SoftDeletingScope());
-
-        // When a Project model is being deleted...
-        static::deleting(function($project) {
-            // ...also delete (or soft delete) all related models
-            $project->programme()->delete();
-            $project->sector()->delete();
-            $project->contractType()->delete();
-            $project->municipality()->delete();
-            $project->financialPerspective()->delete();
-        });
-
-        // When a Project model is being restored...
-        static::restoring(function($project) {
-            // ...also restore all related models
-            $project->programme()->restore();
-            $project->sector()->restore();
-            $project->contractType()->restore();
-            $project->municipality()->restore();
-            $project->financialPerspective()->restore();
-        });
-    }
+//    public static function bootSoftDeletes()
+//    {
+//        static::addGlobalScope(new SoftDeletingScope());
+//
+//        // When a Project model is being deleted...
+//        static::deleting(function($project) {
+//            // ...also delete (or soft delete) all related models
+//            $project->programme()->delete();
+//            $project->sector()->delete();
+//            $project->contractType()->delete();
+//            $project->municipality()->delete();
+//            $project->financialPerspective()->delete();
+//        });
+//
+//        // When a Project model is being restored...
+//        static::restoring(function($project) {
+//            // ...also restore all related models
+//            $project->programme()->restore();
+//            $project->sector()->restore();
+//            $project->contractType()->restore();
+//            $project->municipality()->restore();
+//            $project->financialPerspective()->restore();
+//        });
+//    }
 
     // Make the duration attribute format: start_date - end_date
     public function getDurationAttribute()

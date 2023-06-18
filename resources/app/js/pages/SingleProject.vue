@@ -31,6 +31,151 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Sector</h5>
+                                <p class="lead">
+                                    <ul v-if="entry.sector.length > 0">
+                                        <li v-for="sector in entry.sector">
+                                            {{ sector.name }}
+                                        </li>
+                                    </ul>
+                                    <ul v-else>
+                                        <p>N/A</p>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Financial Perspective</h5>
+                                <p class="lead">
+                                    {{ entry.financial_perspective ? entry.financial_perspective.perspective : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Contract Year</h5>
+                                <p class="lead">
+                                    {{ entry.contract_year ? entry.contract_year : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Start Date</h5>
+                                <p class="lead">
+                                    {{ entry.start_date ? entry.start_date : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">End Date</h5>
+                                <p class="lead">
+                                    {{ entry.end_date ? entry.end_date : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Contract Number</h5>
+                                <p class="lead">
+                                    {{ entry.contract_number ? entry.contract_number : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Contract Type</h5>
+                                <p class="lead">
+                                    {{ entry.contract_type.name ? entry.contract_type.name : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">End Beneficiary</h5>
+                                <p class="lead">
+                                    {{ entry.end_beneficiary ? entry.end_beneficiary : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Contracted Eu Contribution</h5>
+                                <p class="lead">
+                                    {{ entry.contracted_eu_contribution ? entry.contracted_eu_contribution : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Co Funding</h5>
+                                <p class="lead">
+                                    {{ entry.co_funding ? entry.co_funding : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Loan</h5>
+                                <p class="lead">
+                                    {{ entry.loan ? entry.loan : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Total Euro Value</h5>
+                                <p class="lead">
+                                    {{ entry.total_euro_value ? entry.total_euro_value : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Municipality</h5>
+                                <p class="lead">
+                                    <ul v-if="entry.municipality.length > 0">
+                                        <li v-for="municipality in entry.municipality">
+                                            {{ municipality.name }}
+                                        </li>
+                                    </ul>
+                                    <ul v-else>
+                                        <p>N/A</p>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Short Description</h5>
+                                <p class="lead">
+                                    {{ entry.short_description ? entry.short_description : 'N/A' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="my-3">
+                                <h5 class="text-primary">Keywords</h5>
+                                <p class="lead">
+                                    <ul v-if="entry.keywords">
+                                        <li v-for="keyword in breakStringToArray(entry.keywords)">
+                                            {{ keyword }}
+                                        </li>
+                                    </ul>
+                                    <ul v-else>
+                                        <p>N/A</p>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -68,6 +213,11 @@ export default {
 
     methods: {
         ...mapActions('ProjectsSingle', ['fetchShowData', 'resetState']),
+
+        // A mthod to break a string by , and return an array
+        breakStringToArray(string) {
+            return string.split(',');
+        },
     },
 };
 </script>

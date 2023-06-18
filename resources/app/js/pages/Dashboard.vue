@@ -7,12 +7,23 @@
                     <div class="row py-4 mt-5 pr-5">
                         <h4 class="py-2 d-block bg-primaryeu text-white">FILTER</h4>
 
+
+                        <div class="col-12 mt-5">
+                            <div class="form-group ci keywords">
+                                <label class="">Keywords</label>
+                                <div class="form-group bmd-form-group icon-input-wrapper">
+                                    <input class="form-control" type="text" v-model="query.keywords"/>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="col-12 mt-4">
                             <div
                                 class="form-group bmd-form-group cs municipality"
                                 :class="{
                           'has-items': cities.length !== 0,
-                        }"
+                            }"
                             >
                                 <label class="bmd-label-floating">{{
                                         $t('cruds.project.fields.municipality')
@@ -32,7 +43,7 @@
                         </div>
                         <div class="col-12 mt-5">
                             <div
-                                class="form-group bmd-form-group cs"
+                                class="form-group bmd-form-group cs sector"
                                 :class="{
                           'has-items': sectors.length !== 0,
                         }"
@@ -228,12 +239,37 @@
     color: #ffc000;
 }
 
+.icon-input-wrapper:before {
+    content: "search";
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    font-family: 'icomoon';
+    font-size: 24px;
+    color: #ffc000;
+}
+
+.ci input:invalid{
+    background: none!important;
+}
+.ci input {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #ffc000;
+    border-radius: 0!important;
+    padding-left: 32px;
+}
+
 .municipality .v-select:before {
     content: "home" !important;
 }
 
 .programme .v-select:before {
     content: "folder" !important;
+}
+
+.sector .v-select:before {
+    content: "drive" !important;
 }
 
 .cs .v-select .vs__dropdown-toggle {
@@ -248,7 +284,7 @@
     border-bottom: 2px solid #ffc000;
 }
 
-.cs label {
+.cs label, .ci label {
     font-size: 1rem !important;
     color: #3c3c3c !important;
     padding-bottom: 4px;
@@ -296,7 +332,7 @@
 
 .projects-holderaa {
     margin-top: -137px;
-    height: 20vh!important;
+    //height: 20vh!important;
     background: transparent!important;
 
 }
@@ -425,6 +461,8 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import CountryMap from './CountryMap'
+import { debounce } from 'lodash'
+
 
 export default {
     components: {
@@ -432,6 +470,9 @@ export default {
     },
     data() {
         return {
+            debouncedFetch: debounce(function () {
+                this.fetchIndexData()
+            }, 300),
 
             query: {sort: 'id', order: 'desc', limit: 100, s: '', isClient: true},
             xprops: {
@@ -466,7 +507,14 @@ export default {
         query: {
             handler(query) {
                 this.setQuery(query)
-                this.fetchIndexData()
+
+                // If the query change is about the keywords, use debounced fetch
+                if ('keywords' in query) {
+                    this.debouncedFetch()
+                } else {
+                    // Otherwise, fetch data right away
+                    this.fetchIndexData()
+                }
 
             },
             deep: true
@@ -474,7 +522,7 @@ export default {
     },
     methods: {
         handleStateClicked(id, name) {
-            alert(id)
+            // alert(id)
             // Find the municipality object in the `cities` array
             const municipality = this.cities.find(city => city.id == id);
 

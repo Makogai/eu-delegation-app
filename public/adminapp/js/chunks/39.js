@@ -1,22 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[39],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _components_Datatables_DatatableActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/Datatables/DatatableActions */ "./resources/adminapp/js/components/Datatables/DatatableActions.vue");
-/* harmony import */ var _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @components/Datatables/TranslatedHeader */ "./resources/adminapp/js/components/Datatables/TranslatedHeader.vue");
-/* harmony import */ var _components_Datatables_HeaderSettings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @components/Datatables/HeaderSettings */ "./resources/adminapp/js/components/Datatables/HeaderSettings.vue");
-/* harmony import */ var _components_Datatables_GlobalSearch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @components/Datatables/GlobalSearch */ "./resources/adminapp/js/components/Datatables/GlobalSearch.vue");
-/* harmony import */ var _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @components/Datatables/DatatableSingle */ "./resources/adminapp/js/components/Datatables/DatatableSingle.vue");
-/* harmony import */ var _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @components/Datatables/DatatableList */ "./resources/adminapp/js/components/Datatables/DatatableList.vue");
-/* harmony import */ var _components_Datatables_DatatableCheckbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @components/Datatables/DatatableCheckbox */ "./resources/adminapp/js/components/Datatables/DatatableCheckbox.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -24,166 +17,119 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
-
-
-
-
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    GlobalSearch: _components_Datatables_GlobalSearch__WEBPACK_IMPORTED_MODULE_4__["default"],
-    HeaderSettings: _components_Datatables_HeaderSettings__WEBPACK_IMPORTED_MODULE_3__["default"]
-  },
   data: function data() {
     return {
-      columns: [{
-        title: 'cruds.project.fields.id',
-        field: 'id',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true,
-        colStyle: 'width: 100px;'
-      }, {
-        title: 'cruds.project.fields.financial_perspective',
-        field: 'financial_perspective.perspective',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.programme',
-        field: 'programme.name',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableSingle__WEBPACK_IMPORTED_MODULE_5__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.sector',
-        field: 'sector.name',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }, {
-        title: 'cruds.project.fields.contract_title',
-        field: 'contract_title',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.contract_number',
-        field: 'contract_number',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.contracting_party',
-        field: 'contracting_party',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.contract_type',
-        field: 'contract_type.name',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }, {
-        title: 'cruds.project.fields.end_beneficiary',
-        field: 'end_beneficiary',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.contracted_eu_contribution',
-        field: 'contracted_eu_contribution',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.co_funding',
-        field: 'co_funding',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.loan',
-        field: 'loan',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.total_euro_value',
-        field: 'total_euro_value',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: true
-      }, {
-        title: 'cruds.project.fields.municipality',
-        field: 'municipality.name',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }, {
-        title: 'cruds.project.fields.keywords',
-        field: 'keywords',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.links_to_project_page',
-        field: 'links_to_project_page',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        sortable: false
-      }, {
-        title: 'cruds.project.fields.show',
-        field: 'show',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableCheckbox__WEBPACK_IMPORTED_MODULE_7__["default"],
-        sortable: false
-      }, {
-        title: 'global.actions',
-        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-        tdComp: _components_Datatables_DatatableActions__WEBPACK_IMPORTED_MODULE_1__["default"],
-        visible: true,
-        thClass: 'text-right',
-        tdClass: 'text-right td-actions',
-        colStyle: 'width: 150px;'
-      }],
-      query: {
-        sort: 'id',
-        order: 'desc',
-        limit: 100,
-        s: '',
-        municipality: []
-      },
-      xprops: {
-        module: 'ProjectsIndex',
-        route: 'projects',
-        permission_prefix: 'project_'
-      },
+      status: '',
       activeField: ''
     };
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsSingle', ['entry', 'loading', 'lists'])),
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
   watch: {
-    query: {
-      handler: function handler(query) {
-        this.setQuery(query);
-        this.fetchIndexData();
-        this.fetchAllCities();
-        this.fetchAllSectors();
-        this.fetchAllProgrammes();
-      },
-      deep: true
+    '$route.params.id': {
+      immediate: true,
+      handler: function handler() {
+        this.resetState();
+        this.fetchEditData(this.$route.params.id);
+      }
     }
   },
-  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsSingle', ['fetchEditData', 'updateData', 'resetState', 'setFinancialPerspective', 'setProgramme', 'setSector', 'setContractTitle', 'setCommitmentYear', 'setContractYear', 'setStartDate', 'setEndDate', 'setContractNumber', 'setContractingParty', 'setContractType', 'setEndBeneficiary', 'setContractedEuContribution', 'setCoFunding', 'setLoan', 'setTotalEuroValue', 'setMunicipality', 'setShortDescription', 'setKeywords', 'setLinksToProjectPage', 'setShow'])), {}, {
+    updateFinancialPerspective: function updateFinancialPerspective(value) {
+      this.setFinancialPerspective(value);
+    },
+    updateProgramme: function updateProgramme(value) {
+      this.setProgramme(value);
+    },
+    updateSector: function updateSector(value) {
+      this.setSector(value);
+    },
+    updateContractTitle: function updateContractTitle(e) {
+      this.setContractTitle(e.target.value);
+    },
+    updateCommitmentYear: function updateCommitmentYear(e) {
+      this.setCommitmentYear(e.target.value);
+    },
+    updateContractYear: function updateContractYear(e) {
+      this.setContractYear(e.target.value);
+    },
+    updateStartDate: function updateStartDate(e) {
+      this.setStartDate(e.target.value);
+    },
+    updateEndDate: function updateEndDate(e) {
+      this.setEndDate(e.target.value);
+    },
+    updateContractNumber: function updateContractNumber(e) {
+      this.setContractNumber(e.target.value);
+    },
+    updateContractingParty: function updateContractingParty(e) {
+      this.setContractingParty(e.target.value);
+    },
+    updateContractType: function updateContractType(value) {
+      this.setContractType(value);
+    },
+    updateEndBeneficiary: function updateEndBeneficiary(e) {
+      this.setEndBeneficiary(e.target.value);
+    },
+    updateContractedEuContribution: function updateContractedEuContribution(e) {
+      this.setContractedEuContribution(e.target.value);
+    },
+    updateCoFunding: function updateCoFunding(e) {
+      this.setCoFunding(e.target.value);
+    },
+    updateLoan: function updateLoan(e) {
+      this.setLoan(e.target.value);
+    },
+    updateTotalEuroValue: function updateTotalEuroValue(e) {
+      this.setTotalEuroValue(e.target.value);
+    },
+    updateMunicipality: function updateMunicipality(value) {
+      this.setMunicipality(value);
+    },
+    updateShortDescription: function updateShortDescription(e) {
+      this.setShortDescription(e.target.value);
+    },
+    updateKeywords: function updateKeywords(e) {
+      this.setKeywords(e.target.value);
+    },
+    updateLinksToProjectPage: function updateLinksToProjectPage(e) {
+      this.setLinksToProjectPage(e.target.value);
+    },
+    updateShow: function updateShow(e) {
+      this.setShow(e.target.checked);
+    },
+    submitForm: function submitForm() {
+      var _this = this;
+      this.updateData().then(function () {
+        _this.$router.push({
+          name: 'projects.index'
+        });
+        _this.$eventHub.$emit('update-success');
+      })["catch"](function (error) {
+        _this.status = 'failed';
+        _.delay(function () {
+          _this.status = '';
+        }, 3000);
+      });
+    },
     focusField: function focusField(name) {
-      alert(name);
       this.activeField = name;
     },
     clearFocus: function clearFocus() {
       this.activeField = '';
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCities', ['fetchAllCities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllSectors', ['fetchAllSectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllProgrammes', ['fetchAllProgrammes']))
+  })
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778&":
-/*!***************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778& ***!
-  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -196,6 +142,13 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container-fluid"
+  }, [_c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.submitForm.apply(null, arguments);
+      }
+    }
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -206,103 +159,92 @@ var render = function render() {
     staticClass: "card-header card-header-primary card-header-icon"
   }, [_vm._m(0), _vm._v(" "), _c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("\n            " + _vm._s(_vm.$t("global.table")) + "\n            "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title")))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("global.edit")) + "\n                            "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title_singular")))])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_vm.$can(_vm.xprops.permission_prefix + "create") ? _c("router-link", {
-    staticClass: "btn btn-primary",
-    attrs: {
-      to: {
-        name: _vm.xprops.route + ".create"
-      }
-    }
-  }, [_c("i", {
-    staticClass: "material-icons"
-  }, [_vm._v("\n              add\n            ")]), _vm._v("\n            " + _vm._s(_vm.$t("global.add")) + "\n          ")]) : _vm._e(), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-default",
-    "class": {
-      disabled: _vm.loading
-    },
-    attrs: {
-      type: "button",
-      disabled: _vm.loading
-    },
-    on: {
-      click: _vm.fetchIndexData
-    }
-  }, [_c("i", {
-    staticClass: "material-icons",
-    "class": {
-      "fa-spin": _vm.loading
-    }
-  }, [_vm._v("\n              refresh\n            ")]), _vm._v("\n            " + _vm._s(_vm.$t("global.refresh")) + "\n          ")]), _vm._v(" "), _c("form", {
-    attrs: {
-      action: ""
-    }
+  }, [_c("back-button")], 1), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("bootstrap-alert"), _vm._v(" "), _c("div", {
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "row py-4"
-  }, [_c("div", {
-    staticClass: "col-6"
+    staticClass: "col-md-12"
   }, [_c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
-      "has-items": _vm.cities.length !== 0,
-      "is-focused": _vm.activeField === "municipality"
+      "has-items": _vm.entry.financial_perspective_id !== null,
+      "is-focused": _vm.activeField == "financial_perspective"
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.municipality")))]), _vm._v(" "), _c("v-select", {
-    key: "municipality-field",
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.financial_perspective")))]), _vm._v(" "), _c("v-select", {
+    key: "financial_perspective-field",
     attrs: {
-      name: "municipality",
-      label: "name",
-      reduce: function reduce(city) {
-        return city.id;
-      },
-      value: _vm.query.municipality,
-      options: _vm.cities,
-      closeOnSelect: false,
-      multiple: ""
+      name: "financial_perspective",
+      label: "perspective",
+      value: _vm.entry.financial_perspective_id,
+      options: _vm.lists.financial_perspective,
+      reduce: function reduce(entry) {
+        return entry.id;
+      }
     },
     on: {
+      input: _vm.updateFinancialPerspective,
       search: [function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("municipality");
+        return _vm.focusField("financial_perspective");
       }, function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
         return _vm.clearFocus.apply(null, arguments);
       }]
-    },
-    model: {
-      value: _vm.query.municipality,
-      callback: function callback($$v) {
-        _vm.$set(_vm.query, "municipality", $$v);
-      },
-      expression: "query.municipality"
     }
-  })], 1)]), _vm._v(" "), _c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
-      "has-items": _vm.cities.length !== 0,
-      "is-focused": _vm.activeField === "sector"
+      "has-items": _vm.entry.programme_id !== null,
+      "is-focused": _vm.activeField == "programme"
     }
   }, [_c("label", {
-    staticClass: "bmd-label-floating"
+    staticClass: "bmd-label-floating required"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
+    key: "programme-field",
+    attrs: {
+      name: "programme",
+      label: "name",
+      value: _vm.entry.programme_id,
+      options: _vm.lists.programme,
+      reduce: function reduce(entry) {
+        return entry.id;
+      }
+    },
+    on: {
+      input: _vm.updateProgramme,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("programme");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.sector.length !== 0,
+      "is-focused": _vm.activeField == "sector"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating required"
   }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.sector")))]), _vm._v(" "), _c("v-select", {
     key: "sector-field",
     attrs: {
       name: "sector",
       label: "name",
-      reduce: function reduce(sector) {
-        return sector.id;
-      },
-      value: _vm.query.sector,
-      options: _vm.sectors,
+      value: _vm.entry.sector,
+      options: _vm.lists.sector,
       closeOnSelect: false,
       multiple: ""
     },
     on: {
+      input: _vm.updateSector,
       search: [function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
         return _vm.focusField("sector");
@@ -310,90 +252,445 @@ var render = function render() {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
         return _vm.clearFocus.apply(null, arguments);
       }]
-    },
-    model: {
-      value: _vm.query.sector,
-      callback: function callback($$v) {
-        _vm.$set(_vm.query, "sector", $$v);
-      },
-      expression: "query.sector"
     }
-  })], 1)]), _vm._v(" "), _c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
-      "has-items": _vm.cities.length !== 0,
-      "is-focused": _vm.activeField === "programme"
+      "has-items": _vm.entry.contract_title,
+      "is-focused": _vm.activeField == "contract_title"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating required"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_title")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      required: ""
+    },
+    domProps: {
+      value: _vm.entry.contract_title
+    },
+    on: {
+      input: _vm.updateContractTitle,
+      focus: function focus($event) {
+        return _vm.focusField("contract_title");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.commitment_year,
+      "is-focused": _vm.activeField == "commitment_year"
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
-    key: "programme-field",
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.commitment_year")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
-      name: "programme",
-      label: "name",
-      reduce: function reduce(programme) {
-        return programme.id;
+      type: "number",
+      step: "1"
+    },
+    domProps: {
+      value: _vm.entry.commitment_year
+    },
+    on: {
+      input: _vm.updateCommitmentYear,
+      focus: function focus($event) {
+        return _vm.focusField("commitment_year");
       },
-      value: _vm.query.programme,
-      options: _vm.programmes,
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contract_year,
+      "is-focused": _vm.activeField == "contract_year"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_year")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "number",
+      step: "1"
+    },
+    domProps: {
+      value: _vm.entry.contract_year
+    },
+    on: {
+      input: _vm.updateContractYear,
+      focus: function focus($event) {
+        return _vm.focusField("contract_year");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.start_date,
+      "is-focused": _vm.activeField == "start_date"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.start_date")))]), _vm._v(" "), _c("datetime-picker", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      picker: "date",
+      value: _vm.entry.start_date
+    },
+    on: {
+      input: _vm.updateStartDate,
+      focus: function focus($event) {
+        return _vm.focusField("start_date");
+      },
+      blur: _vm.clearFocus
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_date")))]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.end_date,
+      "is-focused": _vm.activeField == "end_date"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_date_helper")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.end_date
+    },
+    on: {
+      input: _vm.updateEndDate,
+      focus: function focus($event) {
+        return _vm.focusField("end_date");
+      },
+      blur: _vm.clearFocus
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contract_number,
+      "is-focused": _vm.activeField == "contract_number"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_number")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.contract_number
+    },
+    on: {
+      input: _vm.updateContractNumber,
+      focus: function focus($event) {
+        return _vm.focusField("contract_number");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contracting_party,
+      "is-focused": _vm.activeField == "contracting_party"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contracting_party")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.contracting_party
+    },
+    on: {
+      input: _vm.updateContractingParty,
+      focus: function focus($event) {
+        return _vm.focusField("contracting_party");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contract_type.length !== 0,
+      "is-focused": _vm.activeField == "contract_type"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_type")))]), _vm._v(" "), _c("v-select", {
+    key: "contract_type-field",
+    attrs: {
+      name: "contract_type",
+      label: "name",
+      value: _vm.entry.contract_type,
+      options: _vm.lists.contract_type,
       closeOnSelect: false,
       multiple: ""
     },
     on: {
+      input: _vm.updateContractType,
       search: [function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("porgramme");
+        return _vm.focusField("contract_type");
       }, function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
         return _vm.clearFocus.apply(null, arguments);
       }]
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.end_beneficiary,
+      "is-focused": _vm.activeField == "end_beneficiary"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_beneficiary")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
     },
-    model: {
-      value: _vm.query.programme,
-      callback: function callback($$v) {
-        _vm.$set(_vm.query, "programme", $$v);
+    domProps: {
+      value: _vm.entry.end_beneficiary
+    },
+    on: {
+      input: _vm.updateEndBeneficiary,
+      focus: function focus($event) {
+        return _vm.focusField("end_beneficiary");
       },
-      expression: "query.programme"
+      blur: _vm.clearFocus
     }
-  })], 1)])])])], 1), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("div", {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.loading,
-      expression: "loading"
-    }],
-    staticClass: "table-overlay"
-  }, [_c("div", {
-    staticClass: "table-overlay-container"
-  }, [_c("material-spinner"), _vm._v(" "), _c("span", [_vm._v("Loading...")])], 1)]), _vm._v(" "), _c("datatable", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contracted_eu_contribution,
+      "is-focused": _vm.activeField == "contracted_eu_contribution"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contracted_eu_contribution")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
-      columns: _vm.columns,
-      data: _vm.data,
-      total: _vm.total,
-      query: _vm.query,
-      xprops: _vm.xprops,
-      HeaderSettings: false,
-      pageSizeOptions: [10, 25, 50, 100]
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.contracted_eu_contribution
+    },
+    on: {
+      input: _vm.updateContractedEuContribution,
+      focus: function focus($event) {
+        return _vm.focusField("contracted_eu_contribution");
+      },
+      blur: _vm.clearFocus
     }
-  }, [_c("global-search", {
-    staticClass: "pull-left",
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.co_funding,
+      "is-focused": _vm.activeField == "co_funding"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.co_funding")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
-      query: _vm.query
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.co_funding
+    },
+    on: {
+      input: _vm.updateCoFunding,
+      focus: function focus($event) {
+        return _vm.focusField("co_funding");
+      },
+      blur: _vm.clearFocus
     }
-  }), _vm._v(" "), _c("header-settings", {
-    staticClass: "pull-right",
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.loan,
+      "is-focused": _vm.activeField == "loan"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.loan")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
     attrs: {
-      columns: _vm.columns
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.loan
+    },
+    on: {
+      input: _vm.updateLoan,
+      focus: function focus($event) {
+        return _vm.focusField("loan");
+      },
+      blur: _vm.clearFocus
     }
-  })], 1)], 1)])])])])])]);
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.total_euro_value,
+      "is-focused": _vm.activeField == "total_euro_value"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.total_euro_value")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.total_euro_value
+    },
+    on: {
+      input: _vm.updateTotalEuroValue,
+      focus: function focus($event) {
+        return _vm.focusField("total_euro_value");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.municipality.length !== 0,
+      "is-focused": _vm.activeField == "municipality"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating required"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.municipality")))]), _vm._v(" "), _c("v-select", {
+    key: "municipality-field",
+    attrs: {
+      name: "municipality",
+      label: "name",
+      value: _vm.entry.municipality,
+      options: _vm.lists.municipality,
+      closeOnSelect: false,
+      multiple: ""
+    },
+    on: {
+      input: _vm.updateMunicipality,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("municipality");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.short_description,
+      "is-focused": _vm.activeField == "short_description"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating required"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.short_description")))]), _vm._v(" "), _c("textarea", {
+    staticClass: "form-control",
+    attrs: {
+      rows: "5",
+      required: ""
+    },
+    domProps: {
+      value: _vm.entry.short_description
+    },
+    on: {
+      input: _vm.updateShortDescription,
+      focus: function focus($event) {
+        return _vm.focusField("short_description");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.keywords,
+      "is-focused": _vm.activeField == "keywords"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.keywords")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.keywords
+    },
+    on: {
+      input: _vm.updateKeywords,
+      focus: function focus($event) {
+        return _vm.focusField("keywords");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.links_to_project_page,
+      "is-focused": _vm.activeField == "links_to_project_page"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.links_to_project_page")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.links_to_project_page
+    },
+    on: {
+      input: _vm.updateLinksToProjectPage,
+      focus: function focus($event) {
+        return _vm.focusField("links_to_project_page");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group form-check has-items"
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.show_helper")))]), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label"
+  }, [_c("input", {
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox"
+    },
+    domProps: {
+      value: _vm.entry.show,
+      checked: _vm.entry.show
+    },
+    on: {
+      change: _vm.updateShow
+    }
+  }), _vm._m(1), _vm._v(_vm._s(_vm.$t("cruds.project.fields.show")))])])])])], 1), _vm._v(" "), _c("div", {
+    staticClass: "card-footer"
+  }, [_c("vue-button-spinner", {
+    staticClass: "btn-primary",
+    attrs: {
+      status: _vm.status,
+      isLoading: _vm.loading,
+      disabled: _vm.loading
+    }
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("global.save")) + "\n                        ")])], 1)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -402,24 +699,32 @@ var staticRenderFns = [function () {
     staticClass: "card-icon"
   }, [_c("i", {
     staticClass: "material-icons"
-  }, [_vm._v("assignment")])]);
+  }, [_vm._v("edit")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
+    staticClass: "form-check-sign"
+  }, [_c("span", {
+    staticClass: "check"
+  })]);
 }];
 render._withStripped = true;
 
 
 /***/ }),
 
-/***/ "./resources/adminapp/js/cruds/Projects/Index.vue":
-/*!********************************************************!*\
-  !*** ./resources/adminapp/js/cruds/Projects/Index.vue ***!
-  \********************************************************/
+/***/ "./resources/adminapp/js/cruds/Projects/Edit.vue":
+/*!*******************************************************!*\
+  !*** ./resources/adminapp/js/cruds/Projects/Edit.vue ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=047f8778& */ "./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778&");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=a91c6658& */ "./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -429,9 +734,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -441,38 +746,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/adminapp/js/cruds/Projects/Index.vue"
+component.options.__file = "resources/adminapp/js/cruds/Projects/Edit.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************!*\
-  !*** ./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************/
+/***/ "./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778&":
-/*!***************************************************************************************!*\
-  !*** ./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778& ***!
-  \***************************************************************************************/
+/***/ "./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658&":
+/*!**************************************************************************************!*\
+  !*** ./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658& ***!
+  \**************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=template&id=047f8778& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Index.vue?vue&type=template&id=047f8778&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=a91c6658& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/adminapp/js/cruds/Projects/Edit.vue?vue&type=template&id=a91c6658&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_047f8778___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_a91c6658___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
