@@ -49,3 +49,5 @@ Route::get('all-cities', [\App\Http\Controllers\Api\V1\Admin\ProjectApiControlle
 Route::get('all-sectors', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allSectors'])->name('all-sectors');
 Route::get('all-programmes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allProgrammes'])->name('all-programmes');
 Route::get('all-ctypes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allCtypes'])->name('all-ctypes');
+Route::get('v1/projects-client', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'indexClient'])->name('projects-client');
+Route::get('v1/projects-client/{project}', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'showClient'])->name('projects-client-single');

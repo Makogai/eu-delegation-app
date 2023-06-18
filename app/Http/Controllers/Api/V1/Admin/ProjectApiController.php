@@ -37,7 +37,6 @@ class ProjectApiController extends Controller
     }
     public function index(Request $request)
     {
-        abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // Start the query
         $projectsQuery = Project::query();
@@ -90,6 +89,82 @@ class ProjectApiController extends Controller
         }
 
         else{
+            abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+            $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
+                ->projectFilters($request)
+                ->paginate($request->limit, ['*'], 'page', $request->page);
+
+            return new ProjectResource($projects);
+        }
+
+        return response()->json([
+            'projects' => ProjectResource::collection($projects),
+            'sectors' => $sectors,
+            'total' => $projects->count(),
+            'totalSectors' => count($sectors),
+            'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
+            'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
+        ]);
+    }
+
+
+    public function indexClient(Request $request)
+    {
+
+        // Start the query
+        $projectsQuery = Project::query();
+
+        // if request has isClient
+        if ($request->isClient) {
+            $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
+
+            if ($request->has('municipality') && $request->municipality) {
+                $projectsQuery->whereHas('municipality', function ($query) use ($request) {
+                    $query->whereIn('id', $request->municipality);
+                });
+            }
+
+            if ($request->has('keywords') && $request->keywords) {
+                $keywords = $request->keywords;
+
+                $projectsQuery->where(function($query) use ($keywords){
+                    $query->where('contract_title', 'like', '%' . $keywords . '%')
+                        ->orWhere('keywords', 'like', '%' . $keywords . '%')
+                        ->orWhere('short_description', 'like', '%' . $keywords . '%');
+                });
+            }
+
+
+            if ($request->has('programme') && $request->programme) {
+                $projectsQuery->whereHas('programme', function ($query) use ($request) {
+                    $query->whereIn('id', $request->programme);
+                });
+            }
+
+            if ($request->has('sector') && $request->sector) {
+                $projectsQuery->whereHas('sector', function($query) use ($request){
+                    $query->whereIn('id', $request->sector);
+                });
+            }
+
+            $projects = $projectsQuery->get();
+
+            $sectors = [];
+            foreach ($projects as $project) {
+                foreach ($project->sector as $sector) {
+                    if (!array_key_exists($sector->id, $sectors)) {
+                        $sectors[$sector->id] = ['sector' => $sector, 'count' => 1];
+                    } else {
+                        $sectors[$sector->id]['count']++;
+                    }
+                }
+            }
+        }
+
+        else{
+            abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
             $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
                 ->projectFilters($request)
                 ->paginate($request->limit, ['*'], 'page', $request->page);
@@ -163,6 +238,12 @@ class ProjectApiController extends Controller
     public function show(Project $project)
     {
         abort_if(Gate::denies('project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective']));
+    }
+    public function showClient(Project $project)
+    {
+//        abort_if(Gate::denies('project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective']));
     }

@@ -11,7 +11,7 @@ function initialState() {
   }
 }
 
-const route = 'projects?isClient=true'
+const route = 'projects-client?isClient=true'
 
 const getters = {
   data: state => state.data,

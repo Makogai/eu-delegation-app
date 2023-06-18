@@ -241,7 +241,7 @@ var render = function render() {
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.municipality")))]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Municipality")]), _vm._v(" "), _c("v-select", {
     key: "municipality-field",
     attrs: {
       name: "municipality",
@@ -270,7 +270,7 @@ var render = function render() {
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.sector")))]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Sector")]), _vm._v(" "), _c("v-select", {
     key: "sector-field",
     attrs: {
       name: "sector",
@@ -299,7 +299,7 @@ var render = function render() {
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v("Programme")]), _vm._v(" "), _c("v-select", {
     key: "programme-field",
     attrs: {
       name: "programme",

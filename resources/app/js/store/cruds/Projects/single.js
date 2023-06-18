@@ -36,7 +36,7 @@ function initialState() {
   }
 }
 
-const route = 'projects'
+const route = 'projects-client'
 
 const getters = {
   entry: state => state.entry,

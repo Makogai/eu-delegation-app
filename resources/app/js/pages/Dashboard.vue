@@ -25,9 +25,7 @@
                           'has-items': cities.length !== 0,
                             }"
                             >
-                                <label class="bmd-label-floating">{{
-                                        $t('cruds.project.fields.municipality')
-                                    }}</label>
+                                <label class="bmd-label-floating">Municipality</label>
                                 <v-select
                                     name="municipality"
                                     label="name"
@@ -48,9 +46,7 @@
                           'has-items': sectors.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">{{
-                                        $t('cruds.project.fields.sector')
-                                    }}</label>
+                                <label class="bmd-label-floating">Sector</label>
                                 <v-select
                                     name="sector"
                                     label="name"
@@ -72,9 +68,7 @@
                           'has-items': cities.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">{{
-                                        $t('cruds.project.fields.programme')
-                                    }}</label>
+                                <label class="bmd-label-floating">Programme</label>
                                 <v-select
                                     name="programme"
                                     label="name"

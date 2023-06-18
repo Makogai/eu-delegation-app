@@ -10,7 +10,7 @@
             <div class="col-10">
                 <button type="button" class="btn btn-default bg-primaryeu2" @click="$router.go(-1)">
                     <i class="material-icons">arrow_back</i>
-                    {{ $t('global.back') }}
+                    GO BACK
                 </button>
 
                 <div class="card shadow-sm p-3">

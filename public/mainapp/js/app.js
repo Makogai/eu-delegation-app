@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"19dafa0f1a4ea5cafff9","12":"340d22efb48ae6dcfa0c","13":"b2a820cafafe940727cb"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"6d340ed7839f9ab9a3fb","12":"340d22efb48ae6dcfa0c","13":"7ebfb1178f32d7936ba7"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -54284,14 +54284,18 @@ window.objectToFormData = __webpack_require__(/*! object-to-formdata */ "./node_
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.baseURL = '/api/v1/';
-window.axios.interceptors.response.use(function (response) {
-  return response;
-}, function (error) {
-  if (error.response.status === 401 || error.response.status === 419) {
-    location.assign('/login');
-  }
-  return Promise.reject(error);
-});
+// window.axios.interceptors.response.use(
+//   function (response) {
+//     return response
+//   },
+//   function (error) {
+//     if (error.response.status === 401 || error.response.status === 419) {
+//       location.assign('/login')
+//     }
+//
+//     return Promise.reject(error)
+//   }
+// )
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -56539,7 +56543,7 @@ function initialState() {
     loading: false
   };
 }
-var route = 'projects?isClient=true';
+var route = 'projects-client?isClient=true';
 var getters = {
   data: function data(state) {
     return state.data;
@@ -56656,7 +56660,7 @@ function initialState() {
     loading: false
   };
 }
-var route = 'projects';
+var route = 'projects-client';
 var getters = {
   entry: function entry(state) {
     return state.entry;
