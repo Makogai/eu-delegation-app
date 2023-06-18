@@ -4,7 +4,7 @@
             <img src="/md/img/logo-large-new2.png" alt="">
             <div class="row">
                 <div class="col-md-3 d-sm-none d-xl-block">
-                    <div class="row py-4 mt-5 pr-5">
+                    <div class="row py-4 mt-5 pr-md-5 pr-0">
                         <h4 class="py-2 d-block bg-primaryeu text-white">FILTER</h4>
 
 
@@ -92,7 +92,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-3 d-sm-none d-md-block">
+                <div class="col-sm-12 col-lg-3 d-none d-md-block">
                     <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
                 </div>
                 <div class="col-md-12 col-lg-9 col-xl-6 projects-holderaa px-4">
@@ -325,20 +325,34 @@
 }
 
 .projects-holderaa {
-    margin-top: -137px;
+    //margin-top: -137px;
     //height: 20vh!important;
     background: transparent!important;
-
 }
 
-// Media query for small phones
-@media (max-width: 320px) {
+/* CSS for small screens */
+@media (max-width: 768px) {
     .projects-holderaa {
-        margin-top: 0px!important;
-        height: 20vh!important;
-        background: transparent!important;
+        margin-top: 0;
+        font-size: 12px; /* Change to your preferred small screen font size */
+
+    }
+    .projects-title {
+        text-align: center!important;
     }
 }
+
+/* CSS for large screens */
+@media (min-width: 769px) {
+    .projects-holderaa {
+        margin-top: -137px;
+        font-size: 16px; /* Change to your preferred large screen font size */
+    }
+}
+
+
+
+
 
 .projects-holderaa .card {
     background: transparent!important;
@@ -411,7 +425,7 @@
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
 
-@media screen and (max-width: 1700px)
+
 
 .map-info-box {
     max-width: 300px;
@@ -457,6 +471,16 @@
 
 .map-info-box {
     width: 100%;
+}
+
+
+// Media query for small phones
+
+@media only screen and (max-width: 400px) {
+    .projects-holderaa {
+        margin-top: 0px!important;
+        background: red!important; /* Just for testing purposes */
+    }
 }
 </style>
 
