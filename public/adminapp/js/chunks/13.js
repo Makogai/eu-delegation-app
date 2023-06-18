@@ -77,7 +77,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "material-icons"
-  }, [_vm._v("arrow_back")]), _vm._v("\n                " + _vm._s(_vm.$t("global.back")) + "\n            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("arrow_back")]), _vm._v("\n                GO BACK\n            ")]), _vm._v(" "), _c("div", {
     staticClass: "card shadow-sm p-3"
   }, [_c("div", {
     staticClass: "row row-cols-1 row-cols-lg-2 gx-5"

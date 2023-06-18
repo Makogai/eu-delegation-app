@@ -92,7 +92,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-3">
+                <div class="col-sm-12 col-lg-3 d-sm-none d-md-block">
                     <CountryMap @state-clicked="handleStateClicked" @back-clicked="resetQuery"></CountryMap>
                 </div>
                 <div class="col-md-12 col-lg-9 col-xl-6 projects-holderaa px-4">
@@ -329,6 +329,15 @@
     //height: 20vh!important;
     background: transparent!important;
 
+}
+
+// Media query for small phones
+@media (max-width: 320px) {
+    .projects-holderaa {
+        margin-top: 0px!important;
+        height: 20vh!important;
+        background: transparent!important;
+    }
 }
 
 .projects-holderaa .card {
