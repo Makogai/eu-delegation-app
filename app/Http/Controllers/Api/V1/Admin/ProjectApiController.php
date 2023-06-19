@@ -22,20 +22,40 @@ class ProjectApiController extends Controller
 
     public function allCities()
     {
-        return \response()->json(City::all());
+        $cities = Cache::remember('cities', now()->addDays(2), function () {
+            return City::all();
+        });
+
+        return response()->json($cities);
     }
+
     public function allSectors()
     {
-        return \response()->json(Sector::all());
+        $sectors = Cache::remember('sectors', now()->addDays(2), function () {
+            return Sector::all();
+        });
+
+        return response()->json($sectors);
     }
+
     public function allProgrammes()
     {
-        return \response()->json(Programme::all());
+        $programmes = Cache::remember('programmes', now()->addDays(2), function () {
+            return Programme::all();
+        });
+
+        return response()->json($programmes);
     }
+
     public function allCtypes()
     {
-        return \response()->json(FundingType::all());
+        $fundingTypes = Cache::remember('fundingTypes', now()->addDays(2), function () {
+            return FundingType::all();
+        });
+
+        return response()->json($fundingTypes);
     }
+
     public function index(Request $request)
     {
         // Start the query
@@ -71,10 +91,7 @@ class ProjectApiController extends Controller
 
     public function indexClient(Request $request)
     {
-
-        // Start the query
-        $projectsQuery = Project::query();
-
+        $cacheKey = 'projects_' . $request->getQueryString();
         $years = Cache::remember('years', now()->addDays(7), function () {
             return Project::all()
                 ->pluck('year')
@@ -84,8 +101,9 @@ class ProjectApiController extends Controller
                 ->values();
         });
 
-        // if request has isClient
-        if ($request->isClient) {
+        $data = Cache::remember($cacheKey, now()->addDays(1), function () use ($request, $years) {
+            // Start the query
+            $projectsQuery = Project::query();
             $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
 
             if ($request->has('municipality') && $request->municipality) {
@@ -96,14 +114,12 @@ class ProjectApiController extends Controller
 
             if ($request->has('keywords') && $request->keywords) {
                 $keywords = $request->keywords;
-
-                $projectsQuery->where(function($query) use ($keywords){
+                $projectsQuery->where(function($query) use ($keywords) {
                     $query->where('contract_title', 'like', '%' . $keywords . '%')
                         ->orWhere('keywords', 'like', '%' . $keywords . '%')
                         ->orWhere('short_description', 'like', '%' . $keywords . '%');
                 });
             }
-
 
             if ($request->has('programme') && $request->programme) {
                 $projectsQuery->whereHas('programme', function ($query) use ($request) {
@@ -121,7 +137,6 @@ class ProjectApiController extends Controller
                 $projectsQuery->whereYear('start_date', $request->startYear);
             }
 
-
             $projects = $projectsQuery->get();
 
             $sectors = [];
@@ -134,28 +149,22 @@ class ProjectApiController extends Controller
                     }
                 }
             }
-        }
 
-        else{
-            abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+            return [
+                'projects' => ProjectResource::collection($projects),
+                'sectors' => $sectors,
+                'total' => $projects->count(),
+                'years' => $years,
+                'totalSectors' => count($sectors),
+                'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
+                'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
+            ];
+        });
 
-            $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
-                ->projectFilters($request)
-                ->paginate($request->limit, ['*'], 'page', $request->page);
-
-            return new ProjectResource($projects);
-        }
-
-        return response()->json([
-            'projects' => ProjectResource::collection($projects),
-            'sectors' => $sectors,
-            'total' => $projects->count(),
-            'years' => $years,
-            'totalSectors' => count($sectors),
-            'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
-            'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
-        ]);
+        return response()->json($data);
     }
+
+
 
     function format_number($number) {
         if ($number >= 1000000000) {
