@@ -101,7 +101,7 @@ class Project extends Model
         'deleted_at',
     ];
 
-    protected $appends =[ 'duration'];
+    protected $appends =[ 'duration', 'year'];
 
 
 //    public static function bootSoftDeletes()
@@ -209,6 +209,12 @@ class Project extends Model
         }
 
         return $query;
+    }
+
+    public function getYearAttribute()
+    {
+        // Return year from start_date
+        return $this->start_date ? Carbon::parse($this->start_date)->format('Y') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)

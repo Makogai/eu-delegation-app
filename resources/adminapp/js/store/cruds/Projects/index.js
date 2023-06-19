@@ -7,6 +7,8 @@ function initialState() {
     data: [],
     total: 0,
     query: {},
+      totalValue: 0,
+      totalEUValue: 0,
     loading: false
   }
 }
@@ -15,6 +17,8 @@ const route = 'projects'
 
 const getters = {
   data: state => state.data,
+    totalValue: state => state.totalValue,
+    totalEUValue: state => state.totalEUValue,
   total: state => state.total,
   loading: state => state.loading
 }
@@ -27,6 +31,8 @@ const actions = {
       .then(response => {
         commit('setData', response.data.data)
         commit('setTotal', response.data.total)
+        commit('setTotalValue', response.data.total_euro_value)
+        commit('setTotalEUValue', response.data.total_eu_value)
       })
       .catch(error => {
         message = error.response.data.message || error.message
@@ -58,6 +64,8 @@ const actions = {
 const mutations = {
   setData: set('data'),
   setTotal: set('total'),
+  setTotalValue: set('totalValue'),
+  setTotalEUValue: set('totalEUValue'),
   setQuery(state, query) {
     query.page = (query.offset + query.limit) / query.limit
     state.query = query

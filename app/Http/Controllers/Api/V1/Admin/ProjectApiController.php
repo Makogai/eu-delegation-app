@@ -15,6 +15,7 @@ use App\Models\Sector;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 
 class ProjectApiController extends Controller
 {
@@ -37,75 +38,34 @@ class ProjectApiController extends Controller
     }
     public function index(Request $request)
     {
-
         // Start the query
         $projectsQuery = Project::query();
 
-        // if request has isClient
-        if ($request->isClient) {
-            $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
+        abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-            if ($request->has('municipality') && $request->municipality) {
-                $projectsQuery->whereHas('municipality', function ($query) use ($request) {
-                    $query->whereIn('id', $request->municipality);
-                });
-            }
+        $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
+            ->projectFilters($request);
 
-            if ($request->has('keywords') && $request->keywords) {
-                $keywords = $request->keywords;
+        $totalEuroValue = $projects->sum('total_euro_value');
+        $totalEUValue = $projects->sum('contracted_eu_contribution');
 
-                $projectsQuery->where(function($query) use ($keywords){
-                    $query->where('contract_title', 'like', '%' . $keywords . '%')
-                        ->orWhere('keywords', 'like', '%' . $keywords . '%')
-                        ->orWhere('short_description', 'like', '%' . $keywords . '%');
-                });
-            }
+        $projects = $projects
+            ->paginate($request->limit, ['*'], 'page', $request->page);
 
-
-            if ($request->has('programme') && $request->programme) {
-                $projectsQuery->whereHas('programme', function ($query) use ($request) {
-                    $query->whereIn('id', $request->programme);
-                });
-            }
-
-            if ($request->has('sector') && $request->sector) {
-                $projectsQuery->whereHas('sector', function($query) use ($request){
-                    $query->whereIn('id', $request->sector);
-                });
-            }
-
-            $projects = $projectsQuery->get();
-
-            $sectors = [];
-            foreach ($projects as $project) {
-                foreach ($project->sector as $sector) {
-                    if (!array_key_exists($sector->id, $sectors)) {
-                        $sectors[$sector->id] = ['sector' => $sector, 'count' => 1];
-                    } else {
-                        $sectors[$sector->id]['count']++;
-                    }
-                }
-            }
-        }
-
-        else{
-            abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-            $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
-                ->projectFilters($request)
-                ->paginate($request->limit, ['*'], 'page', $request->page);
-
-            return new ProjectResource($projects);
-        }
-
-        return response()->json([
-            'projects' => ProjectResource::collection($projects),
-            'sectors' => $sectors,
-            'total' => $projects->count(),
-            'totalSectors' => count($sectors),
-            'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
-            'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
+        return (new ProjectResource($projects))->additional([
+            'total_euro_value' => $this->formatMoney($totalEuroValue). ' €',
+            'total_eu_value' => $this->formatMoney($totalEUValue) . ' €',
         ]);
+    }
+
+
+
+    //Format money (1000 to 1,000 etc)
+    public function formatMoney($number)
+    {
+        // Convert string to number
+        $number = intval($number);
+        return number_format($number, 0, '.', ',');
     }
 
 
@@ -115,6 +75,15 @@ class ProjectApiController extends Controller
         // Start the query
         $projectsQuery = Project::query();
 
+        $years = Cache::remember('years', now()->addDays(7), function () {
+            return Project::all()
+                ->pluck('year')
+                ->filter()
+                ->sortDesc()
+                ->unique()
+                ->values();
+        });
+
         // if request has isClient
         if ($request->isClient) {
             $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
@@ -148,6 +117,11 @@ class ProjectApiController extends Controller
                 });
             }
 
+            if ($request->has('startYear') && $request->startYear) {
+                $projectsQuery->whereYear('start_date', $request->startYear);
+            }
+
+
             $projects = $projectsQuery->get();
 
             $sectors = [];
@@ -176,6 +150,7 @@ class ProjectApiController extends Controller
             'projects' => ProjectResource::collection($projects),
             'sectors' => $sectors,
             'total' => $projects->count(),
+            'years' => $years,
             'totalSectors' => count($sectors),
             'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
             'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
@@ -185,19 +160,19 @@ class ProjectApiController extends Controller
     function format_number($number) {
         if ($number >= 1000000000) {
             return array(
-                'value' => number_format($number / 1000000000, 2) . 'B',
+                'value' => number_format($number / 1000000000, 1) . 'B',
                 'word' => 'MILIJARDI'
             );
         }
         else if ($number >= 1000000) {
             return array(
-                'value' => number_format($number / 1000000, 2) . 'M',
+                'value' => number_format($number / 1000000, 1) . 'M',
                 'word' => 'MILIONA'
             );
         }
         else if ($number >= 1000) {
             return array(
-                'value' => number_format($number / 1000, 2) . 'K',
+                'value' => number_format($number / 1000, 1) . 'K',
                 'word' => 'HILJADA'
             );
         }

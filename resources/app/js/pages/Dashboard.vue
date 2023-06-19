@@ -82,6 +82,26 @@
                                 />
                             </div>
                         </div>
+
+                        <div class="col-12 mt-5">
+                            <div
+                                class="form-group bmd-form-group cs startyear"
+                                :class="{
+                          'has-items': cities.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">Start Year</label>
+                                <v-select
+                                    name="programme"
+                                    label="name"
+                                    :options="data.years"
+                                    :closeOnSelect="false"
+                                    v-model="query.startYear"
+                                />
+                            </div>
+                        </div>
+
+
                         <div class="col-12 mt-3">
 
                             <button class="btn bg-primaryeu2 rounded-o px-3"><img src="303-loop2.svg"
@@ -264,6 +284,10 @@
 
 .sector .v-select:before {
     content: "drive" !important;
+}
+
+.startyear .v-select:before {
+    content: "clock" !important;
 }
 
 .cs .v-select .vs__dropdown-toggle {

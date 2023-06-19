@@ -154,7 +154,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
+  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
   watch: {
     query: {
       handler: function handler(query) {
@@ -357,7 +357,9 @@ var render = function render() {
       },
       expression: "query.programme"
     }
-  })], 1)])])])], 1), _vm._v(" "), _c("div", {
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mt-3"
+  }, [_c("h4", [_vm._v("Total value: "), _c("b", [_vm._v(_vm._s(_vm.totalValue))])]), _vm._v(" "), _c("h4", [_vm._v("Total EU Contribution: "), _c("b", [_vm._v(_vm._s(_vm.totalEUValue))])])])])])], 1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row"

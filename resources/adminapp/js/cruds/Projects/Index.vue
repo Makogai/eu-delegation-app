@@ -118,6 +118,11 @@
                       </div>
                   </div>
 
+                  <div class="col-12 mt-3">
+                      <h4>Total value: <b>{{ totalValue }}</b></h4>
+                      <h4>Total EU Contribution: <b>{{ totalEUValue }}</b></h4>
+                  </div>
+
               </div>
               </form>
           </div>
@@ -304,7 +309,7 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading']),
+    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue']),
     ...mapGetters('AllCities', ['cities']),
     ...mapGetters('AllProgrammes', ['programmes'])
   },

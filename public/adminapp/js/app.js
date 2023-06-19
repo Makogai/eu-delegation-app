@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","8":"976aff9bba4be6a42e2e","9":"acfaec164b6390f3250c","10":"3ff9a59b58789272195b","11":"7c0f67901edafd232abe","14":"da9a4cc987b522ea0467","15":"74390fcc82e9b2ef2036","16":"1a329ea88b0ad37373e2","17":"5683f6e7a2e666a35154","18":"7e19d3aefb6ce00f6d8a","19":"da24450d334468af131c","20":"d75c06910766936dc9f3","21":"c013b5682a7fb4b87d44","22":"6c4c1c3a5a356ca926b7","23":"decbca1df0091cc3ac11","24":"8e9925ba94ba16df4cc1","25":"e79c9c30c4c7ea75928a","26":"f086bfec5e4652aaa3c4","27":"c39e0c7fdef5dd163fef","28":"ad918189b2c339c4a574","29":"7243442e99c8903d7520","30":"8c3b7152bdc46b33d9f9","31":"6c902c8e462899e6a651","32":"d4be86b923ad65d14c10","33":"127a93ad0b49c299b84a","34":"5fc630ad70582c153756","35":"0d4867ec6a10fdb91377","36":"bf5ca0f25af457d1c0d6","37":"e19d0c6c608f3364dbae","38":"1ef060db7959d3d10717","39":"4c24b4b5323e59fa0af6","40":"a80d6ce138c9c71b0be4","41":"a4ed5d03a5435c87a366","42":"2b1903c2a9236124490c","43":"221b8ccd3a683be68cfb","44":"aa3fc7f71575d1e3205c","45":"ca435ff8f9a0a5e39e86","46":"9592600c7768576eb5de","47":"cac6101105c2b966ca41","48":"22260f69a3feb82286ae","49":"774f21966cbb9b35e7b0"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","8":"976aff9bba4be6a42e2e","9":"acfaec164b6390f3250c","10":"3ff9a59b58789272195b","11":"7c0f67901edafd232abe","14":"da9a4cc987b522ea0467","15":"74390fcc82e9b2ef2036","16":"1a329ea88b0ad37373e2","17":"5683f6e7a2e666a35154","18":"7e19d3aefb6ce00f6d8a","19":"da24450d334468af131c","20":"d75c06910766936dc9f3","21":"c013b5682a7fb4b87d44","22":"6c4c1c3a5a356ca926b7","23":"decbca1df0091cc3ac11","24":"8e9925ba94ba16df4cc1","25":"e79c9c30c4c7ea75928a","26":"f086bfec5e4652aaa3c4","27":"c39e0c7fdef5dd163fef","28":"ad918189b2c339c4a574","29":"7243442e99c8903d7520","30":"8c3b7152bdc46b33d9f9","31":"6c902c8e462899e6a651","32":"d4be86b923ad65d14c10","33":"127a93ad0b49c299b84a","34":"5fc630ad70582c153756","35":"0d4867ec6a10fdb91377","36":"bf5ca0f25af457d1c0d6","37":"e19d0c6c608f3364dbae","38":"1ef060db7959d3d10717","39":"4c24b4b5323e59fa0af6","40":"07f25159a727068d88c2","41":"a4ed5d03a5435c87a366","42":"2b1903c2a9236124490c","43":"221b8ccd3a683be68cfb","44":"aa3fc7f71575d1e3205c","45":"ca435ff8f9a0a5e39e86","46":"9592600c7768576eb5de","47":"cac6101105c2b966ca41","48":"22260f69a3feb82286ae","49":"774f21966cbb9b35e7b0"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -56894,6 +56894,8 @@ function initialState() {
     data: [],
     total: 0,
     query: {},
+    totalValue: 0,
+    totalEUValue: 0,
     loading: false
   };
 }
@@ -56901,6 +56903,12 @@ var route = 'projects';
 var getters = {
   data: function data(state) {
     return state.data;
+  },
+  totalValue: function totalValue(state) {
+    return state.totalValue;
+  },
+  totalEUValue: function totalEUValue(state) {
+    return state.totalEUValue;
   },
   total: function total(state) {
     return state.total;
@@ -56919,6 +56927,8 @@ var actions = {
     }).then(function (response) {
       commit('setData', response.data.data);
       commit('setTotal', response.data.total);
+      commit('setTotalValue', response.data.total_euro_value);
+      commit('setTotalEUValue', response.data.total_eu_value);
     })["catch"](function (error) {
       message = error.response.data.message || error.message;
       // TODO error handling
@@ -56949,6 +56959,8 @@ var actions = {
 var mutations = {
   setData: set('data'),
   setTotal: set('total'),
+  setTotalValue: set('totalValue'),
+  setTotalEUValue: set('totalEUValue'),
   setQuery: function setQuery(state, query) {
     query.page = (query.offset + query.limit) / query.limit;
     state.query = query;
