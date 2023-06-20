@@ -32,8 +32,9 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     public function sheets(): array
     {
         return [
+            'TAIEX' => new ProjectImport('TAIEX', '2007-2013'),
             'Horizon 2020' => new ProjectImport('Horizon 2020'),
-            'COSME' => new ProjectImport('COSME'),
+            'COSME' => new ProjectImport('COSME', '2014-2020'),
             'Erasmus+ new' => new ProjectImport('Erasumus+'),
             'WBIF new' => new ProjectImport('WBIF'),
             'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
@@ -42,7 +43,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
             'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
             'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
-            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean'),
+            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
             'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
             'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
             ' IPA II' => new ProjectImport('IPA', '2014-2020'),
@@ -80,6 +81,11 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'keywords' => $row['keywords'] ?? null,
             'links_to_project_page' => $row['links_to_project_page'] ?? null,
         ]);
+
+        // If row with name budget exists then add it as total_euro_value
+        if (array_key_exists('budget', $row) && $row['budget'] != null) {
+            $project->total_euro_value = $this->getNumberFromString($row['budget']);
+        }
 
         // Check if there is 'Sector 1' column in the excel file and if it is not empty then set the sector_id to the sector_id by the sector name
         if (array_key_exists('sector_1', $row) && $row['sector_1'] != null) {
