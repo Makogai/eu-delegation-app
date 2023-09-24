@@ -175,8 +175,8 @@ class Project extends Model
             $query->whereDate('start_date', $request->startDate);
         }
 
-        if ($request->has('endYear') && $request->endYear) {
-            $query->whereYear('end_date', $request->endYear);
+        if ($request->has('endDate') && $request->endDate) {
+            $query->where('end_date', $request->endDate);
         }
 
         if ($request->has('commitmentYear') && $request->commitmentYear) {
@@ -274,6 +274,11 @@ class Project extends Model
     public function municipality()
     {
         return $this->belongsToMany(City::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsToMany(Country::class);
     }
 
     public function financialPerspective()

@@ -120,10 +120,10 @@
 
                   <div class="col-6">
                       <div
-                          class="form-group bmd-form-group"
+                          class="form-group bmd-form-group is-filled"
                           :class="{
                       'has-items': query.start_date,
-                      'is-focused': activeField !== 'start_datea'
+                      'is-focused': activeField == 'start_date'
                     }"
                       >
                           <label class="bmd-label-floating">{{
@@ -142,6 +142,57 @@
                           </datetime-picker>
                       </div>
                   </div>
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group is-filled"
+                          :class="{
+                      'has-items': query.end_date,
+                    }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.start_date')
+                              }}</label>
+                          <datetime-picker
+                              class="form-control"
+                              type="text"
+                              picker="date"
+                              :value="query.endDate"
+                              v-model="query.endDate"
+                              @input="updateEndDate"
+                              @focus="focusField('end_date')"
+                              @blur="clearFocus"
+                          >
+                          </datetime-picker>
+                      </div>
+                  </div>
+
+
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group"
+                          :class="{
+                          // 'has-items': commitmentYears.length !== 0,
+                          'is-focused': activeField === 'commitment_year'
+                        }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.programme')
+                              }}</label>
+                          <v-select
+                              name="commitmentYear"
+                              label="name"
+                              :reduce="programme => programme.id"
+                              :key="'commitment-year-field'"
+                              :value="query.commitmentYear"
+                              :options="commitmentYears"
+                              :closeOnSelect="true"
+                              @search.focus="focusField('porgramme')"
+                              @search.blur="clearFocus"
+                              v-model="query.commitmentYear"
+                          />
+                      </div>
+                  </div>
+
 
                   <div class="col-12 mt-3">
                       <h4>Total value: <b>{{ totalValue }}</b></h4>
@@ -360,6 +411,9 @@ export default {
   methods: {
       updateStartDate(e) {
           this.query.startDate = e.target.value
+      },
+      updateEndDate(e) {
+          this.query.endDate = e.target.value
       },
       focusField(name) {
           // alert(name)

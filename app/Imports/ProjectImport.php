@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\City;
+use App\Models\Country;
 use App\Models\FinancialPerspective;
 use App\Models\FundingType;
 use App\Models\Programme;
@@ -42,9 +43,9 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 //            'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
 //            'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
 //            'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
-//            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
+            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
 //            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
-            'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
+//            'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
 //            'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
 //            ' IPA II' => new ProjectImport('IPA', '2014-2020'),
 //            'IPA I' => new ProjectImport('IPA', '2007-2013'),
@@ -93,6 +94,10 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             // Sector is hasMany relationship with Project model, so attach the sector to the project
             $project->sector()->attach($this->getSectorId($row['sector_1']));
         }
+        if (array_key_exists('sector', $row) && $row['sector'] != null) {
+            // Sector is hasMany relationship with Project model, so attach the sector to the project
+            $project->sector()->attach($this->getSectorId($row['sector']));
+        }
         if (array_key_exists('sector_2', $row) && $row['sector_2'] != null) {
             $project->sector()->attach($this->getSectorId($row['sector_2']));
         }
@@ -129,6 +134,27 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             }
 
         }
+
+        if (array_key_exists('participating_countries', $row)) {
+
+            // Regex for splitting by comma, semicolon, 'and', and spaces
+            $participatingCountriesCodes = preg_split('/,\s*|;\s*|\s+and\s+/', $row['participating_countries']);
+
+            foreach ($participatingCountriesCodes as $country) {
+                $country = trim($country);  // Trim any extra spaces
+                $countryModel = Country::where('code', strtoupper($country))->first();
+
+                if (!$countryModel) {
+                    // Handle case when the country is not found
+                    continue;  // Skip this loop iteration
+                }
+
+                // Attach the country to the project without detaching any existing countries.
+                $project->country()->syncWithoutDetaching([$countryModel->id]);
+            }
+        }
+
+
 
 
         if ( $this->financialPerspective){

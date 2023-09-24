@@ -396,6 +396,31 @@
                                             @search.blur="clearFocus"
                                         />
                                     </div>
+
+                                    <div
+                                        class="form-group bmd-form-group"
+                                        :class="{
+                      'has-items': entry.country.length !== 0,
+                      'is-focused': activeField == 'municipality'
+                    }"
+                                    >
+                                        <label class="bmd-label-floating required">{{
+                                                $t('cruds.project.fields.country')
+                                            }}</label>
+                                        <v-select
+                                            name="country"
+                                            label="name"
+                                            :key="'country-field'"
+                                            :value="entry.municipality"
+                                            :options="lists.country"
+                                            :closeOnSelect="false"
+                                            multiple
+                                            @input="updateCountry"
+                                            @search.focus="focusField('country')"
+                                            @search.blur="clearFocus"
+                                        />
+                                    </div>
+
                                     <div
                                         class="form-group bmd-form-group"
                                         :class="{
@@ -597,6 +622,9 @@ export default {
         },
         updateMunicipality(value) {
             this.setMunicipality(value)
+        },
+        updateCountry(value) {
+            this.setCountry(value)
         },
         updateShortDescription(e) {
             this.setShortDescription(e.target.value)

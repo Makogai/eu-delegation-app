@@ -230,6 +230,8 @@ return [
             'co_funding_party_helper'           => ' ',
             'municipality'                      => 'Municipality',
             'municipality_helper'               => ' ',
+            'country'                           => 'Country',
+            'country_helper'                    => ' ',
             'short_description'                 => 'Short Description',
             'short_description_helper'          => ' ',
             'end_beneficiary'                   => 'Beneficiary Institution',

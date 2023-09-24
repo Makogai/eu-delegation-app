@@ -176,6 +176,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     updateStartDate: function updateStartDate(e) {
       this.query.startDate = e.target.value;
     },
+    updateEndDate: function updateEndDate(e) {
+      this.query.endDate = e.target.value;
+    },
     focusField: function focusField(name) {
       // alert(name)
       this.activeField = name;
@@ -368,10 +371,10 @@ var render = function render() {
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-6"
   }, [_c("div", {
-    staticClass: "form-group bmd-form-group",
+    staticClass: "form-group bmd-form-group is-filled",
     "class": {
       "has-items": _vm.query.start_date,
-      "is-focused": _vm.activeField !== "start_datea"
+      "is-focused": _vm.activeField == "start_date"
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
@@ -395,6 +398,74 @@ var render = function render() {
         _vm.$set(_vm.query, "startDate", $$v);
       },
       expression: "query.startDate"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group is-filled",
+    "class": {
+      "has-items": _vm.query.end_date
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.start_date")))]), _vm._v(" "), _c("datetime-picker", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      picker: "date",
+      value: _vm.query.endDate
+    },
+    on: {
+      input: _vm.updateEndDate,
+      focus: function focus($event) {
+        return _vm.focusField("end_date");
+      },
+      blur: _vm.clearFocus
+    },
+    model: {
+      value: _vm.query.endDate,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "endDate", $$v);
+      },
+      expression: "query.endDate"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      // 'has-items': commitmentYears.length !== 0,
+      "is-focused": _vm.activeField === "commitment_year"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
+    key: "commitment-year-field",
+    attrs: {
+      name: "commitmentYear",
+      label: "name",
+      reduce: function reduce(programme) {
+        return programme.id;
+      },
+      value: _vm.query.commitmentYear,
+      options: _vm.commitmentYears,
+      closeOnSelect: true
+    },
+    on: {
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("porgramme");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    },
+    model: {
+      value: _vm.query.commitmentYear,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "commitmentYear", $$v);
+      },
+      expression: "query.commitmentYear"
     }
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-3"

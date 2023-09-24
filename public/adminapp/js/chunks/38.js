@@ -93,6 +93,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     updateMunicipality: function updateMunicipality(value) {
       this.setMunicipality(value);
     },
+    updateCountry: function updateCountry(value) {
+      this.setCountry(value);
+    },
     updateShortDescription: function updateShortDescription(e) {
       this.setShortDescription(e.target.value);
     },
@@ -622,6 +625,34 @@ var render = function render() {
       search: [function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
         return _vm.focusField("municipality");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.country.length !== 0,
+      "is-focused": _vm.activeField == "municipality"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating required"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.country")))]), _vm._v(" "), _c("v-select", {
+    key: "country-field",
+    attrs: {
+      name: "country",
+      label: "name",
+      value: _vm.entry.municipality,
+      options: _vm.lists.country,
+      closeOnSelect: false,
+      multiple: ""
+    },
+    on: {
+      input: _vm.updateCountry,
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("country");
       }, function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
         return _vm.clearFocus.apply(null, arguments);

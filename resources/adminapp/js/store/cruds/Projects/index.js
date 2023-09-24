@@ -9,7 +9,8 @@ function initialState() {
     query: {},
       totalValue: 0,
       totalEUValue: 0,
-    loading: false
+    loading: false,
+      commitmentYears: []
   }
 }
 

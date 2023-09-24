@@ -103,6 +103,14 @@ class StoreProjectRequest extends FormRequest
                 'integer',
                 'exists:cities,id',
             ],
+            'country' => [
+                'required',
+                'array',
+            ],
+            'country.*.id' => [
+                'integer',
+                'exists:countries,id',
+            ],
             'short_description' => [
                 'string',
                 'required',

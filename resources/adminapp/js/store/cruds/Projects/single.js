@@ -20,6 +20,7 @@ function initialState() {
       loan: '',
       total_euro_value: '',
       municipality: [],
+      country: [],
       short_description: '',
       keywords: '',
       links_to_project_page: '',
@@ -165,6 +166,9 @@ const actions = {
   setMunicipality({ commit }, value) {
     commit('setMunicipality', value)
   },
+    setCountry({ commit }, value) {
+        commit('setCountry', value)
+    },
   setShortDescription({ commit }, value) {
     commit('setShortDescription', value)
   },
@@ -265,6 +269,9 @@ const mutations = {
   setMunicipality(state, value) {
     state.entry.municipality = value
   },
+    setCountry(state, value) {
+        state.entry.country = value
+    },
   setShortDescription(state, value) {
     state.entry.short_description = value
   },

@@ -84,6 +84,12 @@ export default {
           thComp: TranslatedHeader,
           sortable: true
         },
+          {
+              title: 'cruds.country.fields.code',
+              field: 'code',
+              thComp: TranslatedHeader,
+              sortable: true
+          },
         {
           title: 'global.actions',
           thComp: TranslatedHeader,

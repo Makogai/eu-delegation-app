@@ -17,11 +17,13 @@ class Country extends Model
     protected $orderable = [
         'id',
         'name',
+        'code'
     ];
 
     protected $filterable = [
         'id',
         'name',
+        'code'
     ];
 
     protected $dates = [
@@ -35,6 +37,7 @@ class Country extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'code'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

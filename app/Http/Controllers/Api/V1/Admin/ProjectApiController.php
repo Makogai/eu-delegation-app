@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\Admin\ProjectResource;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\FundingType;
 use App\Models\Programme;
 use App\Models\Project;
@@ -247,6 +248,7 @@ class ProjectApiController extends Controller
         $project->sector()->sync($request->input('sector.*.id', []));
         $project->municipality()->sync($request->input('municipality.*.id', []));
         $project->contractType()->sync($request->input('contract_type.*.id', []));
+        $project->country()->sync($request->input('country.*.id', []));
 
         return (new ProjectResource($project))
             ->response()
@@ -263,6 +265,7 @@ class ProjectApiController extends Controller
                 'sector'        => Sector::get(['id', 'name']),
                 'contract_type' => FundingType::get(['id', 'name']),
                 'municipality'  => City::get(['id', 'name']),
+                'country'       => Country::get(['id', 'name']),
                 'financial_perspective' => FinancialPerspective::get(['id', 'perspective']),
             ],
         ]);
@@ -272,13 +275,13 @@ class ProjectApiController extends Controller
     {
         abort_if(Gate::denies('project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective']));
+        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective', 'country']));
     }
     public function showClient(Project $project)
     {
 //        abort_if(Gate::denies('project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective']));
+        return new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective', 'country']));
     }
 
     public function update(UpdateProjectRequest $request, Project $project)
@@ -287,6 +290,7 @@ class ProjectApiController extends Controller
         $project->sector()->sync($request->input('sector.*.id', []));
         $project->municipality()->sync($request->input('municipality.*.id', []));
         $project->contractType()->sync($request->input('contract_type.*.id', []));
+        $project->country()->sync($request->input('country.*.id', []));
 
 
         return (new ProjectResource($project))
@@ -299,12 +303,13 @@ class ProjectApiController extends Controller
         abort_if(Gate::denies('project_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
-            'data' => new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])),
+            'data' => new ProjectResource($project->load(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective', 'country'])),
             'meta' => [
                 'programme'     => Programme::get(['id', 'name']),
                 'sector'        => Sector::get(['id', 'name']),
                 'contract_type' => FundingType::get(['id', 'name']),
                 'municipality'  => City::get(['id', 'name']),
+                'country'       => Country::get(['id', 'name']),
                 'financial_perspective' => FinancialPerspective::get(['id', 'perspective']),
             ],
         ]);
