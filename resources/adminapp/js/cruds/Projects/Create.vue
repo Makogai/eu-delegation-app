@@ -228,6 +228,27 @@
                                             @blur="clearFocus"
                                         />
                                     </div>
+
+                                    <div
+                                        class="form-group bmd-form-group"
+                                        :class="{
+                      'has-items': entry.end_beneficiary,
+                      'is-focused': activeField == 'end_beneficiary'
+                    }"
+                                    >
+                                        <label class="bmd-label-floating">{{
+                                                $t('cruds.project.fields.end_beneficiary')
+                                            }}</label>
+                                        <input
+                                            class="form-control"
+                                            type="text"
+                                            :value="entry.end_beneficiary"
+                                            @input="updateEndBeneficiary"
+                                            @focus="focusField('end_beneficiary')"
+                                            @blur="clearFocus"
+                                        />
+                                    </div>
+
                                     <div
                                         class="form-group bmd-form-group"
                                         :class="{
@@ -251,25 +272,7 @@
                                             @search.blur="clearFocus"
                                         />
                                     </div>
-                                    <div
-                                        class="form-group bmd-form-group"
-                                        :class="{
-                      'has-items': entry.end_beneficiary,
-                      'is-focused': activeField == 'end_beneficiary'
-                    }"
-                                    >
-                                        <label class="bmd-label-floating">{{
-                                                $t('cruds.project.fields.end_beneficiary')
-                                            }}</label>
-                                        <input
-                                            class="form-control"
-                                            type="text"
-                                            :value="entry.end_beneficiary"
-                                            @input="updateEndBeneficiary"
-                                            @focus="focusField('end_beneficiary')"
-                                            @blur="clearFocus"
-                                        />
-                                    </div>
+
                                     <div
                                         class="form-group bmd-form-group"
                                         :class="{
@@ -307,6 +310,26 @@
                                             :value="entry.co_funding"
                                             @input="updateCoFunding"
                                             @focus="focusField('co_funding')"
+                                            @blur="clearFocus"
+                                        />
+                                    </div>
+                                    <div
+                                        class="form-group bmd-form-group"
+                                        :class="{
+                      'has-items': entry.contract_value_montenegro,
+                      'is-focused': activeField == 'contract_value_montenegro'
+                    }"
+                                    >
+                                        <label class="bmd-label-floating">{{
+                                                $t('cruds.project.fields.contract_value_montenegro')
+                                            }}</label>
+                                        <input
+                                            class="form-control"
+                                            type="number"
+                                            step="0.01"
+                                            :value="entry.contract_value_montenegro"
+                                            @input="updateContractValueMontenegro"
+                                            @focus="focusField('contract_value_montenegro')"
                                             @blur="clearFocus"
                                         />
                                     </div>
@@ -521,6 +544,10 @@ export default {
             this.setProgramme(value)
         },
         updateSector(value) {
+            if(value.length > 3) {
+                console.log(' you can only select two', e)
+                value.pop()
+            }
             this.setSector(value)
         },
         updateContractTitle(e) {
@@ -549,6 +576,9 @@ export default {
         },
         updateContractedEuContribution(e) {
             this.setContractedEuContribution(e.target.value)
+        },
+        updateContractValueMontenegro(e) {
+            this.setContractValueMontenegro(e.target.value)
         },
         updateCoFundingOrLoan(e) {
             this.setCoFundingOrLoan(e.target.value)

@@ -32,22 +32,22 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
     public function sheets(): array
     {
         return [
-            'TAIEX' => new ProjectImport('TAIEX', '2007-2013'),
-            'Horizon 2020' => new ProjectImport('Horizon 2020'),
-            'COSME' => new ProjectImport('COSME', '2014-2020'),
-            'Erasmus+ new' => new ProjectImport('Erasumus+'),
-            'WBIF new' => new ProjectImport('WBIF'),
-            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
-            'CBC MNE-ALB' => new ProjectImport('CBC MNE-ALB'),
-            'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
-            'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
-            'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
-            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
-            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
+//            'TAIEX' => new ProjectImport('TAIEX', '2007-2013'),
+//            'Horizon 2020' => new ProjectImport('Horizon 2020'),
+//            'COSME' => new ProjectImport('COSME', '2014-2020'),
+//            'Erasmus+ new' => new ProjectImport('Erasumus+'),
+//            'WBIF new' => new ProjectImport('WBIF'),
+//            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
+//            'CBC MNE-ALB' => new ProjectImport('CBC MNE-ALB'),
+//            'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
+//            'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
+//            'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
+//            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
+//            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
             'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
-            'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
-            ' IPA II' => new ProjectImport('IPA', '2014-2020'),
-            'IPA I' => new ProjectImport('IPA', '2007-2013'),
+//            'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
+//            ' IPA II' => new ProjectImport('IPA', '2014-2020'),
+//            'IPA I' => new ProjectImport('IPA', '2007-2013'),
         ];
     }
     /**
@@ -79,7 +79,8 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'short_description' => $row['short_description'] ?? "null",
             'end_beneficiary' => $row['partners'] ?? null,
             'keywords' => $row['keywords'] ?? null,
-            'links_to_project_page' => $row['links_to_project_page'] ?? null,
+            'links_to_project_page' => $this->formatLinks($row['links_to_project_page'] ?? null),
+            'show' => true
         ]);
 
         // If row with name budget exists then add it as total_euro_value
@@ -137,6 +138,42 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 
         return $project;
     }
+
+    public function formatLinks($cellValue)
+    {
+        // Initialize an empty array to hold the URLs
+        $urls = [];
+
+//        dd($cellValue);
+
+        // Check if the cell value contains new line characters or commas
+        $delimiters = [',', '\n', ' '];
+        $possibleLinks = preg_split('/('.implode('|', array_map('preg_quote', $delimiters)).')/', $cellValue);
+        // Split possiblLinks by \n
+       $possibleLinks = preg_split('/\n/', $possibleLinks[0]);
+
+        foreach ($possibleLinks as $possibleLink) {
+            $possibleLink = trim($possibleLink);
+
+            // If the string already starts with 'http', assume it's a full URL
+            if (strpos($possibleLink, 'http') === 0) {
+                $urls[] = $possibleLink;
+            } else {
+                // Otherwise, try to extract URLs via regex
+                preg_match_all('/https?\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $possibleLink, $matches);
+                $urls = array_merge($urls, $matches[0]);
+            }
+        }
+
+        // Convert URLs to HTML <a> tags
+        $htmlLinks = array_map(function($url) {
+            return "<a href=\"{$url}\" target=\"_blank\">{$url}</a>";
+        }, $urls);
+
+        return implode(', ', $htmlLinks);
+    }
+
+
 
     // get only 4 digit number from string
     public function get4NumberFromString($string)

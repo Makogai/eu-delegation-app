@@ -51,3 +51,8 @@ Route::get('all-programmes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiContr
 Route::get('all-ctypes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allCtypes'])->name('all-ctypes');
 Route::get('v1/projects-client', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'indexClient'])->name('projects-client');
 Route::get('v1/projects-client/{project}', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'showClient'])->name('projects-client-single');
+// Is logged in route for vue
+Route::get('v1/is-logged-in', function () {
+    // return 200 if user is logged in and 401 if not
+    return auth()->user() ? response()->json([], 200) : response()->json([], 401);
+});

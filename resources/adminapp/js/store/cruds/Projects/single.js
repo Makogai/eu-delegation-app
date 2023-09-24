@@ -15,6 +15,7 @@ function initialState() {
       contract_type: [],
       end_beneficiary: '',
       contracted_eu_contribution: '',
+        contract_value_montenegro: '',
       co_funding: '',
       loan: '',
       total_euro_value: '',
@@ -155,6 +156,9 @@ const actions = {
   setLoan({ commit }, value) {
     commit('setLoan', value)
   },
+  setContractValueMontenegro({ commit }, value) {
+    commit('setContractValueMontenegro', value)
+  },
   setTotalEuroValue({ commit }, value) {
     commit('setTotalEuroValue', value)
   },
@@ -254,6 +258,9 @@ const mutations = {
   },
   setTotalEuroValue(state, value) {
     state.entry.total_euro_value = value
+  },
+    setContractValueMontenegro(state, value) {
+    state.entry.contract_value_montenegro = value
   },
   setMunicipality(state, value) {
     state.entry.municipality = value

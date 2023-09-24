@@ -118,6 +118,31 @@
                       </div>
                   </div>
 
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group"
+                          :class="{
+                      'has-items': query.start_date,
+                      'is-focused': activeField !== 'start_datea'
+                    }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.start_date')
+                              }}</label>
+                          <datetime-picker
+                              class="form-control"
+                              type="text"
+                              picker="date"
+                              :value="query.startDate"
+                              v-model="query.startDate"
+                              @input="updateStartDate"
+                              @focus="focusField('start_date')"
+                              @blur="clearFocus"
+                          >
+                          </datetime-picker>
+                      </div>
+                  </div>
+
                   <div class="col-12 mt-3">
                       <h4>Total value: <b>{{ totalValue }}</b></h4>
                       <h4>Total EU Contribution: <b>{{ totalEUValue }}</b></h4>
@@ -250,6 +275,12 @@ export default {
                 sortable: false
             },
             {
+                title: 'cruds.project.fields.contract_value_montenegro',
+                field: 'contract_value_montenegro',
+                thComp: TranslatedHeader,
+                sortable: false
+            },
+            {
                 title: 'cruds.project.fields.total_euro_value',
                 field: 'total_euro_value',
                 thComp: TranslatedHeader,
@@ -309,8 +340,9 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue']),
+    ...mapGetters('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue', 'endYears', 'commitmentYears']),
     ...mapGetters('AllCities', ['cities']),
+    ...mapGetters('AllSectors', ['sectors']),
     ...mapGetters('AllProgrammes', ['programmes'])
   },
   watch: {
@@ -326,8 +358,11 @@ export default {
     }
   },
   methods: {
+      updateStartDate(e) {
+          this.query.startDate = e.target.value
+      },
       focusField(name) {
-          alert(name)
+          // alert(name)
           this.activeField = name
       },
       clearFocus() {

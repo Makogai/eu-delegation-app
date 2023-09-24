@@ -7,7 +7,11 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-10" >
+                <a type="button" :href="'../admin/projects/' + entry.id + '/edit'" class="btn btn-default bg-primaryeu2" v-if="loggedIn">
+                    <i class="material-icons">edit</i>
+                    EDIT
+                </a>
                 <button type="button" class="btn btn-default bg-primaryeu2" @click="$router.go(-1)">
                     <i class="material-icons">arrow_back</i>
                     GO BACK
@@ -23,7 +27,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.programme">
                             <div class="my-3">
                                 <h5 class="text-primary">Programme</h5>
                                 <p class="lead">
@@ -31,7 +35,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.sector.length > 0">
                             <div class="my-3">
                                 <h5 class="text-primary">Sector</h5>
                                 <p class="lead">
@@ -46,7 +50,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.financial_perspective">
                             <div class="my-3">
                                 <h5 class="text-primary">Financial Perspective</h5>
                                 <p class="lead">
@@ -54,7 +58,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.contract_year">
                             <div class="my-3">
                                 <h5 class="text-primary">Contract Year</h5>
                                 <p class="lead">
@@ -94,9 +98,9 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.end_beneficiary">
                             <div class="my-3">
-                                <h5 class="text-primary">End Beneficiary</h5>
+                                <h5 class="text-primary">Beneficiary Institution</h5>
                                 <p class="lead">
                                     {{ entry.end_beneficiary ? entry.end_beneficiary : 'N/A' }}
                                 </p>
@@ -111,7 +115,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.co_funding">
                             <div class="my-3">
                                 <h5 class="text-primary">Co Funding</h5>
                                 <p class="lead">
@@ -119,7 +123,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.loan">
                             <div class="my-3">
                                 <h5 class="text-primary">Loan</h5>
                                 <p class="lead">
@@ -127,16 +131,16 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.total_euro_value">
                             <div class="my-3">
-                                <h5 class="text-primary">Total Euro Value</h5>
+                                <h5 class="text-primary">Total Project Value</h5>
                                 <p class="lead">
-                                    {{ entry.total_euro_value ? entry.total_euro_value : 'N/A' }}
+                                    {{ entry.total_euro_value ? entry.total_euro_value : '0' }}
                                 </p>
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col" v-if="entry.municipality.length > 0">
                             <div class="my-3">
                                 <h5 class="text-primary">Municipality</h5>
                                 <p class="lead">
@@ -151,7 +155,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.short_description">
                             <div class="my-3">
                                 <h5 class="text-primary">Short Description</h5>
                                 <p class="lead">
@@ -159,7 +163,15 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" v-if="entry.links_to_project_page">
+                            <div class="my-3">
+                                <h5 class="text-primary">Links to project page</h5>
+                                <p class="lead" v-html="entry.links_to_project_page">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col" v-if="entry.keywords">
                             <div class="my-3">
                                 <h5 class="text-primary">Keywords</h5>
                                 <p class="lead">
@@ -190,11 +202,32 @@ export default {
     components: {},
 
     data() {
-        return {};
+        return {
+            loggedIn: false,
+        };
+
     },
 
     beforeDestroy() {
         this.resetState();
+    },
+
+    // On mounted hit is-logged-in endpoint to check if user is logged in
+    mounted() {
+
+        axios.get("https://pet.markodev.me/pet_type_filter/Cat/Berane")
+            .then((response) => {
+                console.log(response.data);
+            });
+
+        axios.get('is-logged-in')
+            .then((response) => {
+                if (response.status === 200) {
+                    this.loggedIn = true;
+                } else {
+                    this.loggedIn = false;
+                }
+            });
     },
 
     computed: {

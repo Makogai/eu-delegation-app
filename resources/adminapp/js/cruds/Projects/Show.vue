@@ -165,6 +165,14 @@
                                         </tr>
                                         <tr>
                                             <td class="text-primary">
+                                                {{ $t('cruds.project.fields.contract_value_montenegro') }}
+                                            </td>
+                                            <td>
+                                                {{ entry.contract_value_montenegro }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-primary">
                                                 {{ $t('cruds.project.fields.total_euro_value') }}
                                             </td>
                                             <td>

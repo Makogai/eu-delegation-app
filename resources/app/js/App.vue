@@ -36,7 +36,7 @@
             </div>
 
             <div class="text-center">
-                <img src="/md/img/logo-large-new2.png" alt="logo" class="img-fluid text-center text-small">
+                <img src="/md/img/logo2.png" alt="logo" class="img-fluid text-center text-small">
             </div>
 
             <p class="text-center footer-copyright">Website in development</p>

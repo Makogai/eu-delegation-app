@@ -82,6 +82,10 @@ class UpdateProjectRequest extends FormRequest
                 'numeric',
                 'nullable',
             ],
+            'contract_value_montenegro' => [
+                'numeric',
+                'nullable',
+            ],
             'co_funding' => [
                 'numeric',
                 'nullable',

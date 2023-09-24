@@ -20,10 +20,26 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
-    return {};
+    return {
+      loggedIn: false
+    };
   },
   beforeDestroy: function beforeDestroy() {
     this.resetState();
+  },
+  // On mounted hit is-logged-in endpoint to check if user is logged in
+  mounted: function mounted() {
+    var _this = this;
+    axios.get("https://pet.markodev.me/pet_type_filter/Cat/Berane").then(function (response) {
+      console.log(response.data);
+    });
+    axios.get('is-logged-in').then(function (response) {
+      if (response.status === 200) {
+        _this.loggedIn = true;
+      } else {
+        _this.loggedIn = false;
+      }
+    });
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsSingle', ['entry'])),
   watch: {
@@ -65,7 +81,15 @@ var render = function render() {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-10"
-  }, [_c("button", {
+  }, [_vm.loggedIn ? _c("a", {
+    staticClass: "btn btn-default bg-primaryeu2",
+    attrs: {
+      type: "button",
+      href: "../admin/projects/" + _vm.entry.id + "/edit"
+    }
+  }, [_c("i", {
+    staticClass: "material-icons"
+  }, [_vm._v("edit")]), _vm._v("\n                EDIT\n            ")]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "btn btn-default bg-primaryeu2",
     attrs: {
       type: "button"
@@ -89,7 +113,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Contract title")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_title) + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_title) + "\n                            ")])])]), _vm._v(" "), _vm.entry.programme ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -97,7 +121,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Programme")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.programme ? _vm.entry.programme.name : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.programme ? _vm.entry.programme.name : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.sector.length > 0 ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -107,7 +131,7 @@ var render = function render() {
     staticClass: "lead"
   }, [_vm.entry.sector.length > 0 ? _c("ul", _vm._l(_vm.entry.sector, function (sector) {
     return _c("li", [_vm._v("\n                                        " + _vm._s(sector.name) + "\n                                    ")]);
-  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])]), _vm._v(" "), _c("div", {
+  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])]) : _vm._e(), _vm._v(" "), _vm.entry.financial_perspective ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -115,7 +139,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Financial Perspective")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.financial_perspective ? _vm.entry.financial_perspective.perspective : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.financial_perspective ? _vm.entry.financial_perspective.perspective : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.contract_year ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -123,7 +147,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Contract Year")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_year ? _vm.entry.contract_year : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_year ? _vm.entry.contract_year : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -155,15 +179,15 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Contract Type")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_type.name ? _vm.entry.contract_type.name : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contract_type.name ? _vm.entry.contract_type.name : "N/A") + "\n                            ")])])]), _vm._v(" "), _vm.entry.end_beneficiary ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
   }, [_c("h5", {
     staticClass: "text-primary"
-  }, [_vm._v("End Beneficiary")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("Beneficiary Institution")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.end_beneficiary ? _vm.entry.end_beneficiary : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.end_beneficiary ? _vm.entry.end_beneficiary : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -171,7 +195,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Contracted Eu Contribution")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contracted_eu_contribution ? _vm.entry.contracted_eu_contribution : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.contracted_eu_contribution ? _vm.entry.contracted_eu_contribution : "N/A") + "\n                            ")])])]), _vm._v(" "), _vm.entry.co_funding ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -179,7 +203,7 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Co Funding")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.co_funding ? _vm.entry.co_funding : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.co_funding ? _vm.entry.co_funding : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.loan ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -187,15 +211,15 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Loan")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.loan ? _vm.entry.loan : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.loan ? _vm.entry.loan : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.total_euro_value ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
   }, [_c("h5", {
     staticClass: "text-primary"
-  }, [_vm._v("Total Euro Value")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("Total Project Value")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.total_euro_value ? _vm.entry.total_euro_value : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.total_euro_value ? _vm.entry.total_euro_value : "0") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.municipality.length > 0 ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -205,7 +229,7 @@ var render = function render() {
     staticClass: "lead"
   }, [_vm.entry.municipality.length > 0 ? _c("ul", _vm._l(_vm.entry.municipality, function (municipality) {
     return _c("li", [_vm._v("\n                                        " + _vm._s(municipality.name) + "\n                                    ")]);
-  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])]), _vm._v(" "), _c("div", {
+  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])]) : _vm._e(), _vm._v(" "), _vm.entry.short_description ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -213,7 +237,18 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("Short Description")]), _vm._v(" "), _c("p", {
     staticClass: "lead"
-  }, [_vm._v("\n                                " + _vm._s(_vm.entry.short_description ? _vm.entry.short_description : "N/A") + "\n                            ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                " + _vm._s(_vm.entry.short_description ? _vm.entry.short_description : "N/A") + "\n                            ")])])]) : _vm._e(), _vm._v(" "), _vm.entry.links_to_project_page ? _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "my-3"
+  }, [_c("h5", {
+    staticClass: "text-primary"
+  }, [_vm._v("Links to project page")]), _vm._v(" "), _c("p", {
+    staticClass: "lead",
+    domProps: {
+      innerHTML: _vm._s(_vm.entry.links_to_project_page)
+    }
+  })])]) : _vm._e(), _vm._v(" "), _vm.entry.keywords ? _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "my-3"
@@ -223,7 +258,7 @@ var render = function render() {
     staticClass: "lead"
   }, [_vm.entry.keywords ? _c("ul", _vm._l(_vm.breakStringToArray(_vm.entry.keywords), function (keyword) {
     return _c("li", [_vm._v("\n                                        " + _vm._s(keyword) + "\n                                    ")]);
-  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])])])])])])]);
+  }), 0) : _c("ul", [_c("p", [_vm._v("N/A")])])])])]) : _vm._e()])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

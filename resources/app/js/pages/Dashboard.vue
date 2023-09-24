@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container-fluid py-4">
-            <img src="/md/img/logo-large-new2.png" alt="">
+            <img src="/md/img/logo2.png" alt="">
             <div class="row">
                 <div class="col-md-3 d-sm-none d-xl-block">
                     <div class="row py-4 mt-5 pr-md-5 pr-0">
@@ -97,6 +97,41 @@
                                     :options="data.years"
                                     :closeOnSelect="false"
                                     v-model="query.startYear"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <div
+                                class="form-group bmd-form-group cs startyear"
+                                :class="{
+                          'has-items': cities.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">End Year</label>
+                                <v-select
+                                    name="programme"
+                                    label="name"
+                                    :options="data.endYears"
+                                    :closeOnSelect="true"
+                                    v-model="query.endYear"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <div
+                                class="form-group bmd-form-group cs startyear"
+                                :class="{
+                          'has-items': cities.length !== 0,
+                        }"
+                            >
+                                <label class="bmd-label-floating">Commitment Year</label>
+                                <v-select
+                                    name="programme"
+                                    label="name"
+                                    :options="data.commitment_years"
+                                    :closeOnSelect="true"
+                                    v-model="query.commitmentYear"
                                 />
                             </div>
                         </div>

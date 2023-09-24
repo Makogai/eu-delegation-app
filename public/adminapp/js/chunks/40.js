@@ -102,6 +102,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         sortable: false
       }, {
+        title: 'cruds.project.fields.contract_value_montenegro',
+        field: 'contract_value_montenegro',
+        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        sortable: false
+      }, {
         title: 'cruds.project.fields.total_euro_value',
         field: 'total_euro_value',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -154,7 +159,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
+  computed: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue', 'endYears', 'commitmentYears'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllSectors', ['sectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
   watch: {
     query: {
       handler: function handler(query) {
@@ -168,8 +173,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }
   },
   methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+    updateStartDate: function updateStartDate(e) {
+      this.query.startDate = e.target.value;
+    },
     focusField: function focusField(name) {
-      alert(name);
+      // alert(name)
       this.activeField = name;
     },
     clearFocus: function clearFocus() {
@@ -356,6 +364,37 @@ var render = function render() {
         _vm.$set(_vm.query, "programme", $$v);
       },
       expression: "query.programme"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.query.start_date,
+      "is-focused": _vm.activeField !== "start_datea"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.start_date")))]), _vm._v(" "), _c("datetime-picker", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      picker: "date",
+      value: _vm.query.startDate
+    },
+    on: {
+      input: _vm.updateStartDate,
+      focus: function focus($event) {
+        return _vm.focusField("start_date");
+      },
+      blur: _vm.clearFocus
+    },
+    model: {
+      value: _vm.query.startDate,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "startDate", $$v);
+      },
+      expression: "query.startDate"
     }
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-3"

@@ -195,7 +195,7 @@ var render = function render() {
     staticClass: "container-fluid py-4"
   }, [_c("img", {
     attrs: {
-      src: "/md/img/logo-large-new2.png",
+      src: "/md/img/logo2.png",
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -341,6 +341,52 @@ var render = function render() {
         _vm.$set(_vm.query, "startYear", $$v);
       },
       expression: "query.startYear"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mt-5"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group cs startyear",
+    "class": {
+      "has-items": _vm.cities.length !== 0
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v("End Year")]), _vm._v(" "), _c("v-select", {
+    attrs: {
+      name: "programme",
+      label: "name",
+      options: _vm.data.endYears,
+      closeOnSelect: true
+    },
+    model: {
+      value: _vm.query.endYear,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "endYear", $$v);
+      },
+      expression: "query.endYear"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mt-5"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group cs startyear",
+    "class": {
+      "has-items": _vm.cities.length !== 0
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v("Commitment Year")]), _vm._v(" "), _c("v-select", {
+    attrs: {
+      name: "programme",
+      label: "name",
+      options: _vm.data.commitment_years,
+      closeOnSelect: true
+    },
+    model: {
+      value: _vm.query.commitmentYear,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "commitmentYear", $$v);
+      },
+      expression: "query.commitmentYear"
     }
   })], 1)]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-12 col-lg-3 d-none d-md-block"

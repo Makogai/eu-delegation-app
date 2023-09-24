@@ -21,7 +21,7 @@ class StoreProjectRequest extends FormRequest
                 'string',
                 'min:1',
                 'max:40',
-                'required',
+                'nullable',
             ],
             'programme_id' => [
                 'integer',
@@ -40,10 +40,12 @@ class StoreProjectRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'contract_type_id' => [
+            'contract_type' => [
+                'array',
+            ],
+            'contract_type.*.id' => [
                 'integer',
                 'exists:funding_types,id',
-                'required',
             ],
             'commitment_year' => [
                 'integer',
@@ -67,7 +69,7 @@ class StoreProjectRequest extends FormRequest
             ],
             'contract_number' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'contracting_party' => [
                 'string',
@@ -78,6 +80,10 @@ class StoreProjectRequest extends FormRequest
                 'nullable',
             ],
             'co_funding_or_loan' => [
+                'numeric',
+                'nullable',
+            ],
+            'contract_value_montenegro' => [
                 'numeric',
                 'nullable',
             ],

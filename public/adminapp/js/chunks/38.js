@@ -39,6 +39,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       this.setProgramme(value);
     },
     updateSector: function updateSector(value) {
+      if (value.length > 3) {
+        console.log(' you can only select two', e);
+        value.pop();
+      }
       this.setSector(value);
     },
     updateContractTitle: function updateContractTitle(e) {
@@ -67,6 +71,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     updateContractedEuContribution: function updateContractedEuContribution(e) {
       this.setContractedEuContribution(e.target.value);
+    },
+    updateContractValueMontenegro: function updateContractValueMontenegro(e) {
+      this.setContractValueMontenegro(e.target.value);
     },
     updateCoFundingOrLoan: function updateCoFundingOrLoan(e) {
       this.setCoFundingOrLoan(e.target.value);
@@ -424,6 +431,29 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
+      "has-items": _vm.entry.end_beneficiary,
+      "is-focused": _vm.activeField == "end_beneficiary"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_beneficiary")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.entry.end_beneficiary
+    },
+    on: {
+      input: _vm.updateEndBeneficiary,
+      focus: function focus($event) {
+        return _vm.focusField("end_beneficiary");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
       "has-items": _vm.entry.contract_type.length !== 0,
       "is-focused": _vm.activeField == "contract_type"
     }
@@ -450,29 +480,6 @@ var render = function render() {
       }]
     }
   })], 1), _vm._v(" "), _c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.entry.end_beneficiary,
-      "is-focused": _vm.activeField == "end_beneficiary"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_beneficiary")))]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    },
-    domProps: {
-      value: _vm.entry.end_beneficiary
-    },
-    on: {
-      input: _vm.updateEndBeneficiary,
-      focus: function focus($event) {
-        return _vm.focusField("end_beneficiary");
-      },
-      blur: _vm.clearFocus
-    }
-  })]), _vm._v(" "), _c("div", {
     staticClass: "form-group bmd-form-group",
     "class": {
       "has-items": _vm.entry.contracted_eu_contribution,
@@ -517,6 +524,30 @@ var render = function render() {
       input: _vm.updateCoFunding,
       focus: function focus($event) {
         return _vm.focusField("co_funding");
+      },
+      blur: _vm.clearFocus
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.entry.contract_value_montenegro,
+      "is-focused": _vm.activeField == "contract_value_montenegro"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.contract_value_montenegro")))]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "number",
+      step: "0.01"
+    },
+    domProps: {
+      value: _vm.entry.contract_value_montenegro
+    },
+    on: {
+      input: _vm.updateContractValueMontenegro,
+      focus: function focus($event) {
+        return _vm.focusField("contract_value_montenegro");
       },
       blur: _vm.clearFocus
     }

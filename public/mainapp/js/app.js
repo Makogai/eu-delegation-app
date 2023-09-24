@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"75c77ff8a634a2b3e8b7","12":"340d22efb48ae6dcfa0c","13":"7ebfb1178f32d7936ba7"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"5a75bf4c6527045ca57c","12":"340d22efb48ae6dcfa0c","13":"dab1b61db7008af3e5a6"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -4505,7 +4505,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "img-fluid text-center text-small",
     attrs: {
-      src: "/md/img/logo-large-new2.png",
+      src: "/md/img/logo2.png",
       alt: "logo"
     }
   })]), _vm._v(" "), _c("p", {

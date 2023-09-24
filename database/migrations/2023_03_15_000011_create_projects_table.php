@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->decimal('contracted_eu_contribution', 15, 2)->nullable();
             $table->decimal('co_funding', 15, 2)->nullable();
             $table->decimal('loan', 15, 2)->nullable();
+            $table->decimal('contract_value_montenegro', 15, 2)->nullable();
             $table->decimal('total_euro_value', 15, 2)->nullable();
             $table->longText('short_description');
             $table->string('keywords')->nullable();

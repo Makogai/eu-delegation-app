@@ -41,6 +41,7 @@ class Project extends Model
         'contract_number',
         'contracting_party',
         'contracted_eu_contribution',
+        'contract_value_montenegro',
         'co_funding_or_loan',
         'total_euro_value',
         'co_funding_party',
@@ -66,6 +67,7 @@ class Project extends Model
         'contract_number',
         'contracting_party',
         'contracted_eu_contribution',
+        'contract_value_montenegro',
         'co_funding_or_loan',
         'total_euro_value',
         'co_funding_party',
@@ -89,6 +91,7 @@ class Project extends Model
         'contracting_party',
         'end_beneficiary',
         'contracted_eu_contribution',
+        'contract_value_montenegro',
         'co_funding',
         'loan',
         'total_euro_value',
@@ -101,7 +104,7 @@ class Project extends Model
         'deleted_at',
     ];
 
-    protected $appends =[ 'duration', 'year'];
+    protected $appends =[ 'duration', 'year', 'end_year'];
 
 
 //    public static function bootSoftDeletes()
@@ -167,6 +170,19 @@ class Project extends Model
 //            dd($request->programme);
         }
 
+
+        if ($request->has('startDate') && $request->startDate) {
+            $query->whereDate('start_date', $request->startDate);
+        }
+
+        if ($request->has('endYear') && $request->endYear) {
+            $query->whereYear('end_date', $request->endYear);
+        }
+
+        if ($request->has('commitmentYear') && $request->commitmentYear) {
+            $query->where('commitment_year', $request->commitmentYear);
+        }
+
         // Search using the 's' parameter
         if ($request->has('s') && !empty($request->s)) {
             $searchTerm = $request->s;
@@ -215,6 +231,12 @@ class Project extends Model
     {
         // Return year from start_date
         return $this->start_date ? Carbon::parse($this->start_date)->format('Y') : null;
+    }
+
+    public function getEndYearAttribute()
+    {
+        // Return year from start_date
+        return $this->end_date ? Carbon::parse($this->end_date)->format('Y') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)

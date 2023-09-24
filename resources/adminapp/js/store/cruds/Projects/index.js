@@ -20,6 +20,8 @@ const getters = {
     totalValue: state => state.totalValue,
     totalEUValue: state => state.totalEUValue,
   total: state => state.total,
+    endYears: state => state.endYears,
+    commitmentYears: state => state.commitmentYears,
   loading: state => state.loading
 }
 
@@ -33,6 +35,8 @@ const actions = {
         commit('setTotal', response.data.total)
         commit('setTotalValue', response.data.total_euro_value)
         commit('setTotalEUValue', response.data.total_eu_value)
+        commit('setEndYears', response.data.end_years)
+        commit('setCommitmentYears', response.data.commitment_years)
       })
       .catch(error => {
         message = error.response.data.message || error.message
@@ -66,6 +70,8 @@ const mutations = {
   setTotal: set('total'),
   setTotalValue: set('totalValue'),
   setTotalEUValue: set('totalEUValue'),
+    setEndYears: set('endYears'),
+    setCommitmentYears: set('commitmentYears'),
   setQuery(state, query) {
     query.page = (query.offset + query.limit) / query.limit
     state.query = query

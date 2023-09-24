@@ -69,12 +69,32 @@ class ProjectApiController extends Controller
         $totalEuroValue = $projects->sum('total_euro_value');
         $totalEUValue = $projects->sum('contracted_eu_contribution');
 
+        $endYears = Cache::remember('end_years', now()->addDays(7), function () {
+            return Project::all()
+                ->pluck('end_year')
+                ->filter()
+                ->sortDesc()
+                ->unique()
+                ->values();
+        });
+
+        $commitment_years = Cache::remember('commitment_years', now()->addDays(7), function () {
+            return Project::all()
+                ->pluck('commitment_year')
+                ->filter()
+                ->sortDesc()
+                ->unique()
+                ->values();
+        });
+
         $projects = $projects
             ->paginate($request->limit, ['*'], 'page', $request->page);
 
         return (new ProjectResource($projects))->additional([
             'total_euro_value' => $this->formatMoney($totalEuroValue). ' €',
             'total_eu_value' => $this->formatMoney($totalEUValue) . ' €',
+            'end_years' => $endYears,
+            'commitment_years' => $commitment_years,
         ]);
     }
 
@@ -101,7 +121,25 @@ class ProjectApiController extends Controller
                 ->values();
         });
 
-        $data = Cache::remember($cacheKey, now()->addDays(1), function () use ($request, $years) {
+        $endYears = Cache::remember('end_years', now()->addDays(7), function () {
+            return Project::all()
+                ->pluck('end_year')
+                ->filter()
+                ->sortDesc()
+                ->unique()
+                ->values();
+        });
+
+        $commitment_years = Cache::remember('commitment_years', now()->addDays(7), function () {
+            return Project::all()
+                ->pluck('commitment_year')
+                ->filter()
+                ->sortDesc()
+                ->unique()
+                ->values();
+        });
+
+        $data = Cache::remember($cacheKey, now()->addDays(1), function () use ($commitment_years, $endYears, $request, $years) {
             // Start the query
             $projectsQuery = Project::query();
             $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality']);
@@ -137,6 +175,14 @@ class ProjectApiController extends Controller
                 $projectsQuery->whereYear('start_date', $request->startYear);
             }
 
+            if ($request->has('endYear') && $request->endYear) {
+                $projectsQuery->whereYear('end_date', $request->endYear);
+            }
+
+            if ($request->has('commitmentYear') && $request->commitmentYear) {
+                $projectsQuery->where('commitment_year', $request->commitmentYear);
+            }
+
             $projects = $projectsQuery->get();
 
             $sectors = [];
@@ -155,6 +201,8 @@ class ProjectApiController extends Controller
                 'sectors' => $sectors,
                 'total' => $projects->count(),
                 'years' => $years,
+                'endYears' => $endYears,
+                'commitment_years' => $commitment_years,
                 'totalSectors' => count($sectors),
                 'totalProjectsValue' => $this->format_number($projects->sum('total_euro_value'))['value'],
                 'totalProjectsWord' => $this->format_number($projects->sum('total_euro_value'))['word'],
@@ -198,6 +246,7 @@ class ProjectApiController extends Controller
         $project = Project::create($request->validated());
         $project->sector()->sync($request->input('sector.*.id', []));
         $project->municipality()->sync($request->input('municipality.*.id', []));
+        $project->contractType()->sync($request->input('contract_type.*.id', []));
 
         return (new ProjectResource($project))
             ->response()
@@ -237,6 +286,8 @@ class ProjectApiController extends Controller
         $project->update($request->validated());
         $project->sector()->sync($request->input('sector.*.id', []));
         $project->municipality()->sync($request->input('municipality.*.id', []));
+        $project->contractType()->sync($request->input('contract_type.*.id', []));
+
 
         return (new ProjectResource($project))
             ->response()

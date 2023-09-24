@@ -142,6 +142,8 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.loan")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.loan) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.contract_value_montenegro")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.contract_value_montenegro) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+    staticClass: "text-primary"
   }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.total_euro_value")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.total_euro_value) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
   }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.municipality")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-list", {
