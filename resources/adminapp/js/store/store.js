@@ -30,6 +30,7 @@ import ProjectsSingle from './cruds/Projects/single'
 import AllCities from './common/cities'
 import AllSectors from './common/sectors'
 import AllProgrammes from './common/programmes'
+import AllCountries from './common/countries'
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -63,6 +64,7 @@ export default new Vuex.Store({
       AllCities,
       AllSectors,
       AllProgrammes,
+      AllCountries,
   },
   strict: debug
 })

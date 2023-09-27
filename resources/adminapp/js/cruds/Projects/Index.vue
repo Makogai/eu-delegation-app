@@ -64,6 +64,7 @@
                           />
                       </div>
                   </div>
+
                   <div class="col-6">
                       <div
                           class="form-group bmd-form-group"
@@ -150,7 +151,7 @@
                     }"
                       >
                           <label class="bmd-label-floating">{{
-                                  $t('cruds.project.fields.start_date')
+                                  $t('cruds.project.fields.end_date')
                               }}</label>
                           <datetime-picker
                               class="form-control"
@@ -169,14 +170,14 @@
 
                   <div class="col-6">
                       <div
-                          class="form-group bmd-form-group"
+                          class="form-group bmd-form-group is-filled"
                           :class="{
                           // 'has-items': commitmentYears.length !== 0,
                           'is-focused': activeField === 'commitment_year'
                         }"
                       >
                           <label class="bmd-label-floating">{{
-                                  $t('cruds.project.fields.programme')
+                                  $t('cruds.project.fields.commitment_year')
                               }}</label>
                           <v-select
                               name="commitmentYear"
@@ -186,9 +187,36 @@
                               :value="query.commitmentYear"
                               :options="commitmentYears"
                               :closeOnSelect="true"
-                              @search.focus="focusField('porgramme')"
+                              @search.focus="focusField('commitment_year')"
                               @search.blur="clearFocus"
                               v-model="query.commitmentYear"
+                          />
+                      </div>
+                  </div>
+
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group"
+                          :class="{
+                          'has-items': cities.length !== 0,
+                          'is-focused': activeField === 'country'
+                        }"
+                      >
+                          <label class="bmd-label-floating">{{
+                                  $t('cruds.project.fields.country')
+                              }}</label>
+                          <v-select
+                              name="country"
+                              label="name"
+                              :reduce="city => city.id"
+                              :key="'country-field'"
+                              :value="query.country"
+                              :options="countries"
+                              :closeOnSelect="false"
+                              @search.focus="focusField('country')"
+                              @search.blur="clearFocus"
+                              multiple
+                              v-model="query.country"
                           />
                       </div>
                   </div>
@@ -197,6 +225,7 @@
                   <div class="col-12 mt-3">
                       <h4>Total value: <b>{{ totalValue }}</b></h4>
                       <h4>Total EU Contribution: <b>{{ totalEUValue }}</b></h4>
+                      <h4>Total projects: <b>{{ total }}</b></h4>
                   </div>
 
               </div>
@@ -344,6 +373,12 @@ export default {
                 tdComp: DatatableList
             },
             {
+                title: 'cruds.project.fields.country',
+                field: 'country.name',
+                thComp: TranslatedHeader,
+                tdComp: DatatableList
+            },
+            {
                 title: 'cruds.project.fields.keywords',
                 field: 'keywords',
                 thComp: TranslatedHeader,
@@ -394,7 +429,8 @@ export default {
     ...mapGetters('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue', 'endYears', 'commitmentYears']),
     ...mapGetters('AllCities', ['cities']),
     ...mapGetters('AllSectors', ['sectors']),
-    ...mapGetters('AllProgrammes', ['programmes'])
+    ...mapGetters('AllProgrammes', ['programmes']),
+    ...mapGetters('AllCountries', ['countries'])
   },
   watch: {
     query: {
@@ -404,6 +440,7 @@ export default {
           this.fetchAllCities()
           this.fetchAllSectors()
           this.fetchAllProgrammes()
+          this.fetchAllCountries()
       },
       deep: true
     }
@@ -426,6 +463,7 @@ export default {
     ...mapActions('AllCities', ['fetchAllCities']),
     ...mapActions('AllSectors', ['fetchAllSectors']),
     ...mapActions('AllProgrammes', ['fetchAllProgrammes']),
+    ...mapActions('AllCountries', ['fetchAllCountries']),
 
   }
 }

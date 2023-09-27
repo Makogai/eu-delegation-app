@@ -46,6 +46,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
 });
 Route::get('all-cities', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allCities'])->name('all-cities');
+Route::get('all-countries', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allCountries'])->name('all-countries');
 Route::get('all-sectors', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allSectors'])->name('all-sectors');
 Route::get('all-programmes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allProgrammes'])->name('all-programmes');
 Route::get('all-ctypes', [\App\Http\Controllers\Api\V1\Admin\ProjectApiController::class, 'allCtypes'])->name('all-ctypes');

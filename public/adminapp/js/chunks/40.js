@@ -117,6 +117,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
         tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
       }, {
+        title: 'cruds.project.fields.country',
+        field: 'country.name',
+        thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        tdComp: _components_Datatables_DatatableList__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }, {
         title: 'cruds.project.fields.keywords',
         field: 'keywords',
         thComp: _components_Datatables_TranslatedHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -159,7 +164,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   beforeDestroy: function beforeDestroy() {
     this.resetState();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue', 'endYears', 'commitmentYears'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllSectors', ['sectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])),
+  computed: _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('ProjectsIndex', ['data', 'total', 'loading', 'totalValue', 'totalEUValue', 'endYears', 'commitmentYears'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCities', ['cities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllSectors', ['sectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllProgrammes', ['programmes'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('AllCountries', ['countries'])),
   watch: {
     query: {
       handler: function handler(query) {
@@ -168,11 +173,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         this.fetchAllCities();
         this.fetchAllSectors();
         this.fetchAllProgrammes();
+        this.fetchAllCountries();
       },
       deep: true
     }
   },
-  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
     updateStartDate: function updateStartDate(e) {
       this.query.startDate = e.target.value;
     },
@@ -186,7 +192,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     clearFocus: function clearFocus() {
       this.activeField = '';
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCities', ['fetchAllCities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllSectors', ['fetchAllSectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllProgrammes', ['fetchAllProgrammes']))
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('ProjectsIndex', ['fetchIndexData', 'setQuery', 'resetState'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCities', ['fetchAllCities'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllSectors', ['fetchAllSectors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllProgrammes', ['fetchAllProgrammes'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('AllCountries', ['fetchAllCountries']))
 });
 
 /***/ }),
@@ -408,7 +414,7 @@ var render = function render() {
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.start_date")))]), _vm._v(" "), _c("datetime-picker", {
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.end_date")))]), _vm._v(" "), _c("datetime-picker", {
     staticClass: "form-control",
     attrs: {
       type: "text",
@@ -432,14 +438,14 @@ var render = function render() {
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-6"
   }, [_c("div", {
-    staticClass: "form-group bmd-form-group",
+    staticClass: "form-group bmd-form-group is-filled",
     "class": {
       // 'has-items': commitmentYears.length !== 0,
       "is-focused": _vm.activeField === "commitment_year"
     }
   }, [_c("label", {
     staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.programme")))]), _vm._v(" "), _c("v-select", {
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.commitment_year")))]), _vm._v(" "), _c("v-select", {
     key: "commitment-year-field",
     attrs: {
       name: "commitmentYear",
@@ -454,7 +460,7 @@ var render = function render() {
     on: {
       search: [function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("porgramme");
+        return _vm.focusField("commitment_year");
       }, function ($event) {
         if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
         return _vm.clearFocus.apply(null, arguments);
@@ -468,8 +474,47 @@ var render = function render() {
       expression: "query.commitmentYear"
     }
   })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group bmd-form-group",
+    "class": {
+      "has-items": _vm.cities.length !== 0,
+      "is-focused": _vm.activeField === "country"
+    }
+  }, [_c("label", {
+    staticClass: "bmd-label-floating"
+  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.country")))]), _vm._v(" "), _c("v-select", {
+    key: "country-field",
+    attrs: {
+      name: "country",
+      label: "name",
+      reduce: function reduce(city) {
+        return city.id;
+      },
+      value: _vm.query.country,
+      options: _vm.countries,
+      closeOnSelect: false,
+      multiple: ""
+    },
+    on: {
+      search: [function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
+        return _vm.focusField("country");
+      }, function ($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
+        return _vm.clearFocus.apply(null, arguments);
+      }]
+    },
+    model: {
+      value: _vm.query.country,
+      callback: function callback($$v) {
+        _vm.$set(_vm.query, "country", $$v);
+      },
+      expression: "query.country"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-3"
-  }, [_c("h4", [_vm._v("Total value: "), _c("b", [_vm._v(_vm._s(_vm.totalValue))])]), _vm._v(" "), _c("h4", [_vm._v("Total EU Contribution: "), _c("b", [_vm._v(_vm._s(_vm.totalEUValue))])])])])])], 1), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Total value: "), _c("b", [_vm._v(_vm._s(_vm.totalValue))])]), _vm._v(" "), _c("h4", [_vm._v("Total EU Contribution: "), _c("b", [_vm._v(_vm._s(_vm.totalEUValue))])]), _vm._v(" "), _c("h4", [_vm._v("Total projects: "), _c("b", [_vm._v(_vm._s(_vm.total))])])])])])], 1), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("div", {
     staticClass: "row"

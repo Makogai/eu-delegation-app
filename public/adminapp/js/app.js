@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","8":"976aff9bba4be6a42e2e","9":"acfaec164b6390f3250c","10":"3ff9a59b58789272195b","11":"7c0f67901edafd232abe","14":"da9a4cc987b522ea0467","15":"74390fcc82e9b2ef2036","16":"ff01ba31f58105118853","17":"5683f6e7a2e666a35154","18":"7e19d3aefb6ce00f6d8a","19":"da24450d334468af131c","20":"d75c06910766936dc9f3","21":"c013b5682a7fb4b87d44","22":"6c4c1c3a5a356ca926b7","23":"decbca1df0091cc3ac11","24":"8e9925ba94ba16df4cc1","25":"e79c9c30c4c7ea75928a","26":"f086bfec5e4652aaa3c4","27":"c39e0c7fdef5dd163fef","28":"ad918189b2c339c4a574","29":"7243442e99c8903d7520","30":"8c3b7152bdc46b33d9f9","31":"6c902c8e462899e6a651","32":"d4be86b923ad65d14c10","33":"127a93ad0b49c299b84a","34":"5fc630ad70582c153756","35":"0d4867ec6a10fdb91377","36":"bf5ca0f25af457d1c0d6","37":"e19d0c6c608f3364dbae","38":"4c0d39577fcfab407c91","39":"4f6511762e57af61ff08","40":"3dbeab7a50143a86ffdc","41":"8ae13af3edd295780cbc","42":"2b1903c2a9236124490c","43":"221b8ccd3a683be68cfb","44":"aa3fc7f71575d1e3205c","45":"ca435ff8f9a0a5e39e86","46":"9592600c7768576eb5de","47":"cac6101105c2b966ca41","48":"22260f69a3feb82286ae","49":"774f21966cbb9b35e7b0"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"0":"2527f28395f808c76d47","1":"98d860d9c5ead701700a","2":"7059f142fb09b19136a4","3":"b2f641c0b3170bcb87b5","4":"450c7184fea6bf6ecb26","5":"f1b331e9f52966e41f78","6":"cebaf139dc5abb1adf5a","8":"976aff9bba4be6a42e2e","9":"acfaec164b6390f3250c","10":"3ff9a59b58789272195b","11":"7c0f67901edafd232abe","14":"da9a4cc987b522ea0467","15":"74390fcc82e9b2ef2036","16":"ff01ba31f58105118853","17":"5683f6e7a2e666a35154","18":"7e19d3aefb6ce00f6d8a","19":"da24450d334468af131c","20":"d75c06910766936dc9f3","21":"c013b5682a7fb4b87d44","22":"6c4c1c3a5a356ca926b7","23":"decbca1df0091cc3ac11","24":"8e9925ba94ba16df4cc1","25":"e79c9c30c4c7ea75928a","26":"f086bfec5e4652aaa3c4","27":"c39e0c7fdef5dd163fef","28":"ad918189b2c339c4a574","29":"7243442e99c8903d7520","30":"8c3b7152bdc46b33d9f9","31":"6c902c8e462899e6a651","32":"d4be86b923ad65d14c10","33":"127a93ad0b49c299b84a","34":"5fc630ad70582c153756","35":"0d4867ec6a10fdb91377","36":"bf5ca0f25af457d1c0d6","37":"e19d0c6c608f3364dbae","38":"4c0d39577fcfab407c91","39":"4f6511762e57af61ff08","40":"0ab528239177c0de2845","41":"8ae13af3edd295780cbc","42":"2b1903c2a9236124490c","43":"221b8ccd3a683be68cfb","44":"aa3fc7f71575d1e3205c","45":"ca435ff8f9a0a5e39e86","46":"9592600c7768576eb5de","47":"cac6101105c2b966ca41","48":"22260f69a3feb82286ae","49":"774f21966cbb9b35e7b0"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -54904,6 +54904,82 @@ var mutations = {
 
 /***/ }),
 
+/***/ "./resources/adminapp/js/store/common/countries.js":
+/*!*********************************************************!*\
+  !*** ./resources/adminapp/js/store/common/countries.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var set = function set(key) {
+  return function (state, val) {
+    state[key] = val;
+  };
+};
+function initialState() {
+  return {
+    data: [],
+    query: {},
+    loading: false
+  };
+}
+var route = '../all-countries';
+var getters = {
+  countries: function countries(state) {
+    return state.data;
+  },
+  loading: function loading(state) {
+    return state.loading;
+  }
+};
+var actions = {
+  fetchAllCountries: function fetchAllCountries(_ref) {
+    var commit = _ref.commit,
+      state = _ref.state;
+    commit('setLoading', true);
+    axios.get(route, {
+      params: state.query
+    }).then(function (response) {
+      commit('setData', response.data);
+    })["catch"](function (error) {
+      message = error.response.data.message || error.message;
+      // TODO error handling
+    })["finally"](function () {
+      commit('setLoading', false);
+    });
+  },
+  setQuery: function setQuery(_ref2, value) {
+    var commit = _ref2.commit;
+    commit('setQuery', _.cloneDeep(value));
+  },
+  resetState: function resetState(_ref3) {
+    var commit = _ref3.commit;
+    commit('resetState');
+  }
+};
+var mutations = {
+  setData: set('data'),
+  setQuery: function setQuery(state, query) {
+    query.page = (query.offset + query.limit) / query.limit;
+    state.query = query;
+  },
+  setLoading: set('loading'),
+  resetState: function resetState(state) {
+    Object.assign(state, initialState());
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: initialState,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
 /***/ "./resources/adminapp/js/store/common/programmes.js":
 /*!**********************************************************!*\
   !*** ./resources/adminapp/js/store/common/programmes.js ***!
@@ -58411,6 +58487,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_cities__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./common/cities */ "./resources/adminapp/js/store/common/cities.js");
 /* harmony import */ var _common_sectors__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./common/sectors */ "./resources/adminapp/js/store/common/sectors.js");
 /* harmony import */ var _common_programmes__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./common/programmes */ "./resources/adminapp/js/store/common/programmes.js");
+/* harmony import */ var _common_countries__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./common/countries */ "./resources/adminapp/js/store/common/countries.js");
+
 
 
 
@@ -58470,7 +58548,8 @@ var debug = "development" !== 'production';
     ProjectsSingle: _cruds_Projects_single__WEBPACK_IMPORTED_MODULE_25__["default"],
     AllCities: _common_cities__WEBPACK_IMPORTED_MODULE_26__["default"],
     AllSectors: _common_sectors__WEBPACK_IMPORTED_MODULE_27__["default"],
-    AllProgrammes: _common_programmes__WEBPACK_IMPORTED_MODULE_28__["default"]
+    AllProgrammes: _common_programmes__WEBPACK_IMPORTED_MODULE_28__["default"],
+    AllCountries: _common_countries__WEBPACK_IMPORTED_MODULE_29__["default"]
   },
   strict: debug
 }));

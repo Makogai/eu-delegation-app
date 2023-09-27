@@ -157,6 +157,12 @@ class Project extends Model
             });
         }
 
+        if ($request->has('country')) {
+            $query->whereHas('country', function ($query) use ($request) {
+                $query->whereIn('id', $request->country);
+            });
+        }
+
         if ($request->has('sector')) {
             $query->whereHas('sector', function ($query) use ($request) {
                 $query->whereIn('id', $request->sector);

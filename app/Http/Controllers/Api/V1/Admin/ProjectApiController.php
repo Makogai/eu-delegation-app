@@ -23,8 +23,16 @@ class ProjectApiController extends Controller
 
     public function allCities()
     {
-        $cities = Cache::remember('cities', now()->addDays(2), function () {
+        $cities = Cache::remember('cities', now()->addDays(7), function () {
             return City::all();
+        });
+
+        return response()->json($cities);
+    }
+    public function allCountries()
+    {
+        $cities = Cache::remember('countries', now()->addDays(7), function () {
+            return Country::all();
         });
 
         return response()->json($cities);
@@ -64,7 +72,7 @@ class ProjectApiController extends Controller
 
         abort_if(Gate::denies('project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective'])
+        $projects = $projectsQuery->with(['programme', 'sector', 'contractType', 'municipality', 'financialPerspective', 'country'])
             ->projectFilters($request);
 
         $totalEuroValue = $projects->sum('total_euro_value');
