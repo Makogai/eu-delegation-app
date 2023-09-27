@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"5a75bf4c6527045ca57c","12":"340d22efb48ae6dcfa0c","13":"dab1b61db7008af3e5a6"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "adminapp/js/chunks/" + ({}[chunkId]||chunkId) + ".js?id=" + {"7":"5a75bf4c6527045ca57c","12":"340d22efb48ae6dcfa0c","14":"db01700d87fb9ff15538"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -54435,7 +54435,7 @@ var routes = [{
     path: 'project/:id',
     name: 'project',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! @apppages/SingleProject.vue */ "./resources/app/js/pages/SingleProject.vue"));
+      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! @apppages/SingleProject.vue */ "./resources/app/js/pages/SingleProject.vue"));
     },
     meta: {
       title: 'global.project'

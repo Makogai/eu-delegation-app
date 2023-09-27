@@ -157,7 +157,14 @@ var render = function render() {
     staticClass: "text-primary"
   }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.keywords")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.keywords) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
-  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.links_to_project_page")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            " + _vm._s(_vm.entry.links_to_project_page) + "\n                                        ")])]), _vm._v(" "), _c("tr", [_c("td", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.links_to_project_page")) + "\n                                        ")]), _vm._v(" "), _c("td", [_vm.entry.links_to_project_page ? _c("div", {
+    staticClass: "col"
+  }, [_c("div", [_c("p", {
+    staticClass: "lead",
+    domProps: {
+      innerHTML: _vm._s(_vm.entry.links_to_project_page)
+    }
+  })])]) : _vm._e()])]), _vm._v(" "), _c("tr", [_c("td", {
     staticClass: "text-primary"
   }, [_vm._v("\n                                            " + _vm._s(_vm.$t("cruds.project.fields.show")) + "\n                                        ")]), _vm._v(" "), _c("td", [_c("datatable-checkbox", {
     attrs: {

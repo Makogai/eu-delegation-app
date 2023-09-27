@@ -146,6 +146,43 @@ class Project extends Model
     }
 
 
+    public function getLinksToProjectsAttribute($value) {
+        if (str_contains($value, '<a ')) {
+            return $value;
+        }else {
+            // Initialize an empty array to hold the URLs
+            $urls = [];
+
+//        dd($cellValue);
+
+            // Check if the cell value contains new line characters or commas
+            $delimiters = [',', '\n', ' '];
+            $possibleLinks = preg_split('/('.implode('|', array_map('preg_quote', $delimiters)).')/', $value);
+            // Split possiblLinks by \n
+            $possibleLinks = preg_split('/\n/', $possibleLinks[0]);
+
+            foreach ($possibleLinks as $possibleLink) {
+                $possibleLink = trim($possibleLink);
+
+                // If the string already starts with 'http', assume it's a full URL
+                if (strpos($possibleLink, 'http') === 0) {
+                    $urls[] = $possibleLink;
+                } else {
+                    // Otherwise, try to extract URLs via regex
+                    preg_match_all('/https?\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/', $possibleLink, $matches);
+                    $urls = array_merge($urls, $matches[0]);
+                }
+            }
+
+            // Convert URLs to HTML <a> tags
+            $htmlLinks = array_map(function($url) {
+                return "<a href=\"{$url}\" target=\"_blank\">{$url}</a>";
+            }, $urls);
+
+            return implode(', ', $htmlLinks);
+        }
+    }
+
 
     // Scope projectFilters - Filter by municipality, sector, or programme
     public function scopeProjectFilters($query, $request)

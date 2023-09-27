@@ -10,7 +10,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('contract_title');
+            $table->text('contract_title');
             $table->integer('commitment_year')->nullable();
             $table->integer('contract_year')->nullable();
             $table->date('start_date')->nullable();

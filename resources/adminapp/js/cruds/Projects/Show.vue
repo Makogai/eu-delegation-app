@@ -212,7 +212,12 @@
                                                 {{ $t('cruds.project.fields.links_to_project_page') }}
                                             </td>
                                             <td>
-                                                {{ entry.links_to_project_page }}
+                                                <div class="col" v-if="entry.links_to_project_page">
+                                                    <div>
+                                                        <p class="lead" v-html="entry.links_to_project_page">
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>

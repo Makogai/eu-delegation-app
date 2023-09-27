@@ -264,6 +264,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import DatatableActions from '@components/Datatables/DatatableActions'
+import DatatableLink from '@components/Datatables/DatatableLink'
 import TranslatedHeader from '@components/Datatables/TranslatedHeader'
 import HeaderSettings from '@components/Datatables/HeaderSettings'
 import GlobalSearch from '@components/Datatables/GlobalSearch'
@@ -384,12 +385,13 @@ export default {
                 thComp: TranslatedHeader,
                 sortable: false
             },
-            {
-                title: 'cruds.project.fields.links_to_project_page',
-                field: 'links_to_project_page',
-                thComp: TranslatedHeader,
-                sortable: false
-            },
+            // {
+            //     title: 'cruds.project.fields.links_to_project_page',
+            //     field: 'links_to_project_page',
+            //     thComp: TranslatedHeader,
+            //     tdComp: DatatableLink,
+            //     sortable: false
+            // },
             {
                 title: 'cruds.project.fields.show',
                 field: 'show',
