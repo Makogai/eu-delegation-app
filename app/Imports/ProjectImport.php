@@ -32,7 +32,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, With
 
     public function chunkSize(): int
     {
-        return 500; // Number of rows to read at a time
+        return 1000; // Number of rows to read at a time
     }
 
 //    use WithConditionalSheets;
@@ -44,19 +44,19 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, With
             // 'Horizon 2020' => new ProjectImport('Horizon 2020'),
             // 'Creative Europe new' => new ProjectImport('Creative Europe', '2014-2020'),
             // 'COSME' => new ProjectImport('COSME', '2014-2020'),
-            'Erasmus+ new' => new ProjectImport('Erasumus+'),
-            'WBIF new' => new ProjectImport('WBIF'),
-            'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
-            'CBC MNE-ALB' => new ProjectImport('CBC MNE-ALB'),
-            'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
-            'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
-            'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
-            'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
-            'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
-            'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
-            'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
-            'IPA III' => new ProjectImport('IPA', '2021-2027'),
-            ' IPA II' => new ProjectImport('IPA', '2014-2020'),
+            // 'Erasmus+ new' => new ProjectImport('Erasumus+'),
+            // 'WBIF new' => new ProjectImport('WBIF'),
+            // 'CBC SER-MNE' => new ProjectImport('CBC SER-MNE'),
+            // 'CBC MNE-ALB' => new ProjectImport('CBC MNE-ALB'),
+            // 'CBC MNE-KOS ' => new ProjectImport('CBC MNE-KOS'),
+            // 'CBC CRO-MNE' => new ProjectImport('CBC CRO-MNE'),
+            // 'CBC BIH-MNE ' => new ProjectImport('CBC BIH-MNE'),
+            // 'Interreg Adrion' => new ProjectImport('Interreg Adrion'),
+            // 'Interreg Mediterranean' => new ProjectImport('Interreg Mediterranean', '2014-2020'),
+            // 'Interreg CBC CRO-BIH-MNE new' => new ProjectImport('Interreg CBC CRO-BIH-MNE'),
+            // 'Interreg IPA ITA-ALB-MNE' => new ProjectImport('Interreg IPA ITA-ALB-MNE'),
+            // 'IPA III' => new ProjectImport('IPA', '2021-2027'),
+            // ' IPA II' => new ProjectImport('IPA', '2014-2020'),
             'IPA I' => new ProjectImport('IPA', '2007-2013'),
         ];
     }
