@@ -158,14 +158,14 @@ class Project extends Model
 
     // Make the end_date attribute format: dd.mm.yyyy
 
-    public function getEndDateAttribute($value)
-    {
-        if ($value != null) {
-            return Carbon::parse($value)->format('d.m.Y');
-        }else {
-            return null;
-        }
-    }
+    // public function getEndDateAttribute($value)
+    // {
+    //     if ($value != null) {
+    //         return Carbon::parse($value)->format('d.m.Y');
+    //     }else {
+    //         return null;
+    //     }
+    // }
 
 
 
