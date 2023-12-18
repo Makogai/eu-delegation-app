@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
+class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, WithChunkReading
 {
 
     public $programme;
@@ -30,6 +30,10 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
         $this->financialPerspective = $financialPerspective;
     }
 
+    public function chunkSize(): int
+    {
+        return 1000; // Number of rows to read at a time
+    }
 
 //    use WithConditionalSheets;
 
