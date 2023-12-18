@@ -202,6 +202,10 @@ class CountryCitySeeder extends Seeder
                 "name" => "Coastal region",
                 "region" => "south"
             ],
+            [
+                "name" => "Montenegro",
+                "region" => "north"
+            ],
         ];
 
         foreach ($cities as $city) {

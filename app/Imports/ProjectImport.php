@@ -10,6 +10,7 @@ use App\Models\Programme;
 use App\Models\Project;
 use App\Models\Sector;
 use DateTime;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
@@ -68,7 +69,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 //            'assistance_framework' => $row['assistance_framework'] ?? "null",
             'programme_id' => $this->getProgrammeId($this->programme),
             'contract_title' => $row['contract_title'] ?? "null",
-            'commitment_year' => $row['commitment_year'] ?? null,
+            'commitment_year' => $this->getYearFromDate($row['commitment_year'] ?? null),
             'contract_year' => array_key_exists('contract_year', $row) ? $this->get4NumberFromString($row['contract_year']) : null,
             'start_date' => $this->parseDateString($row['start_date'] ?? null),
             'end_date' => $this->parseDateString($row['start_date'] ?? null),
@@ -115,7 +116,8 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
         foreach ($municipalities as $municipality) {
             $municipalityModel = City::where('name', $municipality)->first();
             if (!$municipalityModel) {
-                $municipalityModel = City::where('name', 'Podgorica')->first();
+                // Mock model with id 32
+                $municipalityModel = ['id' => 32];
             }
             $project->municipality()->syncWithoutDetaching($municipalityModel->id);
         }
@@ -165,6 +167,16 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
         }
 
         return $project;
+    }
+
+
+    public function getYearFromDate($date)
+    {
+        if (!$date) {
+            return null;
+        }
+//        echo($date . "\n");
+        return substr($date, -4);
     }
 
     public function formatLinks($cellValue)

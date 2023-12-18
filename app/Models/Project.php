@@ -136,14 +136,38 @@ class Project extends Model
     public function getDurationAttribute()
     {
         $startDate = $this->start_date ? $this->start_date : 'N/A';
+        // If there is start date I need it in format dd.mm.yyyy
+        if ($startDate != 'N/A') {
+            $startDate = Carbon::parse($startDate)->format('d.m.Y');
+        }
 
 //        $startDate = "N/A";
         // If end_date is not null and is a valid date, format it. Otherwise, set it to 'N/A'
 
         $endDate = $this->end_date;
 
+        if ($endDate != null && $endDate != 'N/A') {
+            $endDate = Carbon::parse($endDate)->format('d.m.Y');
+        }else {
+            $endDate = 'N/A';
+        }
+
         return $startDate . ' - ' . $endDate;
     }
+
+
+    // Make the end_date attribute format: dd.mm.yyyy
+
+    public function getEndDateAttribute($value)
+    {
+        if ($value != null) {
+            return Carbon::parse($value)->format('d.m.Y');
+        }else {
+            return null;
+        }
+    }
+
+
 
 
     public function getLinksToProjectsAttribute($value) {

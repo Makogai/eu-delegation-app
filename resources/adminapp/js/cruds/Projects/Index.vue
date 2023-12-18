@@ -182,7 +182,6 @@
                           <v-select
                               name="commitmentYear"
                               label="name"
-                              :reduce="programme => programme.id"
                               :key="'commitment-year-field'"
                               :value="query.commitmentYear"
                               :options="commitmentYears"
@@ -194,32 +193,32 @@
                       </div>
                   </div>
 
-                  <div class="col-6">
-                      <div
-                          class="form-group bmd-form-group"
-                          :class="{
-                          'has-items': cities.length !== 0,
-                          'is-focused': activeField === 'country'
-                        }"
-                      >
-                          <label class="bmd-label-floating">{{
-                                  $t('cruds.project.fields.country')
-                              }}</label>
-                          <v-select
-                              name="country"
-                              label="name"
-                              :reduce="city => city.id"
-                              :key="'country-field'"
-                              :value="query.country"
-                              :options="countries"
-                              :closeOnSelect="false"
-                              @search.focus="focusField('country')"
-                              @search.blur="clearFocus"
-                              multiple
-                              v-model="query.country"
-                          />
-                      </div>
-                  </div>
+<!--                  <div class="col-6">-->
+<!--                      <div-->
+<!--                          class="form-group bmd-form-group"-->
+<!--                          :class="{-->
+<!--                          'has-items': cities.length !== 0,-->
+<!--                          'is-focused': activeField === 'country'-->
+<!--                        }"-->
+<!--                      >-->
+<!--                          <label class="bmd-label-floating">{{-->
+<!--                                  $t('cruds.project.fields.country')-->
+<!--                              }}</label>-->
+<!--                          <v-select-->
+<!--                              name="country"-->
+<!--                              label="name"-->
+<!--                              :reduce="city => city.id"-->
+<!--                              :key="'country-field'"-->
+<!--                              :value="query.country"-->
+<!--                              :options="countries"-->
+<!--                              :closeOnSelect="false"-->
+<!--                              @search.focus="focusField('country')"-->
+<!--                              @search.blur="clearFocus"-->
+<!--                              multiple-->
+<!--                              v-model="query.country"-->
+<!--                          />-->
+<!--                      </div>-->
+<!--                  </div>-->
 
 
                   <div class="col-12 mt-3">

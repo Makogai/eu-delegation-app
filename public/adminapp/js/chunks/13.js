@@ -299,7 +299,7 @@ var render = function render() {
     staticClass: "card-header card-header-primary card-header-icon"
   }, [_vm._m(0), _vm._v(" "), _c("h4", {
     staticClass: "card-title"
-  }, [_vm._v("\n            " + _vm._s(_vm.$t("global.table")) + "\n            "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title")))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n              " + _vm._s(_vm.$t("global.table")) + "\n              "), _c("strong", [_vm._v(_vm._s(_vm.$t("cruds.project.title")))])])]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_vm.$can(_vm.xprops.permission_prefix + "create") ? _c("router-link", {
     staticClass: "btn btn-primary",
@@ -310,7 +310,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "material-icons"
-  }, [_vm._v("\n              add\n            ")]), _vm._v("\n            " + _vm._s(_vm.$t("global.add")) + "\n          ")]) : _vm._e(), _vm._v(" "), _c("button", {
+  }, [_vm._v("\n                add\n              ")]), _vm._v("\n              " + _vm._s(_vm.$t("global.add")) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "btn btn-default",
     "class": {
       disabled: _vm.loading
@@ -327,7 +327,7 @@ var render = function render() {
     "class": {
       "fa-spin": _vm.loading
     }
-  }, [_vm._v("\n              refresh\n            ")]), _vm._v("\n            " + _vm._s(_vm.$t("global.refresh")) + "\n          ")]), _vm._v(" "), _c("form", {
+  }, [_vm._v("\n                refresh\n              ")]), _vm._v("\n              " + _vm._s(_vm.$t("global.refresh")) + "\n            ")]), _vm._v(" "), _c("form", {
     attrs: {
       action: ""
     }
@@ -526,9 +526,6 @@ var render = function render() {
     attrs: {
       name: "commitmentYear",
       label: "name",
-      reduce: function reduce(programme) {
-        return programme.id;
-      },
       value: _vm.query.commitmentYear,
       options: _vm.commitmentYears,
       closeOnSelect: true
@@ -548,45 +545,6 @@ var render = function render() {
         _vm.$set(_vm.query, "commitmentYear", $$v);
       },
       expression: "query.commitmentYear"
-    }
-  })], 1)]), _vm._v(" "), _c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
-    staticClass: "form-group bmd-form-group",
-    "class": {
-      "has-items": _vm.cities.length !== 0,
-      "is-focused": _vm.activeField === "country"
-    }
-  }, [_c("label", {
-    staticClass: "bmd-label-floating"
-  }, [_vm._v(_vm._s(_vm.$t("cruds.project.fields.country")))]), _vm._v(" "), _c("v-select", {
-    key: "country-field",
-    attrs: {
-      name: "country",
-      label: "name",
-      reduce: function reduce(city) {
-        return city.id;
-      },
-      value: _vm.query.country,
-      options: _vm.countries,
-      closeOnSelect: false,
-      multiple: ""
-    },
-    on: {
-      search: [function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "focus", undefined, $event.key, undefined)) return null;
-        return _vm.focusField("country");
-      }, function ($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "blur", undefined, $event.key, undefined)) return null;
-        return _vm.clearFocus.apply(null, arguments);
-      }]
-    },
-    model: {
-      value: _vm.query.country,
-      callback: function callback($$v) {
-        _vm.$set(_vm.query, "country", $$v);
-      },
-      expression: "query.country"
     }
   })], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-3"
