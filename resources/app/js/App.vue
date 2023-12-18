@@ -39,7 +39,7 @@
                 <img src="/md/img/logo2.png" alt="logo" class="img-fluid text-center text-small">
             </div>
 
-            <p class="text-center footer-copyright">Website in development</p>
+            <a href="https://eudl.markodev.me/admin">Admin</a>
 
         </footer>
     </div>
