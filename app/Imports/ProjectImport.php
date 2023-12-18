@@ -29,6 +29,11 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
         $this->financialPerspective = $financialPerspective;
     }
 
+    public function chunkSize(): int
+    {
+        return 1000; // Number of rows to read at a time
+    }
+
 //    use WithConditionalSheets;
 
     public function sheets(): array
