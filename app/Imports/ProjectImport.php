@@ -17,7 +17,7 @@ use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
+class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, WithChunkReading
 {
 
     public $programme;
