@@ -31,7 +31,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 
     public function chunkSize(): int
     {
-        return 1000; // Number of rows to read at a time
+        return 500; // Number of rows to read at a time
     }
 
 //    use WithConditionalSheets;
