@@ -117,8 +117,10 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             $municipalityModel = City::where('name', $municipality)->first();
             if (!$municipalityModel) {
                 // Mock model with id 32
-                $municipalityModel = ['id' => 32];
+                // Ensure this aligns with the structure of your City model
+                $municipalityModel = new City(['id' => 32]); // Replace 'City' with your actual model class
             }
+            
             $project->municipality()->syncWithoutDetaching($municipalityModel->id);
         }
         }
