@@ -2,7 +2,7 @@
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-10">
-                <img src="/md/img/logo-large-new2.png" alt="logo" class="img-fluid mb-5">
+                <img src="/md/img/logo2.png" alt="logo" class="img-fluid mb-5">
             </div>
         </div>
 

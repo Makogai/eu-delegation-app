@@ -39,7 +39,14 @@
                 <img src="/md/img/logo2.png" alt="logo" class="img-fluid text-center text-small">
             </div>
 
-            <a href="https://eudl.markodev.me/admin">Admin</a>
+            <div class="text-center">
+                <img src="/md/img/fund.png" alt="">
+                <p class="text-center">
+                    This website was created and maintained with the financial support of the European Union.
+                    Its contents are the sole responsibility of the Europe House and do not necessarily reflect
+                    the views of the European Union.
+                </p>
+            </div>
 
         </footer>
     </div>
