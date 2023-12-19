@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, WithChunkReading
+class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
 {
 
     public $programme;
@@ -26,14 +26,15 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, With
 
     public function __construct($programme = 'IPA', $financialPerspective = null)
     {
+        ini_set('memory_limit', '2024M');
         $this->programme = $programme;
         $this->financialPerspective = $financialPerspective;
     }
 
-    public function chunkSize(): int
-    {
-        return 1000; // Number of rows to read at a time
-    }
+//    public function chunkSize(): int
+//    {
+//        return 1000; // Number of rows to read at a time
+//    }
 
 //    use WithConditionalSheets;
 
@@ -127,7 +128,7 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets, With
                 // $municipalityModel = new City(['id' => 32]); // Replace 'City' with your actual model class
                 $municipalityModel = City::where('name', 'Podgorica')->first();
             }
-            
+
             $project->municipality()->syncWithoutDetaching($municipalityModel->id);
         }
         }
