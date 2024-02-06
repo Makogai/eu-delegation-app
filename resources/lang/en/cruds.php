@@ -190,6 +190,7 @@ return [
         'title_singular' => 'Project',
         'fields'         => [
             'loan' => 'Loan',
+            'decision_number' => 'Decision Number',
             'loan_helper' => ' ',
             'co_funding' => 'Co Funding',
             'co_funding_helper' => ' ',

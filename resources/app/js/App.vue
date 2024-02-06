@@ -35,13 +35,13 @@
             <div class="container">
             </div>
 
-            <div class="text-center">
-                <img src="/md/img/logo2.png" alt="logo" class="img-fluid text-center text-small">
-            </div>
+<!--            <div class="text-center">-->
+<!--                <img src="/md/img/logo2.png" alt="logo" class="img-fluid text-center text-small">-->
+<!--            </div>-->
 
             <div class="text-center">
-                <img src="/md/img/fund.png" alt="">
-                <p class="text-center">
+                <img src="/md/img/fund.png" class="w-25" alt="">
+                <p class="text-center text-white">
                     This website was created and maintained with the financial support of the European Union.
                     Its contents are the sole responsibility of the Europe House and do not necessarily reflect
                     the views of the European Union.

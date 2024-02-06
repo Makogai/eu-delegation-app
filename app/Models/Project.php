@@ -77,6 +77,7 @@ class Project extends Model
         'keywords',
         'links_to_project_page',
         'financial_perspective.perspective',
+        'decision_number'
     ];
 
     protected $fillable = [
@@ -102,6 +103,7 @@ class Project extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'decision_number'
     ];
 
     protected $appends =[ 'duration', 'year', 'end_year'];
@@ -244,6 +246,10 @@ class Project extends Model
 
         if ($request->has('endDate') && $request->endDate) {
             $query->where('end_date', $request->endDate);
+        }
+
+        if ($request->has('decision_number') && $request->decision_number) {
+            $query->where('decision_number', $request->decision_number);
         }
 
         if ($request->has('commitmentYear') && $request->commitmentYear) {

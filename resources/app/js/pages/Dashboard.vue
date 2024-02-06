@@ -10,7 +10,7 @@
 
                         <div class="col-12 mt-5">
                             <div class="form-group ci keywords">
-                                <label class="">Keywords</label>
+                                <label class="">Ključne riječi</label>
                                 <div class="form-group bmd-form-group icon-input-wrapper">
                                     <input class="form-control" type="text" v-model="query.keywords"/>
                                 </div>
@@ -25,7 +25,7 @@
                           'has-items': cities.length !== 0,
                             }"
                             >
-                                <label class="bmd-label-floating">Municipality</label>
+                                <label class="bmd-label-floating">Opština</label>
                                 <v-select
                                     name="municipality"
                                     label="name"
@@ -46,7 +46,7 @@
                           'has-items': sectors.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">Sector</label>
+                                <label class="bmd-label-floating">Sektor</label>
                                 <v-select
                                     name="sector"
                                     label="name"
@@ -68,7 +68,7 @@
                           'has-items': cities.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">Programme</label>
+                                <label class="bmd-label-floating">Program</label>
                                 <v-select
                                     name="programme"
                                     label="name"
@@ -90,7 +90,7 @@
                           'has-items': cities.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">Start Year</label>
+                                <label class="bmd-label-floating">Godina početka</label>
                                 <v-select
                                     name="programme"
                                     label="name"
@@ -108,7 +108,7 @@
                           'has-items': cities.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">End Year</label>
+                                <label class="bmd-label-floating">Godina završetka</label>
                                 <v-select
                                     name="programme"
                                     label="name"
@@ -125,7 +125,7 @@
                           'has-items': cities.length !== 0,
                         }"
                             >
-                                <label class="bmd-label-floating">Commitment Year</label>
+                                <label class="bmd-label-floating">Godina obaveze</label>
                                 <v-select
                                     name="programme"
                                     label="name"
@@ -141,7 +141,7 @@
 
                             <button class="btn bg-primaryeu2 rounded-o px-3"><img src="303-loop2.svg"
                                                                                   style="fill: white; margin-right: 5px;"
-                                                                                  alt="reset"> Reset
+                                                                                  alt="reset"> Resetuj
                             </button>
                         </div>
 
@@ -175,7 +175,7 @@
                                             <div class="map-info-box__item">
                                                 <div class="map-info-box__small-text">Više od</div>
                                                 <div class="map-info-box__value">{{ data.totalProjectsValue }}</div>
-                                                <div class="map-info-box__text">{{ data.totalProjectsWord }} evra</div>
+                                                <div class="map-info-box__text">{{ data.totalProjectsWord }} eura</div>
                                                 <div class="map-info-box__small-text">U vrijednostima projekata</div>
                                             </div>
                                         </div>
@@ -188,12 +188,12 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="projects-tab" data-toggle="tab"
                                                        href="#projects" role="tab" aria-controls="projects"
-                                                       aria-selected="true">Projects ({{ data.total }})</a>
+                                                       aria-selected="true">Projekti ({{ data.total }})</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="sectors-tab" data-toggle="tab"
                                                        href="#sectors" role="tab" aria-controls="sectors"
-                                                       aria-selected="false">Sectors ({{ data.totalSectors }})</a>
+                                                       aria-selected="false">Sektori ({{ data.totalSectors }})</a>
                                                 </li>
                                             </ul>
                                         </div>

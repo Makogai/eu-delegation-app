@@ -147,6 +147,25 @@
                       <div
                           class="form-group bmd-form-group is-filled"
                           :class="{
+                      'has-items': query.decision_number,
+                    }"
+                      >
+                          <label class="bmd-label-floating">Decision number</label>
+                          <input
+                              class="form-control"
+                              type="text"
+                              v-model="query.decision_number"
+                              @input="updateDecisionNumber"
+                              @focus="focusField('decision_number')"
+                              @blur="clearFocus"
+                          >
+                      </div>
+                  </div>
+
+                  <div class="col-6">
+                      <div
+                          class="form-group bmd-form-group is-filled"
+                          :class="{
                       'has-items': query.end_date,
                     }"
                       >
@@ -383,6 +402,12 @@ export default {
                 field: 'keywords',
                 thComp: TranslatedHeader,
                 sortable: false
+            },,
+            {
+                title: 'cruds.project.fields.decision_number',
+                field: 'decision_number',
+                thComp: TranslatedHeader,
+                sortable: false
             },
             // {
             //     title: 'cruds.project.fields.links_to_project_page',
@@ -449,6 +474,9 @@ export default {
   methods: {
       updateStartDate(e) {
           this.query.startDate = e.target.value
+      },
+      updateDecisionNumber(e) {
+          this.query.decision_number = e.target.value
       },
       updateEndDate(e) {
           this.query.endDate = e.target.value

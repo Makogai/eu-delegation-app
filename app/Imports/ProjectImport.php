@@ -84,12 +84,13 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             'contracting_party' => $row['contracting_party'] ?? null,
             'contracted_eu_contribution' => $this->getNumberFromString($row['contracted_eu_contribution'] ?? null),
 
-            'co_funding' => $row['co_funding_or_loan'] ?? null,
-            'loan' => $row['co_funding_or_loan'] ?? null,
+            'co_funding' => $this->sanitizeValue($row['co_funding_or_loan'] ?? null),
+            'loan' => $this->sanitizeValue($row['loan'] ?? null),
             'total_euro_value' => $this->getNumberFromString($row['total_euro_value'] ?? null),
             'short_description' => $row['short_description'] ?? "null",
             'end_beneficiary' => $row['partners'] ?? null,
             'keywords' => $row['keywords'] ?? null,
+            'decision_number' => $row['decision_number'] ?? null,
             'links_to_project_page' => $this->formatLinks($row['links_to_project_page'] ?? null),
             'show' => true
         ]);
@@ -335,5 +336,18 @@ class ProjectImport implements ToModel, WithHeadingRow, WithMultipleSheets
             return null;
         }
         return $municipality->id;
+    }
+
+    protected function sanitizeValue($value)
+    {
+        // If value is already numeric, return it directly
+        if (is_numeric($value)) {
+            return $value;
+        }
+
+        // Attempt to convert string to numeric value
+        // Here you might add specific logic to handle known formula patterns
+        // For now, simply return null if the value is not directly numeric
+        return null;
     }
 }

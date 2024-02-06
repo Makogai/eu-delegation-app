@@ -25,6 +25,7 @@ class CreateProjectsTable extends Migration
             $table->decimal('total_euro_value', 15, 2)->nullable();
             $table->longText('short_description');
             $table->string('keywords')->nullable();
+            $table->string('decision_number')->nullable();
             $table->text('links_to_project_page')->nullable();
             $table->boolean('show')->default(0)->nullable();
             $table->timestamps();
