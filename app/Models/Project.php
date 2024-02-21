@@ -317,6 +317,13 @@ class Project extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function getTotalEuroValueAttribute($value)
+    {
+        return $value ? number_format($value, 2, ',', '.') : null;
+    }
+
+
+
     public function programme()
     {
         return $this->belongsTo(Programme::class);
